@@ -11,7 +11,7 @@ class Employer(models.Model):
     first_name = models.CharField(max_length = 25)
     last_name = models.CharField(max_length = 25)
     phone = models.BigIntegerField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput())
 
 class Employee(Employer):
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete = models.CASCADE)
