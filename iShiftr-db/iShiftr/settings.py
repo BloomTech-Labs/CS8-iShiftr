@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').SPLIT(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
@@ -35,7 +35,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').SPLIT(',')
 INSTALLED_APPS = [
     'corsheaders',
     'employer',
-    'graphene_django',
+    # 'graphene_django',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
