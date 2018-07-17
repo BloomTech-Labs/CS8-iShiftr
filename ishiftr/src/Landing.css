@@ -1,0 +1,51 @@
+body {
+    padding: 10px;
+}
+
+.nav {    
+    display: flex;    
+    justify-content: flex-end;
+    list-style: none;
+}
+
+.buttons-header {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.landing-img img{
+    width: 500px;
+    height: 500px;
+    margin-top: 30px;
+}
+
+.scheduleButton {
+    margin-top: 20px;
+    width: 160px !important;
+    height: 60px !important;
+    font-size: 20px !important;
+}
+
+.landing-text {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signUp {
+    width: 80px !important;
+    height: 30px;
+    font-size: 13px !important;
+    background: #fff !important;
+    color: #1757B1 !important;
+}
+
+.signIn {
+    width: 80px !important;
+    height: 30px;
+    font-size: 13px !important;
+    background: #fff !important;
+    color: #1757B1 !important;
+}
