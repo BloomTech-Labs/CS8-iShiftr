@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/Landing.css';
-import {Redirect} from 'react-router'
+// import {Redirect} from 'react-router'
 import { Link } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
@@ -8,30 +8,30 @@ import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
 class Landing extends React.Component {
 // TODO: Create img carousel and more styling
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        modal: false
-        };
+    // constructor(props) {
+    //     super(props);
+    //     // this.state = {
+    //     // modal: false
+    //     // };
 
         
-    }
+    // }
 
-    toggle = () => {
-        console.log('toggled');
-        this.setState({
-        modal: !this.state.modal
-        });
-        console.log('toggled again', this.state.modal);
-    }
+    // toggle = () => {
+    //     console.log('toggled');
+    //     this.setState({
+    //     modal: !this.state.modal
+    //     });
+    //     console.log('toggled again', this.state.modal);
+    // }
 
     
-    signIn = () => {
-        this.toggle();
-        // eslint-disable-next-line
-        <Redirect to="/ShiftSchedule"/>
+    // signIn = () => {
+    //     this.toggle();
+    //     // eslint-disable-next-line
+    //     <Redirect to="/ShiftSchedule"/>
         
-    }
+    // }
 
     render() {
         return (
@@ -41,7 +41,8 @@ class Landing extends React.Component {
                     <ul className="buttons-header">
                         <Link to="/SignUp"><Button className="button-registration" color="primary">Sign Up</Button></Link>
                         {/* <Link to="/SignIn"><Button onClick={this.toggle} className="button-registration" color="primary">Sign in</Button></Link> */}
-                        <Button className="button-registration" onClick={this.toggle}>Sign In</Button>
+                        {/* <Button className="button-registration" onClick={this.toggle}>Sign In</Button> */}
+                        <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>
                     </ul>                  
                 </div>
 
@@ -60,8 +61,10 @@ class Landing extends React.Component {
                 </div>
             </div>
             <div>
-                <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                <ModalHeader toggle={this.toggle}>Please sign in</ModalHeader>
+                {/* <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                <ModalHeader toggle={this.toggle}>Please sign in</ModalHeader> */}
+                <Modal>
+                <ModalHeader >Please sign in</ModalHeader>
                 <ModalBody>
                     <Form className = "form-signin">
                         <FormGroup row>

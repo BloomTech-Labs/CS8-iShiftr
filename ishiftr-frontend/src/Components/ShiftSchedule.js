@@ -1,17 +1,25 @@
-import React, { Component } from 'react';
-// import BigCalendar from 'react-big-calendar';
-// import moment from 'moment';
+import React from 'react';
 import Menu from '../Components/Menu';
+import Calendar from './Calendar';
+import '../css/ShiftSchedule.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+import { Container, Row, Col } from 'reactstrap';
+import SignOut from './Signout';
 
-// BigCalendar.momentLocalizer(moment);
-
-class ShiftSchedule extends Component {
+class ShiftSchedule extends React.Component {
     render() {
         return (
-            <div>
-                <Menu />
-                {/* <Calendar /> */}
-            </div>
+            <Container>
+                <Row className="row-signout">
+                    <SignOut />
+                </Row>
+                <Row>
+                    <Menu />               
+                    <Col>
+                        <Calendar />
+                    </Col>
+                </Row>                                
+            </Container>
         );
     }
 }
