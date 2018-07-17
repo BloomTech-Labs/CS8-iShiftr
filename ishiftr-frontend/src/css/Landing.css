@@ -15,8 +15,8 @@ body {
 }
 
 .landing-img img{
-    width: 500px;
-    height: 500px;
+    width: 50%;
+    height: 40%;
     margin-top: 30px;
 }
 
@@ -34,18 +34,19 @@ body {
     justify-content: center;
 }
 
-.signUp {
-    width: 80px !important;
+.button-registration {
+    margin: 5px;
+    width: 80px !important; 
     height: 30px;
     font-size: 13px !important;
     background: #fff !important;
     color: #1757B1 !important;
+    text-align: center;
+    padding: 5px;
+}
+.signUp {
 }
 
 .signIn {
-    width: 80px !important;
-    height: 30px;
-    font-size: 13px !important;
-    background: #fff !important;
-    color: #1757B1 !important;
+    
 }

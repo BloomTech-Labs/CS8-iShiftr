@@ -4,6 +4,7 @@ import Landing from './Components/Landing';
 import { Route } from 'react-router-dom';
 import SignUp from './Components/Signup';
 import ShiftSchedule from './Components/ShiftSchedule';
+//import SignIn from './Components/SignIn';
 
 
 class App extends Component {
