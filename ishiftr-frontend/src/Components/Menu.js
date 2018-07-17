@@ -6,11 +6,11 @@ class Menu extends Component {
         return (
             <div className="menu">
                 <ul>
-                    <li>Calendar</li>
-                    <li>Employees</li>
-                    <li>Create Schedule</li>
-                    <li>Billing</li>
-                    <li>Settings</li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="#">Employees</a></li>
+                    <li><a href="#">Create Schedule</a></li>
+                    <li><a href="#">Billing</a></li>
+                    <li><a href="#">Settings</a></li>
                 </ul>
             </div>
         );

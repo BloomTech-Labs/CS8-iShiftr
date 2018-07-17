@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import '../css/signup.css';
+import { Link } from 'react-router-dom'
 
 class SignUp extends Component {
     // TODO: create Admin Sign up --first-- BackLog Employee SignUp
@@ -27,10 +28,11 @@ class SignUp extends Component {
                     <FormGroup row>
                         <Label sm = {4}for="re-password">Re-pass:</Label>
                         <Col sm ={8}>
-                            <Input type="re-password" name="re-password" id="#re-password" placeholder="Retype password" />
+                            <Input type="password" name="re-password" id="#re-password" placeholder="Retype password" />
                         </Col>
                     </FormGroup>
-                    <Button color = "primary">Register</Button>
+                    <Button color = "primary">Register</Button> <br />
+                    <Link to="/"><Button color = "primary">Go Back</Button></Link>
                 </Form>
             </div>
         );

@@ -10,6 +10,7 @@ class ShiftSchedule extends Component {
         return (
             <div>
                 <Menu />
+                {/* <Calendar /> */}
             </div>
         );
     }
