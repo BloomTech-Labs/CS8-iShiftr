@@ -46,8 +46,8 @@ class Landing extends React.Component {
                     </ul>                  
                 </div>
 
-                <div className="landing-img">
-                    <img src = {require('../assets/imgLanding.jpg')}  alt="placeholder" />
+                <div className="landing-img">                  
+                    <img src = {require('../assets/imgLanding.jpg')}  alt="placeholder" />                 
                 </div>
                 <div className="landing-text">
                     <p>

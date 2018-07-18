@@ -41,6 +41,12 @@ class SignUp extends Component {
                 </div>
                 <Form className = "form" onSubmit={this.signUpHandler}>
                     <FormGroup row>
+                        <Label sm ={4} for="company">Company:</Label>
+                        <Col sm ={8}>
+                            <Input type="text" name="company" id="#company" placeholder="enter the name of your company" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
                         <Label sm ={4} for="email">Email:</Label>
                         <Col sm ={8}>
                             <Input type="email" name="email" id="#email" placeholder="enter your email" />
