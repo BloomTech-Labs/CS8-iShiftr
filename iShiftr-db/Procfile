@@ -1,1 +1,1 @@
-web: gunicorn iShiftr.wsgi
+web: node app.js
