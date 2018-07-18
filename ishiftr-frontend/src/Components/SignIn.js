@@ -13,6 +13,7 @@ class Signin extends Component {
         this.loginHandler = this.loginHandler.bind(this);
 
     }
+    // Todo: ternary operator for signout
 
     inputHandler = (event) => {
         event.preventDefault();

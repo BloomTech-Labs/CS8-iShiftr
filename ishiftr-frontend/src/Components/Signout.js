@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom'
 
 class SignOut extends Component {
-
+    
     render() {
         return (
             <div>

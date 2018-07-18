@@ -4,6 +4,7 @@ import '../css/Landing.css';
 import { Link } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import Carousel from './Carousel';
 
 class Landing extends React.Component {
 // TODO: Create img carousel and more styling
@@ -47,7 +48,8 @@ class Landing extends React.Component {
                 </div>
 
                 <div className="landing-img">                  
-                    <img src = {require('../assets/imgLanding.jpg')}  alt="placeholder" />                 
+                    {/* <img src = {require('../assets/imgLanding.jpg')}  alt="placeholder" />*/}
+                    <Carousel />
                 </div>
                 <div className="landing-text">
                     <p>

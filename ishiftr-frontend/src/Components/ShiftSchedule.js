@@ -1,10 +1,11 @@
 import React from 'react';
 import Menu from '../Components/Menu';
-import Calendar from './Calendar';
+// import Calendar from './Calendar';
 import '../css/ShiftSchedule.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { Breadcrumb, BreadcrumbItem, Container, Row, Col } from 'reactstrap';
 import SignOut from './Signout';
+import DragDropContext from './TestCal';
 
 class ShiftSchedule extends React.Component {
     render() {
@@ -20,7 +21,8 @@ class ShiftSchedule extends React.Component {
                 <Row>
                     <Menu />               
                     <Col>
-                        <Calendar />
+                        {/* <Calendar /> */}
+                        <DragDropContext />
                     </Col>
                 </Row>                                
             </Container>
