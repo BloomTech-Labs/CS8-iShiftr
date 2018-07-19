@@ -12,6 +12,37 @@ const createEmployee = (req, res) => {
         });
     ;}
 
+const getEmployees = (req, res) => {
+    if (req.params.id || _id) {
+        const id = req.params.id || _id;
+        Employer
+            .finById(id)
+            .select(-password)
+            .populate('employees')
+            .then(employer => {
+                res.status(200).json({Employees: employer.employees})
+            })
+            .catch((error) => {
+                res.status(500).json({ Error: 'There was an error', error})
+            })
+    }
+}
+
+const getOneEmployee = (req, res) => {
+    if (req.params.id || _id) {
+        const id = req.params.id || _id;
+        Employee
+            .finById(id)
+            .select(-password)
+            .then(employee => {
+                res.status(200).json({employee})
+            })
+            .catch((error) => {
+                res.status(500).json({ Error: 'There was an error getting the employee', error})
+            })
+    }
+}
+
 const deleteEmployee = (req, res) => {
     Employee
         .findByIdAndRemove(req.params.id)
@@ -24,32 +55,54 @@ const deleteEmployee = (req, res) => {
 };
 
 const editEmployeePassword = (req, res) => {
-    const { _id, username} = req.employer;
+    const { _id, username} = req.employee;
     const { currentPassword, newPassword } = req.body;
     if(!currentPassword || !newPassword) {
         re.status(422).json({ Message: 'Please enter both current and new passwords'})
     }
-    let opts = {
-        new: true
-    }
-    Employer
-        .finByIdAndUpdate(
-            req.params.id,
-            { password },
-            opts
-        )
-        .then(updatedPass => {
-            res.status(200).json(updatedPass);
+    const payload = {
+        username: employee.username
+      };
+      const options = {
+        expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
+      };
+    const token = jwt.sign(payload, process.env.mysecret, options);
+    // let opts = {
+    //     new: true
+    // }
+    Employee
+        .finById(_id)
+        .then((employee) => {
+            employee.checkPassword(currentPassword, (error, isValid) => {
+                if(error) {
+                    return res.status(500).json(error);
+                }
+                if(isValid) {
+                    employee.password = newPassword;
+                    Employee
+                        .save()
+                        .then((response) => {
+                            const temp = { ...response._doc }
+                            delete temp.password;
+                            res.json({token, employee: temp});
+                        })
+                        .catch((error) => {
+                            res.status(501).json(error);
+                        })
+                } else {
+                    res.status(403).json({ Message: 'Unauthorized. Unable to change password', error})
+                }
+            });
         })
         .catch(error => {
-            res.status(500).json({ Message: 'There was and error updating the password', error });
+            res.status(500).json({ error: 'There was and error updating the password', error });
         });
 };
 
-
-
 module.exports = {
     createEmployee,
+    getEmployees,
+    getOneEmployee,
     deleteEmployee,
-    editEmployee,
+    editEmployeePassword,
 };
