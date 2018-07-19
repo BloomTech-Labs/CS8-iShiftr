@@ -36,6 +36,10 @@ const EmployeeSchema = new Schema({
         type: String,
         required: true,
     },
+    availableHours: {
+        type:String,
+        required:true
+    },
     workHours: {
         type: String,
         required: true,
@@ -56,8 +60,8 @@ const EmployeeSchema = new Schema({
         type:Boolean,
         default: false,
     },
-    employers: [{ type: ObjectTd, ref:'Employer'}],
-    schedule: [{type:ObjectId, ref: 'Schedule'}]
+    employer: [{ type: ObjectTd, ref:'Employer'}],
+    schedules: [{type:ObjectId, ref: 'Schedule'}]
 });
 
 EmployeeSchema.pre('save', function(next) {
