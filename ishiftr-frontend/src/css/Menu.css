@@ -1,13 +1,15 @@
 .menu {    
-    border: 2px solid black;
-    width: 220px;
-    margin-top: 50px;
-    padding: 20px 30px 300px 0;
-    font-size: 20px;        
+    border: 1px solid black;
+    width: 20%;
+    margin-top: 33px;
+    padding: 0px 30px 300px 0;
+    font-size: 20px; 
+    box-sizing: border-box;       
 }
 
 .menu li {
     list-style: none;
-    display: flex;
+    font-size: 1.3rem;
+    text-align: left;
     line-height: 40px;
 }

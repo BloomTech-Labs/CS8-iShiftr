@@ -3,14 +3,15 @@ export default [
       id: 0,
       title: 'Employee1',
       allDay: true,
-      start: new Date(2018, 7, 12, 17, 0, 0, 0),
-      end: new Date(2018, 7, 12, 17, 30, 0, 0),
+      start: new Date().getTime(),
+      end: new Date().getTime()
     },
     {
       id: 1,
       title: 'Employee2',
-      start: new Date(2018, 7, 7),
-      end: new Date(2018, 7, 10),
+      name: "ajmal",
+      start: new Date(),
+      end: new Date(),
     },
   
     {

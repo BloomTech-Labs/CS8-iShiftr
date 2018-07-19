@@ -2,3 +2,9 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.mcContainer{
+    display: flex;
+    justify-content: stretch;
+
+}

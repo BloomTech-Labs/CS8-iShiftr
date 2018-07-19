@@ -1,0 +1,28 @@
+.employeesList{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 30px;
+    flex-shrink: initial;
+}
+
+.card{
+    width: 250px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.legend{
+    margin: 20px;
+    width: 150px;
+    font-size: 16px;
+  }
+
+  .legend-1{
+    width: 100px;
+  }
+  
+  .fieldset{
+    border: 1px solid black;
+    border-radius: 3px;
+  }

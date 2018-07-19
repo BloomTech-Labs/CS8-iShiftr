@@ -5,10 +5,12 @@ import '../css/ShiftSchedule.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { Breadcrumb, BreadcrumbItem, Row, Col } from 'reactstrap';
 import SignOut from './Signout';
-import DragDropContext from './TestCal';
+import Employee from './Employee';
+import '../css/employees.css'
 
 
-class ShiftSchedule extends React.Component {
+
+class EmployeesList extends React.Component {
     render() {
         return (
             <div className = 'container'>
@@ -21,8 +23,8 @@ class ShiftSchedule extends React.Component {
                 </div>
                 <div className = 'mcContainer'>
                     <Menu />               
-                    <Col>
-                        <DragDropContext />
+                    <Col className = 'employeesList'>
+                        <Employee />
                     </Col>
                 </div>                                
             </div>
@@ -30,4 +32,4 @@ class ShiftSchedule extends React.Component {
     }
 }
 
-export default ShiftSchedule;
+export default EmployeesList;

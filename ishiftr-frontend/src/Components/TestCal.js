@@ -8,9 +8,34 @@ import moment from 'moment';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
 
+moment().format('LT');
 
 BigCalendar.momentLocalizer(moment);
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
+
+
+function Event({ event }) {
+  return (
+    <React.Fragment>
+      <span>
+        <strong>{event.title}</strong><br/>
+      </span>
+      <span>
+        <strong>{moment(event.start).format('LT')}</strong> { '-'}
+        <strong>{moment(event.end).format('LT')}</strong>
+      </span>
+    </React.Fragment>
+  )
+}
+
+function EventAgenda({ event }) {
+  return (
+    <span>
+      <em style={{ color: 'magenta' }}>{event.title}</em>
+      <p>{event.desc}</p>
+    </span>
+  )
+}
 
 class Dnd extends React.Component {
   constructor(props) {
@@ -67,6 +92,12 @@ class Dnd extends React.Component {
         onEventResize={this.resizeEvent}
         defaultView={BigCalendar.Views.MONTH}
         defaultDate={new Date(2018, 7, 18)}
+        components={{
+          event: Event,
+          agenda: {
+            event: EventAgenda,
+          },
+        }}
       />
     )
   }
