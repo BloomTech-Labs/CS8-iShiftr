@@ -16,7 +16,7 @@ const getEmployees = (req, res) => {
     if (req.params.id || _id) {
         const id = req.params.id || _id;
         Employer
-            .finById(id)
+            .findById(id)
             .select(-password)
             .populate('employees')
             .then(employer => {
@@ -32,7 +32,7 @@ const getOneEmployee = (req, res) => {
     if (req.params.id || _id) {
         const id = req.params.id || _id;
         Employee
-            .finById(id)
+            .findById(id)
             .select(-password)
             .then(employee => {
                 res.status(200).json({employee})
@@ -71,7 +71,7 @@ const editEmployeePassword = (req, res) => {
     //     new: true
     // }
     Employee
-        .finById(_id)
+        .findById(_id)
         .then((employee) => {
             employee.checkPassword(currentPassword, (error, isValid) => {
                 if(error) {
