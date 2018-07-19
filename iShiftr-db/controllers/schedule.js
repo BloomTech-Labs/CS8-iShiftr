@@ -1,8 +1,9 @@
-const Schedule = require('../models/Schedule');
+const Schedule = require('../models/ScheduleModel');
 const Employee = require('../models/EmployeeModel');
 const Employer = require('../models/EmployerModel');
 
 const createSchedule = (req, res) => {
+    const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body
     const schedule = new Schedule({ monday, tuesday, wednesday, thursday, friday, saturday, sunday });
     schedule
         .save((error, schedule) => {

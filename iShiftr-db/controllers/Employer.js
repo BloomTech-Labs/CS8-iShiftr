@@ -1,7 +1,8 @@
 const Employer       = require('../models/EmployerModel');
 
 const createEmployer = (req, res) => {
-    const employer   = new Employer({username, password, email, firstName, lastName, phoneNumber});
+    const { username, password, email, firstName, lastName, phoneNumber } = req.body;
+    const employer   = new Employer({ username, password, email, firstName, lastName, phoneNumber});
     employer
         .save((error, employer) => {
             if(error) {

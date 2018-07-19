@@ -56,7 +56,7 @@ const EmployeeSchema = new Schema({
         type:Boolean,
         default: false,
     },
-    employers: [{ type: ObjectTd, ref:'Employer'}],
+    employers: [{ type: ObjectId, ref:'Employer'}],
     schedule: [{type:ObjectId, ref: 'Schedule'}]
 });
 

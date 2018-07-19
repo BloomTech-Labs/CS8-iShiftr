@@ -1,7 +1,8 @@
 const Employee = require('../models/EmployeeModel');
-const Employer = require('../models.EmployerModel');
+const Employer = require('../models/EmployerModel');
 
 const createEmployee = (req, res) => {
+    const {username, password, email, firstName, lastName, phoneNumber, availability, workHours} = req.body;
     const employee = new Employee({username, password, email, firstName, lastName, phoneNumber, availability, workHours});
     employee
         .save((error, employee) => {
