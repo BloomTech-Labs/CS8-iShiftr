@@ -12,16 +12,29 @@ class ShiftSchedule extends React.Component {
     render() {
         return (
             <div className = 'container'>
-                <Breadcrumb>
-                    <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                    <BreadcrumbItem active>Schedule</BreadcrumbItem>
-                </Breadcrumb>
-                <div className="row-signout">
-                    <SignOut />
+
+                <div className = 'row-header'>
+                    <div>
+                        <Breadcrumb>
+                            <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+                            <BreadcrumbItem active>Schedule</BreadcrumbItem>
+                        </Breadcrumb>
+                    </div>
+                    <div className="row-signout">
+                        <SignOut />
+                    </div>
                 </div>
+
+                <div className = 'editShift'>
+                    <button>
+                        <span>Edit Shift</span>
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+
                 <div className = 'mcContainer'>
                     <Menu />               
-                    <Col>
+                    <Col className = 'calendar'>
                         <DragDropContext />
                     </Col>
                 </div>                                

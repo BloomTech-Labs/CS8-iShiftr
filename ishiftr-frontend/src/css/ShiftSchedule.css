@@ -1,10 +1,36 @@
+.row-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 .row-signout {
     display: flex;
     justify-content: flex-end;
+}
+
+.editShift{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+    align-content: space-between;
+}
+
+.editShift button{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: none;
+    background-color: white;
+    width: 120px;
 }
 
 .mcContainer{
     display: flex;
     justify-content: stretch;
 
+}
+
+.calendar{
+    height: 700px;
 }

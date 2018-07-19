@@ -25,6 +25,7 @@ class EmployeesList extends React.Component {
                     <Menu />               
                     <Col className = 'employeesList'>
                         <Employee />
+                        <div className ='addBtn'><span className = 'center'><i style={{fontSize: "2em"}} class="fas fa-plus-circle"></i> Add Employee</span></div>
                     </Col>
                 </div>                                
             </div>
