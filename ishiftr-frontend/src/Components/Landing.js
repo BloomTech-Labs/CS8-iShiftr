@@ -4,7 +4,7 @@ import '../css/Landing.css';
 import { Link } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
-import Carousel from './Carousel';
+import CoverFlow from 'coverflow-react';
 
 class Landing extends React.Component {
 // TODO: Create img carousel and more styling
@@ -35,6 +35,23 @@ class Landing extends React.Component {
     // }
 
     render() {
+
+        const imagesArr = [
+            require('../assets/team.jpg'),
+            require('../assets/request.jpg'),
+            require('../assets/calendar.jpg'),            
+            require('../assets/powerup.jpg'),
+            require('../assets/pic.jpg')
+        ];
+
+        const labelsArr = [
+            'Simplify Your Employee Schedules',
+            'Advanced Scheduling Optimization',
+            'Up-to-date Schedule Viewings',
+            'Accessible From Anywhere',
+            'Value Employees Productivity',
+        ];
+
         return (
             <React.Fragment>
             <div className="container">
@@ -45,11 +62,9 @@ class Landing extends React.Component {
                         {/* <Button className="button-registration" onClick={this.toggle}>Sign In</Button> */}
                         <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>
                     </ul>                  
-                </div>
-
+                </div>                
                 <div className="landing-img">                  
-                    {/* <img src = {require('../assets/imgLanding.jpg')}  alt="placeholder" />*/}
-                    <Carousel />
+                    <CoverFlow  labelsArr={labelsArr} width="1366" height="350" itemRatio="6:5" background='white' imagesArr={imagesArr} />
                 </div>
                 <div className="landing-text">
                     <p>
