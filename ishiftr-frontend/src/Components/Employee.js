@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card, CardText } from 'reactstrap';
+import { Card, CardText, Label, Input, FormGroup } from 'reactstrap';
 // import FontAwesomeIcon  from 'react-fontawesome';
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import employees from '../testEmployees';
+import '../css/timeOff.css';
 
 export default class Employee extends Component {
   render() {
@@ -23,7 +24,16 @@ export default class Employee extends Component {
                     </fieldset>
                     <fieldset className='fieldset'>
                         <legend className = 'legend'>Requested Time Off:</legend>
-                        <p>text here</p>
+                        <div>
+                        <label for="scales">July 20th</label>
+                            <input type="checkbox" id="scales" name="feature"
+                                  value="scales" />
+                            <label for="scales">Approved</label>
+                            <label for="scales">July 24th</label>
+                            <input type="checkbox" id="scales" name="feature"
+                                  value="scales" />
+                            <label for="scales">Approved</label>                            
+                        </div>                                               
                     </fieldset>
                 </form>
               </Card>
