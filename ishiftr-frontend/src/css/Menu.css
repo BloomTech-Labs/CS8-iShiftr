@@ -1,8 +1,8 @@
 .menu {    
-    border: 2px solid black;
+    border: 1px solid black;
     width: 220px;
-    margin-top: 50px;
-    padding: 20px 30px 300px 0;
+    margin-top: 40px;
+    padding: 20px 30px 250px 0;
     font-size: 20px;        
 }
 
