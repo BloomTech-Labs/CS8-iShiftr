@@ -52,6 +52,10 @@ const EmployeeSchema = new Schema({
         type: Boolean,
         required: true,
     },
+    admin:{
+        type:Boolean,
+        default: false,
+    },
     employers: [{ type: ObjectTd, ref:'Employer'}],
     schedule: [{type:ObjectId, ref: 'Schedule'}]
 });

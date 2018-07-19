@@ -14,7 +14,16 @@ const authenticate = (req, res, next) => {
             next();
         });
     } else {
-        return res.status(403).json({ error: 'No token provided, must be set on Authorization header'})
+        return res.status(403).json({ error: 'No token provided, must be set on Authorization header'});
+    }
+}
+
+const isAdmin = (req, res, next) => {
+    if (req.decoded._doc.admin == true) {
+        next();
+    } else {
+        //return an error if the user is not an admin
+        res.status(403).json({ error: 'You are not authorized to perform this operation'});
     }
 }
 
