@@ -12,7 +12,6 @@ const createSchedule = (req, res) => {
             }
             res.json(schedule);
         });
-    ;
 }
 
 const getSchedule = (req, res) => {
@@ -36,7 +35,7 @@ const getSchedule = (req, res) => {
 }
 
 const getEmpsSched = (req, res) => {
-    if(req.params.id || _id) {
+    if (req.params.id || _id) {
         const id = req.params.id || _id;
         // Employer
         //     .findById(id)
@@ -46,14 +45,14 @@ const getEmpsSched = (req, res) => {
         //     })
         // let emps = Employer.employees.find().toArray();
         Employee
-            .find({"employer":req.params.id})
-            .sort({_id:-1})
+            .find({ "employer": req.params.id })
+            .sort({ _id: -1 })
             .populate('schedules')
             .then((employees) => {
                 res.status(200).json(employees)
             })
             .catch((error) => {
-                res.status(500).json({Error: error});
+                res.status(500).json({ Error: error });
             });
     }
 }
