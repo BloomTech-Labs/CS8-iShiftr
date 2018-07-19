@@ -1,34 +1,44 @@
 import React from 'react';
 import Menu from '../Components/Menu';
-// import Calendar from './Calendar';
+//import Calendar from './Calendar';
 import '../css/ShiftSchedule.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { Breadcrumb, BreadcrumbItem, Container } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Col } from 'reactstrap';
 import SignOut from './Signout';
 import DragDropContext from './TestCal';
+
 
 class ShiftSchedule extends React.Component {
     render() {
         return (
-            <Container className="topContainer">
-                <div className="rowHeader">
-                    <Breadcrumb>
-                        <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                        <BreadcrumbItem active>Schedule</BreadcrumbItem>                    
-                    </Breadcrumb>
+            <div className = 'container'>
+
+                <div className = 'row-header'>
+                    <div>
+                        <Breadcrumb>
+                            <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+                            <BreadcrumbItem active>Schedule</BreadcrumbItem>
+                        </Breadcrumb>
+                    </div>
                     <div className="row-signout">
                         <SignOut />
-                        <a href="/Edit">Edit Shifts</a>                    
                     </div>
-                </div>                
-                <div className="calendar">
+                </div>
+
+                <div className = 'editShift'>
+                    <button>
+                        <span>Edit Shift</span>
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+
+                <div className = 'mcContainer'>
                     <Menu />               
-                    <div className="cal">
-                        {/* <Calendar /> */}
+                    <Col className = 'calendar'>
                         <DragDropContext />
-                    </div>
+                    </Col>
                 </div>                                
-            </Container>
+            </div>
         );
     }
 }

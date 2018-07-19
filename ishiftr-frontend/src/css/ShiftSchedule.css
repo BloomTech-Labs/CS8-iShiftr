@@ -1,34 +1,37 @@
+.row-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 .row-signout {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin: 20px 20px 20px;
 }
 
-.row-signout a {
-    margin-top: 20px;
-}
-
-.rowHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.editShift{
     width: 100%;
-    align-items: center;
-    margin-bottom: 20px;
-    
-}
-
-.topContainer {
-    padding: 0px !important;
-}
-
-.calendar {
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: end;
+    margin-bottom: 10px;
+    align-content: space-between;
 }
 
-.cal {
-    width: 75%;
+.editShift button{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: none;
+    background-color: white;
+    width: 120px;
+}
+
+.mcContainer{
+    display: flex;
+    justify-content: stretch;
+
+}
+
+.calendar{
+    height: 700px;
 }

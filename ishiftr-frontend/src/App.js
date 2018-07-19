@@ -5,8 +5,9 @@ import { Route } from 'react-router-dom';
 import SignUp from './Components/Signup';
 import Signin from './Components/SignIn';
 import ShiftSchedule from './Components/ShiftSchedule';
+import EmployeesList from './Components/EmployeesList';
 //import SignIn from './Components/SignIn';
-import Employees from './Components/Employees';
+// import Employees from './Components/Employees';
 
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
         <Route path="/SignUp" component={ SignUp } />
         <Route path="/Signin" component={ Signin } />
         <Route path="/ShiftSchedule" component={ ShiftSchedule } />
-        <Route path="/Employees" component={ Employees } />
+        <Route path="/Employees" component={ EmployeesList } />
         </p>
       </div>
     );
