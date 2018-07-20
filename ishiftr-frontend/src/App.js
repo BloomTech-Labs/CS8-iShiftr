@@ -8,6 +8,7 @@ import ShiftSchedule from './Components/ShiftSchedule';
 import EmployeesList from './Components/EmployeesList';
 //import SignIn from './Components/SignIn';
 // import Employees from './Components/Employees';
+import CreateSchedule from './Components/CreateSchedule';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
         <Route path="/Signin" component={ Signin } />
         <Route path="/ShiftSchedule" component={ ShiftSchedule } />
         <Route path="/Employees" component={ EmployeesList } />
+        <Route path="/Create" component={ CreateSchedule } />
         </p>
       </div>
     );

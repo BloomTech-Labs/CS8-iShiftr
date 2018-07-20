@@ -9,20 +9,29 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            email: '',            
             username: '',
             password: '',
+            firstName: '',
+            lastName: '',
+            phoneNumber: ''
 
         }
         this.signUpHandler = this.signUpHandler.bind(this);
     }
     // TODO: create Admin Sign up --first-- BackLog Employee SignUp
 
+    // config: { headers: {'Content-Type': 'multipart/form-data' }}
 
     signUpHandler(e) {
-        e.preventDefault();
-        axios.post('https://ishiftr-db.herokuapp.com/api/employers', {
+        e.preventDefault();        
+        axios.post('https://ishiftr-db.herokuapp.com/', {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            email: this.state.email,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phoneNumber: this.state.phoneNumber
         })
         .then(function (res) {
             console.log(res);
@@ -37,31 +46,43 @@ class SignUp extends Component {
         return (
             <div className="row form-container">
                 <div>
-                    <h3>Please register for an account with your email</h3>
+                    <h3>Please Register Your Account Below</h3>
                 </div>
                 <Form className = "form" onSubmit={this.signUpHandler}>
                     <FormGroup row>
-                        <Label sm ={4} for="company">Company:</Label>
+                        <Label sm ={4} for="username">Username:</Label>
                         <Col sm ={8}>
-                            <Input type="text" name="company" id="#company" placeholder="enter the name of your company" />
+                            <Input type="text" name="username" id="#username" placeholder="Choose a username" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label sm ={4} for="firstname">First Name:</Label>
+                        <Col sm ={8}>
+                            <Input type="text" name="firstName" id="#firstname" placeholder="First Name" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label sm ={4} for="lastname">Last Name:</Label>
+                        <Col sm ={8}>
+                            <Input type="text" name="lastName" id="#lastname" placeholder="Last Name" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label sm ={4} for="email">Email:</Label>
                         <Col sm ={8}>
-                            <Input type="email" name="email" id="#email" placeholder="enter your email" />
+                            <Input type="email" name="email" id="#email" placeholder="Enter Your Email" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label sm = {4}for="password">Password:</Label>
                         <Col sm ={8}>
-                            <Input type="password" name="password" id="#password" placeholder="enter your password" />
+                            <Input type="password" name="password" id="#password" placeholder="Enter a password" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label sm = {4}for="re-password">Confirm Password:</Label>
+                        <Label sm = {4}for="re-password">Phone Number:</Label>
                         <Col sm ={8}>
-                            <Input type="password" name="re-password" id="#re-password" placeholder="Retype your password" />
+                            <Input type="tel" data-country="US" name="phoneNumber" id="#phonenumber" placeholder="Area Code First" />
                         </Col>
                     </FormGroup>
                     <Button color = "primary" type="submit">Register</Button> <br />

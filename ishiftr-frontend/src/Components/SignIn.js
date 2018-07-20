@@ -28,7 +28,7 @@ class Signin extends Component {
             username: this.state.username,
             password: this.state.password
         })
-        axios.post('https://ishiftr-db.herokuapp.com/api-token-auth/', this.state)
+        axios.post('https://ishiftr-db.herokuapp.com/employerLogin', this.state)
         .then(response => {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
