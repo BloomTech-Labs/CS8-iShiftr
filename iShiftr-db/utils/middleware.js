@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const Employer = require('../models/EmployerModel');
 const Employee = require('../models/EmployeeModel');
-const { mysecret } = require('../config');
+const { MY_SECRET } = require('../config');
 
 const authenticate = (req, res, next) => {
     const token = req.get('Authorization');
     if(token) {
-        jwt.verify(token, process.env.mysecret, (error, decoded) => {
+        jwt.verify(token, process.env.MY_SECRET, (error, decoded) => {
             if (err) {
                 return res.status(422).json(error);
             }
