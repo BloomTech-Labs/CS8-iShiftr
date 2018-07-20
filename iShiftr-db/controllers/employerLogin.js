@@ -21,7 +21,7 @@ const login = (req, res) => {
                     const payload = {
                         username: employer.username
                     };
-                    const token = jwt.sign(payload, process.env.mysecret);
+                    const token = jwt.sign(payload, "process.env.mysecret");
                     let id = employer.id;
                     console.log(id);
                     res.status(200).json( {token, id})
