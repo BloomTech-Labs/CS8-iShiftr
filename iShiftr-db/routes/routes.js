@@ -1,6 +1,6 @@
 const { authenticate, isAdmin } = require("../utils/middleware");
-const { employeeLogin }                 = require("../controllers/employeeLogin");
-const { login }                 = require("../controllers/employerLogin");
+const { employeeLogin } = require("../controllers/employeeLogin");
+const { login } = require("../controllers/employerLogin");
 
 const {
   createEmployer,
@@ -22,14 +22,21 @@ const {
 } = require("../controllers/schedule");
 
 module.exports = server => {
-  server.route("/").post(createEmployer);
-  server.route("/employeeLogin").post(employeeLogin);
-  server.route("/employerLogin").post(login);
-  server
-    .route("/:id/createEmployee", authenticate, isAdmin)
-    .post(createEmployee);
+  //create and login employer
+  server.route("/api/register").post(createEmployer);
+  server.route("/api/employerLogin").post(login);
+
+  // server.route("/api/:id/schedule").get(authenticate, isAdmin, getEmpsSched);
+  // server.route("/api/:id/employees").get(authenticate, isAdmin, getEmployees);
+
+  //creating/editing/deleting an employee and employee login
+  server.route("/:id/createEmployee", authenticate, isAdmin).post(createEmployee);
+  server.route("/api/employeeLogin").post(employeeLogin);
+  // server.route("/api/:id/editEmployee").get(authenticate, isAdmin, editEmployee);
+  // server.route("/api/:id/deleteEmployee").delete(authenticate, isAdmin, deleteEmployee);
+
   // server.route("/editEmployee/:id", authenticate).put(editEmployee);
-//   server
-//     .route("deleteEmployeePassword/:id", authenticate)
-//     .delete(deleteEmployeePassword);
+  //   server
+  //     .route("deleteEmployeePassword/:id", authenticate)
+  //     .delete(deleteEmployeePassword);
 };
