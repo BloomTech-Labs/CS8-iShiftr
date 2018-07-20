@@ -18,12 +18,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "reactstrap": "^6.3.0"
-  },
-  "proxy": {
-    "/": {
-      "target": "https://ishiftr-db.herokuapp.com"
-    }
+    "reactstrap": "^6.3.0"  
   },
   "scripts": {
     "start": "react-scripts start",
