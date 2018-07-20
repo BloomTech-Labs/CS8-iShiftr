@@ -67,7 +67,7 @@ const editEmployeePassword = (req, res) => {
     const options = {
         expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
     };
-    const token = jwt.sign(payload, process.env.mysecret, options);
+    const token = jwt.sign(payload, process.env.MY_SECRET, options);
     // let opts = {
     //     new: true
     // }

@@ -28,7 +28,7 @@ const editEmployerPassword = (req, res) => {
         expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
     };
 
-    const token = jwt.sign(payload, process.env.mysecret, options);
+    const token = jwt.sign(payload, process.env.MY_SECRET, options);
 
     Employer
         .findById(_id)
