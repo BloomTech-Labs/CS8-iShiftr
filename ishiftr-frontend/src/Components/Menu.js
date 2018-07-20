@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import '../Menu.css';
+import '../css/Menu.css';
 
 class Menu extends Component {
     render() {
         return (
             <div className="menu">
                 <ul>
-                    <li>Calendar</li>
-                    <li>Employees</li>
-                    <li>Create Schedule</li>
-                    <li>Billing</li>
-                    <li>Settings</li>
+                    <li><a href="/ShiftSchedule">Calendar</a></li>
+                    <li><a href="/Employees">Employees</a></li>
+                    <li><a href="/Create">Create Schedule</a></li>
+                    <li><a href="/Billing">Billing</a></li>
+                    <li><a href="/Settings">Settings</a></li>
                 </ul>
             </div>
         );
