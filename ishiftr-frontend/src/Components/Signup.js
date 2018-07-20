@@ -4,6 +4,7 @@ import '../css/signup.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+axios.defaults.withCredentials = true;
 
 class SignUp extends Component {
     constructor(props) {

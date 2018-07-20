@@ -3,10 +3,26 @@ import { Breadcrumb, BreadcrumbItem, Container, Col} from 'reactstrap';
 import SignOut from './Signout';
 import Menu from '../Components/Menu';
 import '../css/ShiftSchedule.css';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import '../css/CreateSchedule.css';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 class CreateSchedule extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+          startDate: moment()
+        };
+        this.handleChange = this.handleChange.bind(this);
+      }
+    
+    handleChange(date) {
+        this.setState({
+          startDate: date
+        });
+      }
+
     render() {
         return (
             <Container className="topContainer">
@@ -23,13 +39,12 @@ class CreateSchedule extends Component {
                     <Menu />               
                     <Col>
                         <div>
-                        <SingleDatePicker
-                            // date={this.state.date} // momentPropTypes.momentObj or null
-                            // onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
-                            // focused={this.state.focused} // PropTypes.bool
-                            // onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-                            // id="your_unique_id" // PropTypes.string.isRequired,
-                            />
+                        <DatePicker
+                            className="calendarPicker"
+                            inline
+                            selected={this.state.startDate}
+                            onChange={this.handleChange}
+                        />
                         </div>
                     </Col>
                 </div>                                
