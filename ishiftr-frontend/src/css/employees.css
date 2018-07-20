@@ -1,0 +1,69 @@
+.employeesList{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    justify-content: start;
+}
+
+.card{
+    max-width: 280px;
+    margin: 5px 0 5px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.legend{
+    margin: 20px;
+    width: 150px;
+    font-size: 16px;
+  }
+
+  .legend-1{
+    width: 100px;
+  }
+  
+  .fieldset{
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 100%;
+  }
+
+  .icons{
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      cursor: pointer;
+  }
+
+  .icons i{
+    margin-left: 10px;
+}
+
+.addBtn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    padding: 50px 50px;
+    width: 250px;
+    height: 30px;
+    font-size: 16px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 5px;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.center{
+    display: flex;
+    align-content: center;
+}
+
+.center i {
+    margin-right: 5px;
+}

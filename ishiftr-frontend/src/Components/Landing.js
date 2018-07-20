@@ -1,39 +1,57 @@
 import React from 'react';
 import '../css/Landing.css';
-import {Redirect} from 'react-router'
+// import {Redirect} from 'react-router'
 import { Link } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import CoverFlow from 'coverflow-react';
 
 class Landing extends React.Component {
 // TODO: Create img carousel and more styling
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        modal: false
-        };
+    // constructor(props) {
+    //     super(props);
+    //     // this.state = {
+    //     // modal: false
+    //     // };
 
         
-    }
+    // }
 
-    toggle = () => {
-        console.log('toggled');
-        this.setState({
-        modal: !this.state.modal
-        });
-        console.log('toggled again', this.state.modal);
-    }
+    // toggle = () => {
+    //     console.log('toggled');
+    //     this.setState({
+    //     modal: !this.state.modal
+    //     });
+    //     console.log('toggled again', this.state.modal);
+    // }
 
     
-    signIn = () => {
-        this.toggle();
-        // eslint-disable-next-line
-        <Redirect to="/ShiftSchedule"/>
+    // signIn = () => {
+    //     this.toggle();
+    //     // eslint-disable-next-line
+    //     <Redirect to="/ShiftSchedule"/>
         
-    }
+    // }
 
     render() {
+
+        const imagesArr = [
+            require('../assets/team.jpg'),
+            require('../assets/request.jpg'),
+            require('../assets/calendar.jpg'),            
+            require('../assets/powerup.jpg'),
+            require('../assets/pic.jpg')
+        ];
+
+        const labelsArr = [
+            'Simplify Your Employee Schedules',
+            'Advanced Scheduling Optimization',
+            'Up-to-date Schedule Viewings',
+            'Accessible From Anywhere',
+            'Value Employees Productivity',
+        ];
+
         return (
             <React.Fragment>
             <div className="container">
@@ -41,12 +59,12 @@ class Landing extends React.Component {
                     <ul className="buttons-header">
                         <Link to="/SignUp"><Button className="button-registration" color="primary">Sign Up</Button></Link>
                         {/* <Link to="/SignIn"><Button onClick={this.toggle} className="button-registration" color="primary">Sign in</Button></Link> */}
-                        <Button className="button-registration" onClick={this.toggle}>Sign In</Button>
+                        {/* <Button className="button-registration" onClick={this.toggle}>Sign In</Button> */}
+                        <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>
                     </ul>                  
-                </div>
-
-                <div className="landing-img">
-                    <img src = {require('../assets/imgLanding.jpg')}  alt="placeholder" />
+                </div>                
+                <div className="landing-img">                  
+                    <CoverFlow  labelsArr={labelsArr} width={1366} height={350} itemRatio="6:5" background='white' imagesArr={imagesArr} />
                 </div>
                 <div className="landing-text">
                     <p>
@@ -60,8 +78,10 @@ class Landing extends React.Component {
                 </div>
             </div>
             <div>
-                <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                <ModalHeader toggle={this.toggle}>Please sign in</ModalHeader>
+                {/* <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                <ModalHeader toggle={this.toggle}>Please sign in</ModalHeader> */}
+                <Modal>
+                <ModalHeader >Please sign in</ModalHeader>
                 <ModalBody>
                     <Form className = "form-signin">
                         <FormGroup row>
