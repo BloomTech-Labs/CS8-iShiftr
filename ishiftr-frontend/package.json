@@ -20,6 +20,11 @@
     "react-scripts": "1.1.4",
     "reactstrap": "^6.3.0"
   },
+  "proxy": {
+    "/": {
+      "target": "https://ishiftr-db.herokuapp.com"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && cp build/index.html build/404.html",
