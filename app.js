@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const server   = require('./server');
+const server   = require('./iShiftr-db/server');
 const port     = process.env.PORT || 5000;
 
 // .connect('mongodb://localhost/iShiftr')
