@@ -16,7 +16,7 @@ const corsOptions = {
     origin: ('http://localhost:3000', 'https://ishiftr.netlify.com'),
       credentials: true,
       methods: ['GET', 'PUT', 'POST'],
-      allowedHeaders: ['Content-Type', 'Authorization']
+      allowedHeaders: ['Content-Type', 'Authorization', 'Origin']
   }
   
 
