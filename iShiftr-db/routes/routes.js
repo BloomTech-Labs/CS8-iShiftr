@@ -12,7 +12,8 @@ const {
   getEmployees,
   getOneEmployee,
   deleteEmployee,
-  editEmployeePassword
+  editEmployeePassword,
+  editEmployee
 } = require("../controllers/Employee");
 
 const {

@@ -100,10 +100,58 @@ const editEmployeePassword = (req, res) => {
         });
 };
 
+const editEmployee = (req, res) => {
+    const { username, password } = req.body;
+  
+    if (username !== undefined) {
+      return res
+        .status(400)
+        .json({ errorMessage: "Username can not be changed!" });
+    }
+  
+    if (password !== undefined) {
+      return res
+        .status(400)
+        .json({ errorMessage: "Password can not be changed here!" });
+    }
+  
+    Employee.findByIdAndUpdate(req.params.id, req.body)
+      .then(employeeUpdated => {
+        if (employeeUpdated === null) {
+          res.status(404).json({ error: "Employee could not be updated!" });
+        } else {
+          User.findById(employeeUpdated.id)
+  
+            .then(updatedEmployee => {
+              res.status(200).json(updatedEmployee);
+            })
+            .catch(err => {
+              if (config.env === "development") {
+                return res.status(500).json(err);
+              } else {
+                return res.status(500).json({
+                  errorMessage: "Encountered an update error problem!"
+                });
+              }
+            });
+        }
+      })
+      .catch(err => {
+        if (config.env === "development") {
+          return res.status(500).json(err);
+        } else {
+          return res.status(500).json({
+            errorMessage: "Encountered an update error problem!"
+          });
+        }
+      });
+  };
+
 module.exports = {
     createEmployee,
     getEmployees,
     getOneEmployee,
     deleteEmployee,
     editEmployeePassword,
+    editEmployee 
 };
