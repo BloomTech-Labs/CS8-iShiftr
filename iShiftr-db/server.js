@@ -6,8 +6,8 @@ const routes      = require('./routes/routes');
 const server      = express();
 
 const corsOptions = {
-    origin: ('https://ishiftr.netlify.com', 'http://localhost:3000'),
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: 'https://ishiftr.netlify.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders:['Origin','Content-Type', 'Authorization'],
     credentials: true
 }
