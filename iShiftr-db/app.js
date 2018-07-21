@@ -5,7 +5,7 @@ require("dotenv").config();
 
 // .connect('mongodb://localhost/iShiftr')
 mongoose
-    .connect(process.env.MONGO_URI)
+    .connect(process.env.MONGODB_URI)
     .then(()=> {
         console.log('\n\n--Connected to the Database Successfully--\n\n');
     })
