@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const server   = require('./iShiftr-db/server');
 const port     = process.env.PORT || 5000;
+require("dotenv").config();
 
 // .connect('mongodb://localhost/iShiftr')
 mongoose
@@ -9,7 +10,7 @@ mongoose
         console.log('\n\n--Connected to the Database Successfully--\n\n');
     })
     .catch((error) => {
-        console.log('\n\n--There was an error connecting to the database--\n\n');
+        console.log('\n\n--There was an error connecting to the database--\n\n', error);
     })
 
 

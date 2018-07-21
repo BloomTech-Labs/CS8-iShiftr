@@ -8,7 +8,7 @@ const server      = express();
 const corsOptions = {
     origin: 'https://ishiftr.netlify.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders:['Origin','Content-Type', 'Authorization'],
+    allowedHeaders:['Content-Type', 'Authorization'],
     credentials: true
 }
 
