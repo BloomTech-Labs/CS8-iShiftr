@@ -6,7 +6,7 @@ const routes      = require('./routes/routes');
 const server      = express();
 
 const corsOptions = {
-    origin: 'https://ishiftr-db.herokuapp.com/',
+    origin: 'https://ishiftr.netlify.com/',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders:['Content-Type', 'Authorization'],
     credentials: true
