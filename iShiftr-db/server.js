@@ -6,14 +6,14 @@ const routes      = require('./routes/routes');
 const server      = express();
 
 const corsOptions = {
-    origin: "*",
+    origin: 'https://ishiftr-db.herokuapp.com/',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders:['Content-Type', 'Authorization'],
     credentials: true
 }
 
-server.use(cors(corsOptions));
 server.use(helmet());
+server.use(cors(corsOptions));
 server.use(express.json());
 server.use(morgan('dev'));
 routes(server);
