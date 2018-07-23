@@ -30,7 +30,7 @@ module.exports = server => {
   // server.route("/api/:id/employees").get(authenticate, isAdmin, getEmployees);
 
   //creating/editing/deleting an employee and employee login
-  server.route("/:id/createEmployee", authenticate, isAdmin).post(createEmployee);
+  server.route("/:id/createEmployee").post(authenticate, isAdmin, createEmployee);
   server.route("/api/employeeLogin").post(employeeLogin);
   // server.route("/api/:id/editEmployee").get(authenticate, isAdmin, editEmployee);
   // server.route("/api/:id/deleteEmployee").delete(authenticate, isAdmin, deleteEmployee);

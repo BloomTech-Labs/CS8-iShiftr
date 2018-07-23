@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const { MY_SECRET } = require('../config');
 const Employer = require('../models/EmployerModel');
 
+mysecret = 'authentication isnt working';
+
 const login = (req, res) => {
     const { username, password } = req.body;
 
@@ -21,9 +23,9 @@ const login = (req, res) => {
                     const payload = {
                         username: employer.username
                     };
-                    const token = jwt.sign(payload, process.env.MY_SECRET);
+                    const token = jwt.sign(payload, mysecret);
                     let id = employer.id;
-                    console.log(id);
+                    console.log("login: ",id, token);
                     res.status(200).json( {token, id})
                 }
             });
