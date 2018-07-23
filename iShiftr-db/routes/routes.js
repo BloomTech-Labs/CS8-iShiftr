@@ -38,10 +38,17 @@ module.exports = server => {
   // deleting an employee
   server.route("/api/deleteEmployee/:id").delete(authenticate, isAdmin, deleteEmployee);
   
+  // editing the employer's password
+  server.route("/api/:id/editPassword").put(authenticate, isAdmin, editEmployerPassword);
+  
   // server.route("/api/:id/schedule").get(authenticate, isAdmin, getEmpsSched);
   // server.route("/api/:id/employees").get(authenticate, isAdmin, getEmployees);
   
   //--------------------------Employee Routes--------------------------//
+  // Employee login
   server.route("/api/employeeLogin").post(employeeLogin);
+
+  //editing the employee's password
+  server.route("/api/employee/:id/editPassword").put(authenticate, editEmployeePassword);
 
 };

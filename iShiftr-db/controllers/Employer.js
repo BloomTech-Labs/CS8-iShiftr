@@ -1,4 +1,5 @@
 const Employer = require('../models/EmployerModel');
+mysecret = 'authentication isnt working';
 
 const createEmployer = (req, res) => {
     const { username, password, email, firstName, lastName, phoneNumber } = req.body;
@@ -13,25 +14,29 @@ const createEmployer = (req, res) => {
 }
 
 const editEmployerPassword = (req, res) => {
-    const { _id, username } = req.employer;
+    console.log("finding the employer: ",req);
+    // const { _id, username } = req.employer;
     const { currentPassword, newPassword } = req.body;
 
     if (!currentPassword || !newPassword) {
         re.status(422).json({ Message: 'Please enter both current and new passwords' })
     }
 
-    const payload = {
-        username: employer.username
-    };
+    // const payload = {
+    //     username: employer.username,
+    //     admin: employer.admin
+    // };
 
-    const options = {
-        expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
-    };
+    // const options = {
+    //     expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
+    // };
 
-    const token = jwt.sign(payload, process.env.MY_SECRET, options);
+    // const token = jwt.sign(payload, mysecret);
+    console.log(req.body._id)
+    const id = req.body._id || req.params.id
 
     Employer
-        .findById(_id)
+        .findById(id)
         .then((employer) => {
             employer.checkPassword(currentPassword, (error, isValid) => {
                 if (error) {
@@ -39,12 +44,12 @@ const editEmployerPassword = (req, res) => {
                 }
                 if (isValid) {
                     employer.password = newPassword;
-                    Employer
+                    employer
                         .save()
                         .then((response) => {
                             const temp = { ...response._doc }
                             delete temp.password;
-                            res.json({ token, employer: temp });
+                            res.json({ employer: temp });
                         })
                         .catch((error) => {
                             res.status(501).json(error);

@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const { MY_SECRET } = require("../config");
 const Employee = require("../models/EmployeeModel");
 
 mysecret = 'authentication isnt working';
@@ -26,7 +25,7 @@ const employeeLogin = (req, res) => {
         if (hashMatch) {
           const payload = {
             username: employee.username,
-            admin: employee.adming
+            admin: employee.admin
           };
           const token = jwt.sign(payload, mysecret);
           let id = employee.id;

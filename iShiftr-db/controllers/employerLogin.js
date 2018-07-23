@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { MY_SECRET } = require('../config');
 const Employer = require('../models/EmployerModel');
 
 mysecret = 'authentication isnt working';

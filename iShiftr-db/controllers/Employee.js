@@ -74,23 +74,26 @@ const deleteEmployee = (req, res) => {
 };
 
 const editEmployeePassword = (req, res) => {
-    const { _id, username } = req.employee;
+    // const { _id, username } = req.employee;
     const { currentPassword, newPassword } = req.body;
     if (!currentPassword || !newPassword) {
         re.status(422).json({ Message: 'Please enter both current and new passwords' })
     }
-    const payload = {
-        username: employee.username
-    };
-    const options = {
-        expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
-    };
-    const token = jwt.sign(payload, process.env.MY_SECRET, options);
+    // const payload = {
+    //     username: employee.username
+    // };
+    // const options = {
+    //     expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
+    // };
+    // const token = jwt.sign(payload, process.env.MY_SECRET, options);
     // let opts = {
     //     new: true
     // }
+
+    const id = req.body._id || req.params.id;
+
     Employee
-        .findById(_id)
+        .findById(id)
         .then((employee) => {
             employee.checkPassword(currentPassword, (error, isValid) => {
                 if (error) {
@@ -98,12 +101,12 @@ const editEmployeePassword = (req, res) => {
                 }
                 if (isValid) {
                     employee.password = newPassword;
-                    Employee
+                    employee
                         .save()
                         .then((response) => {
                             const temp = { ...response._doc }
                             delete temp.password;
-                            res.json({ token, employee: temp });
+                            res.json({ employee: temp });
                         })
                         .catch((error) => {
                             res.status(501).json(error);
