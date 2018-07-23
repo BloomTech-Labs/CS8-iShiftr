@@ -41,13 +41,17 @@ class Landing extends React.Component {
             require('../assets/request.jpg'),
             require('../assets/calendar.jpg'),            
             require('../assets/powerup.jpg'),
-            require('../assets/pic.jpg')
+            require('../assets/pic.jpg'),
+            require('../assets/powerup.jpg'),
+            require('../assets/pic.jpg'),
         ];
 
         const labelsArr = [
             'Simplify Your Employee Schedules',
             'Advanced Scheduling Optimization',
             'Up-to-date Schedule Viewings',
+            'Accessible From Anywhere',
+            'Value Employees Productivity',
             'Accessible From Anywhere',
             'Value Employees Productivity',
         ];
@@ -64,7 +68,12 @@ class Landing extends React.Component {
                     </ul>                  
                 </div>                
                 <div className="landing-img">                  
-                    <CoverFlow  labelsArr={labelsArr} width={1366} height={350} itemRatio="6:5" background='white' imagesArr={imagesArr} />
+                    <CoverFlow
+                        labelsArr={labelsArr}
+                        width={1366} height={380} 
+                        itemRatio="6:5" background='white' 
+                        imagesArr={imagesArr}
+                        />
                 </div>
                 <div className="landing-text">
                     <p>
