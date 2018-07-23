@@ -119,49 +119,21 @@ const editEmployeePassword = (req, res) => {
 };
 
 const editEmployee = (req, res) => {
-    const { username, password } = req.body;
-
-    if (username !== undefined) {
+    const { username } = req.body;
+    console.log(username);
+    if (username == null) {
         return res
-            .status(400)
-            .json({ errorMessage: "Username can not be changed!" });
+            .status(404)
+            .json({ error: "User not found." });
     }
 
-    if (password !== undefined) {
-        return res
-            .status(400)
-            .json({ errorMessage: "Password can not be changed here!" });
-    }
-
-    Employee.findByIdAndUpdate(req.params.id, req.body)
-        .then(employeeUpdated => {
-            if (employeeUpdated === null) {
-                res.status(404).json({ error: "Employee could not be updated!" });
-            } else {
-                User.findById(employeeUpdated.id)
-
-                    .then(updatedEmployee => {
-                        res.status(200).json(updatedEmployee);
-                    })
-                    .catch(err => {
-                        if (config.env === "development") {
-                            return res.status(500).json(err);
-                        } else {
-                            return res.status(500).json({
-                                errorMessage: "Encountered an update error problem!"
-                            });
-                        }
-                    });
-            }
+    Employee
+        .findByIdAndUpdate(req.params.id, req.body, {new :true})
+        .then(updatedEmployee => {
+            res.status(200).json({Message: "Employee updated"});
         })
-        .catch(err => {
-            if (config.env === "development") {
-                return res.status(500).json(err);
-            } else {
-                return res.status(500).json({
-                    errorMessage: "Encountered an update error problem!"
-                });
-            }
+        .catch(error => {
+            res.status(500).json({Error: "There was an error updating the employee"});
         });
 };
 
