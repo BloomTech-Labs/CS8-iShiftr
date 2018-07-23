@@ -42,19 +42,19 @@ const EmployeeSchema = new Schema({
     },
     workHours: {
         type: String,
-        required: true,
+        required: false,
     },
     timeOffDate:{
         type: Date,
-        required:true,
+        required:false,
     },
     timeOffReason:{
         type: String,
-        required: true,
+        required: false,
     },
     timeOffApproved: {
         type: Boolean,
-        required: true,
+        required: false,
     },
     admin:{
         type:Boolean,

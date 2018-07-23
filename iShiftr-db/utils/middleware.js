@@ -7,10 +7,16 @@ mysecret = 'authentication isnt working';
 
 const authenticate = (req, res, next) => {
     const token = req.get('Authorization');
+    const newToken = token.split(" ");
     console.log(token);
-    if (token) {
-      jwt.verify(token, mysecret, (err, decoded) => {
+    if (newToken[1]) {
+      jwt.verify(newToken[1], mysecret, (err, decoded) => {
+        // console.log('decoded: ', decoded.username, decoded.admin);
         if (err) return res.status(422).json(err);
+        console.log(decoded.admin);
+        if(decoded.admin) {
+          req.admin = true;
+        }
         req.decoded = decoded;
         next();
       });
@@ -22,7 +28,9 @@ const authenticate = (req, res, next) => {
   };
 
 const isAdmin = (req, res, next) => {
-    if (req.decoded._doc.admin == true) {
+  console.log(req.decoded);
+    if (req.decoded.admin == true) {
+        console.log('admin verified');
         next();
     } else {
         //return an error if the user is not an admin

@@ -21,7 +21,8 @@ const login = (req, res) => {
                 }
                 if (hashMatch) {
                     const payload = {
-                        username: employer.username
+                        username: employer.username,
+                        admin: employer.admin
                     };
                     const token = jwt.sign(payload, mysecret);
                     let id = employer.id;

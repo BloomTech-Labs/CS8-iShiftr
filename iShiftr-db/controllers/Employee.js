@@ -2,15 +2,32 @@ const Employee = require('../models/EmployeeModel');
 const Employer = require('../models/EmployerModel');
 
 const createEmployee = (req, res) => {
-    console.log(req.body,req.params);
-    const { username, password, email, firstName, lastName, phoneNumber, availability, workHours} = req.body;
-    const employee = new Employee({username, password, email, firstName, lastName, phoneNumber, availability, workHours});
+    console.log("body and params:", req.body, req.params);
+    const { username, password, email, firstName, lastName, phoneNumber, availability, availableHours } = req.body;
+    const employee = new Employee({ username, password, email, firstName, lastName, phoneNumber, availability, availableHours });
     employee
         .save((error, employee) => {
+            console.log("employee:", employee);
+            // employeeId = employee._id;
             if (error) {
-                console.log("There was an error creating the user. Please try again");
+                console.log("There was an error creating the user. Please try again:", error);
             }
-            res.json(employee);
+            // console.log("emplid",employee._id);
+            Employer.findByIdAndUpdate(req.params.id, {
+                $push: { employees: employee._id }
+            })
+                .then(employer => {
+                    // employerId = employer._id;s
+                    console.log("response: ", employer);
+                    res.status(200).json({ Message: "Employee saved in the Employers collection" });
+                })
+                .catch(error => {
+                    res.status(500).json({ error: "There was an error saving the employee" });
+                });
+            // employee.employer.push(employer);
+            // employee.save();
+            // res.json(employee);
+            console.log("Employee saved");
         });
 }
 
@@ -26,7 +43,7 @@ const getEmployees = (req, res) => {
             })
             .catch((error) => {
                 res.status(500).json({ Error: 'There was an error', error })
-            })
+            });
     }
 }
 
@@ -103,50 +120,50 @@ const editEmployeePassword = (req, res) => {
 
 const editEmployee = (req, res) => {
     const { username, password } = req.body;
-  
+
     if (username !== undefined) {
-      return res
-        .status(400)
-        .json({ errorMessage: "Username can not be changed!" });
+        return res
+            .status(400)
+            .json({ errorMessage: "Username can not be changed!" });
     }
-  
+
     if (password !== undefined) {
-      return res
-        .status(400)
-        .json({ errorMessage: "Password can not be changed here!" });
+        return res
+            .status(400)
+            .json({ errorMessage: "Password can not be changed here!" });
     }
-  
+
     Employee.findByIdAndUpdate(req.params.id, req.body)
-      .then(employeeUpdated => {
-        if (employeeUpdated === null) {
-          res.status(404).json({ error: "Employee could not be updated!" });
-        } else {
-          User.findById(employeeUpdated.id)
-  
-            .then(updatedEmployee => {
-              res.status(200).json(updatedEmployee);
-            })
-            .catch(err => {
-              if (config.env === "development") {
+        .then(employeeUpdated => {
+            if (employeeUpdated === null) {
+                res.status(404).json({ error: "Employee could not be updated!" });
+            } else {
+                User.findById(employeeUpdated.id)
+
+                    .then(updatedEmployee => {
+                        res.status(200).json(updatedEmployee);
+                    })
+                    .catch(err => {
+                        if (config.env === "development") {
+                            return res.status(500).json(err);
+                        } else {
+                            return res.status(500).json({
+                                errorMessage: "Encountered an update error problem!"
+                            });
+                        }
+                    });
+            }
+        })
+        .catch(err => {
+            if (config.env === "development") {
                 return res.status(500).json(err);
-              } else {
+            } else {
                 return res.status(500).json({
-                  errorMessage: "Encountered an update error problem!"
+                    errorMessage: "Encountered an update error problem!"
                 });
-              }
-            });
-        }
-      })
-      .catch(err => {
-        if (config.env === "development") {
-          return res.status(500).json(err);
-        } else {
-          return res.status(500).json({
-            errorMessage: "Encountered an update error problem!"
-          });
-        }
-      });
-  };
+            }
+        });
+};
 
 module.exports = {
     createEmployee,
@@ -154,5 +171,5 @@ module.exports = {
     getOneEmployee,
     deleteEmployee,
     editEmployeePassword,
-    editEmployee 
+    editEmployee
 };
