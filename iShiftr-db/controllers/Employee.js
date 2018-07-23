@@ -36,7 +36,7 @@ const getEmployees = (req, res) => {
         const id = req.params.id || _id;
         Employer
             .findById(id)
-            .select(-password)
+            .select(-"password")
             .populate('employees')
             .then(employer => {
                 res.status(200).json({ Employees: employer.employees })

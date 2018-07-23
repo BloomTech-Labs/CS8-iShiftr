@@ -41,8 +41,9 @@ module.exports = server => {
   // editing the employer's password
   server.route("/api/:id/editPassword").put(authenticate, isAdmin, editEmployerPassword);
   
+  // get all the employees and their data
+  server.route("/api/:id/employees").get(authenticate, isAdmin, getEmployees);
   // server.route("/api/:id/schedule").get(authenticate, isAdmin, getEmpsSched);
-  // server.route("/api/:id/employees").get(authenticate, isAdmin, getEmployees);
   
   //--------------------------Employee Routes--------------------------//
   // Employee login
