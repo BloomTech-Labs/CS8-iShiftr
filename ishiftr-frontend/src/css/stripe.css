@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 10px;
+    margin: 10px;    
     padding: 50px;
 }
 
@@ -15,7 +15,8 @@
     border: 0;
     outline: 0;
     display: inline-block;
-    height: 40px;
+    width: 100%;
+    height: 80px;
     line-height: 40px;
     padding: 0 14px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
@@ -30,4 +31,10 @@
     -webkit-transition: all 150ms ease;
     transition: all 150ms ease;
     margin-top: 10px;  
+}
+
+.cardInput {
+    padding: 15px;
+    border: 1px solid black;
+    margin-bottom: 15px;
 }

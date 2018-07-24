@@ -33,7 +33,7 @@ class Billing extends Component {
 
                 <div className = 'mcContainer'>
                     <Menu />
-                        <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+                        <StripeProvider apiKey="pk_test_LoKgukSNVPqOsgjhnhEwT100">
                             <div className="billing">
                                 <h1>Billing</h1>
                                     <Elements>
