@@ -3,7 +3,6 @@ import { Breadcrumb, BreadcrumbItem, Container, Col} from 'reactstrap';
 import SignOut from './Signout';
 import Menu from '../Components/Menu';
 import '../css/ShiftSchedule.css';
-import '../css/CreateSchedule.css';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';

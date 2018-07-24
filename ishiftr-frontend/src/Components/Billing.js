@@ -1,31 +1,48 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Container, Col} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import SignOut from './Signout';
 import Menu from '../Components/Menu';
 import '../css/ShiftSchedule.css';
+import CheckoutForm from './Stripe';
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import '../css/stripe.css';
 
 class Billing extends Component {
     render() {
         return (
-            <Container className="topContainer">
-                <div className="rowHeader">
-                    <Breadcrumb>
-                        <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                        <BreadcrumbItem active>Billing</BreadcrumbItem>                    
-                    </Breadcrumb>
-                    <div className="row-signout">
-                        <SignOut />                    
+            <div className = 'container'>
+
+                <div className = 'row-header'>
+                    <div>
+                        <Breadcrumb>
+                            <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+                            <BreadcrumbItem active>Schedule</BreadcrumbItem>
+                        </Breadcrumb>
                     </div>
-                </div>                
-                <div>
-                    <Menu />               
-                    <Col>
-                        <div>
-                            
-                        </div>
-                    </Col>
+                    <div className="row-signout">
+                        <SignOut />
+                    </div>
+                </div>
+
+                <div className = 'editShift'>
+                    <button>
+                        <span>Edit Shift</span>
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+
+                <div className = 'mcContainer'>
+                    <Menu />
+                        <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+                            <div className="billing">
+                                <h1>Billing</h1>
+                                    <Elements>
+                                        <CheckoutForm {...this.props} />
+                                    </Elements>
+                            </div>
+                        </StripeProvider>              
                 </div>                                
-            </Container>
+            </div>
         );
     }
 }

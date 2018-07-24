@@ -16,7 +16,7 @@ class EmployeesList extends React.Component {
             <div className = 'container'>
                 <Breadcrumb>
                     <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                    <BreadcrumbItem active>Schedule</BreadcrumbItem>
+                    <BreadcrumbItem active>Employees</BreadcrumbItem>
                 </Breadcrumb>
                 <div className="row-signout">
                     <SignOut />
