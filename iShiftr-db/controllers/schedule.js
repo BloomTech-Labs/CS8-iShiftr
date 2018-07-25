@@ -12,10 +12,17 @@ const createSchedule = (req, res) => {
                 .findById(req.params._id, {
                     $push: { schedules: newSched._id }
                 })
-                .then()
-
-        }    
-        ;
+                .then(schedule => {
+                    console.log("response: ", schedule);
+                    res.status(200).json({ Message: "schedule saved in the schedule collection" });
+                })
+                .catch(error => {
+                    res.status(500).json({ error: "There was an error saving the schedule" });
+                });
+        })
+        .catch(error=> {
+            res.status(500).json({Error: "There was an error creating the schedule"})
+        });
 }
 
 const getSchedule = (req, res) => {
