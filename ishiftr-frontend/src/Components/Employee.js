@@ -6,17 +6,28 @@ import employees from '../testEmployees';
 import '../css/timeOff.css';
 
 export default class Employee extends Component {
+
+ onDelete = () => {
+   this.props.onDelete(this.props.employee._id)
+ }
+
+ onEdit = () => {
+   this.props.onEdit(this.props.employee._id)
+ }
+
   render() {
-    return (
+    return (    
       
-      employees.map((employee) => {
-          return  (
               <Card body outline color="primary" className ='card'>
               <div className = 'icons'>
-                <i class="fas fa-pencil-alt"></i>
-                <i class="far fa-trash-alt"></i>
+              <div >
+                <i className="fas fa-pencil-alt"></i>
               </div>
-                <CardText>{employee.firstName} {employee.lastName}</CardText>
+              <div onClick={this.onDelete}>
+                <i className="far fa-trash-alt"></i>
+              </div>                
+              </div>
+                <CardText>{this.props.employee.firstName} {this.props.employee.lastName}</CardText>
                 <form>
                     <fieldset className='fieldset'>
                         <legend className = 'legend legend-1'>Availability:</legend>
@@ -25,20 +36,18 @@ export default class Employee extends Component {
                     <fieldset className='fieldset'>
                         <legend className = 'legend'>Requested Time Off:</legend>
                         <div>
-                        <label for="scales">July 20th</label>
-                            <input type="checkbox" id="scales" name="feature"
+                        <label htmlFor="scales">July 20th</label>
+                            <input type="checkbox" name="feature"
                                   value="scales" />
-                            <label for="scales">Approved</label>
-                            <label for="scales">July 24th</label>
-                            <input type="checkbox" id="scales" name="feature"
+                            <label htmlFor="scales">Approved</label>
+                            <label htmlFor="scales">July 24th</label>
+                            <input type="checkbox" name="feature"
                                   value="scales" />
-                            <label for="scales">Approved</label>                            
+                            <label htmlFor="scales">Approved</label>                            
                         </div>                                               
                     </fieldset>
                 </form>
               </Card>
-        )
-      })
-    )
+        )    
   }
 }

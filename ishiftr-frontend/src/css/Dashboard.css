@@ -1,0 +1,56 @@
+.menu {    
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 250px;
+  height: auto;
+  margin-top: 35px;
+  padding: 0px 30px 30px 0;
+  font-size: 20px; 
+  box-sizing: border-box;       
+}
+
+.menu li {
+  list-style: none;
+  font-size: 1.3rem;
+  text-align: left;
+  line-height: 40px;
+}
+.card{
+    max-width: 280px;
+    margin: 5px 0 5px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.legend{
+    margin: 20px;
+    width: 150px;
+    font-size: 18px;
+  }
+
+  .legend-1{
+    width: 100px;
+  }
+
+  .fieldset{
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 100%;
+  }
+  .addBtn {
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 50px 50px;
+    width: 250px;
+    height: 30px;
+    font-size: 16px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 5px;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

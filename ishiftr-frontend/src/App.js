@@ -11,6 +11,8 @@ import EmployeesList from './Components/EmployeesList';
 import CreateSchedule from './Components/CreateSchedule';
 import Settings from './Components/Settings';
 import Billing from './Components/Billing';
+import AddEmployee from './Components/AddEmployee';
+import Dashboard from './Components/Dashboard';
 
 class App extends Component {
   render() {
@@ -24,6 +26,8 @@ class App extends Component {
           <Route path="/Create" component={CreateSchedule} />
           <Route path="/Billing" component={Billing} />
           <Route path="/Settings" component={Settings} />
+          <Route path="/AddEmployee" component={AddEmployee} />
+          <Route path="/Dashboard" component={Dashboard} />
       </div>
     );
   }

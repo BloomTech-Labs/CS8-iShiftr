@@ -11,9 +11,9 @@ class Landing extends React.Component {
 
     // constructor(props) {
     //     super(props);
-    //     // this.state = {
-    //     // modal: false
-    //     // };
+    //     this.state = {
+    //     modal: false
+    //     };
 
         
     // }

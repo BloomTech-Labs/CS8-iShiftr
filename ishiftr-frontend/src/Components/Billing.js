@@ -27,7 +27,7 @@ class Billing extends Component {
                 <div className = 'editShift'>
                     <button>
                         <span>Edit Shift</span>
-                        <i class="fas fa-pencil-alt"></i>
+                        <i className="fas fa-pencil-alt"></i>
                     </button>
                 </div>
 

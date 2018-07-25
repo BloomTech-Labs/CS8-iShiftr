@@ -32,6 +32,7 @@ class Signin extends Component {
         .then(response => {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
+            localStorage.setItem('id', response.data.id);
                 this.props.history.push('/ShiftSchedule');
         })
         .catch(err => {

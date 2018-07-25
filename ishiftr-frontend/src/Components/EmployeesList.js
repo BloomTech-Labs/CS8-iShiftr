@@ -3,17 +3,76 @@ import Menu from '../Components/Menu';
 //import Calendar from './Calendar';
 import '../css/ShiftSchedule.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { Breadcrumb, BreadcrumbItem, Col } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Col, Container } from 'reactstrap';
+// import { Form, FormGroup, Label, Input } from 'reactstrap';
 import SignOut from './Signout';
 import Employee from './Employee';
-import '../css/employees.css'
-
-
+import '../css/employees.css';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class EmployeesList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        employees: []
+
+        };
+
+        
+    }
+
+    handleEdit = (id, obj) => {
+        axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch(function (error) {
+            console.log('there was an error editing employee', error);
+        });
+    }
+
+    handleDelete = (id) => {
+        axios.delete(`https://ishiftr-db.herokuapp.com/api/deleteEmployee/${id}`)
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch(function (error) {
+            console.log('there was an error deleting employee', error);
+        });
+      }
+
+    // toggle = () => {
+    //     console.log('toggled');
+    //     this.setState({
+    //     modal: !this.state.modal
+    //     });
+    //     console.log('toggled again', this.state.modal);
+    // }
+    componentDidMount() {
+    const id = localStorage.getItem('id');
+    const authToken = localStorage.getItem('authToken');
+    const config = {
+        headers: {
+            'Authorization': 'Bearer '+ authToken            
+        },
+    };
+    console.log(id);
+    axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
+    .then((res) => {
+        console.log(res.data);
+        this.setState({
+            employees : res.data.Employees
+        })
+    })
+    .catch(function (error) {
+        console.log('there is an error', error);
+    });
+}
+
     render() {
         return (
-            <div className = 'container'>
+            <Container>
                 <Breadcrumb>
                     <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
                     <BreadcrumbItem active>Employees</BreadcrumbItem>
@@ -21,14 +80,24 @@ class EmployeesList extends React.Component {
                 <div className="row-signout">
                     <SignOut />
                 </div>
-                <div className = 'mcContainer'>
+                <div className="mcContainer">
                     <Menu />               
-                    <Col className = 'employeesList'>
-                        <Employee />
-                        <div className ='addBtn'><span className = 'center'><i style={{fontSize: "2em"}} class="fas fa-plus-circle"></i> Add Employee</span></div>
-                    </Col>
-                </div>                                
-            </div>
+                    <Col className="employeesList">
+                    {this.state.employees.map(employee => {
+                        <Employee employee={employee} onEdit={this.handleEdit} onDelete={this.handleDelete} />
+                    })}
+                        
+                        <Link to="/AddEmployee">
+                            <button className ='addBtn'>
+                                <span className = 'center'>
+                                    <i style={{fontSize: "2em"}} className="fas fa-plus-circle"> </i> 
+                                    Add Employee
+                                </span>
+                            </button>
+                        </Link>                     
+                    </Col>                    
+                </div>                
+            </Container>
         );
     }
 }
