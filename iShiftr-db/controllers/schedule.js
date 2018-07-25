@@ -8,8 +8,8 @@ const createSchedule = (req, res) => {
     schedule
         .save()
         .then(newSched => {
-            Employer
-                .findById(req.params._id, {
+            Employee
+                .findByIdAndUpdate(req.params.id, {
                     $push: { schedules: newSched._id }
                 })
                 .then(schedule => {
@@ -31,7 +31,6 @@ const getSchedule = (req, res) => {
         Employee
             .findById(id)
             .sort({ _id: -1 })
-            .limit(1)
             .populate('schedules')
             .then((schedule) => {
                 console.log(schedule);

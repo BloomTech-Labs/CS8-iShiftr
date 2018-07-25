@@ -50,7 +50,7 @@ module.exports = server => {
   server.route("/api/employer/:id").get(authenticate, isAdmin, getEmployer);
 
   // create a schedule for an employee
-  // server.route("/api/:id/createSchedule")
+  server.route("/api/createSchedule/:id").post(authenticate, isAdmin, createSchedule);
 
   // get the schedule of every employee
   server.route("/api/:id/schedule").get(authenticate, isAdmin, getEmpsSched);
@@ -65,4 +65,8 @@ module.exports = server => {
   // editing the employee's password
   server.route("/api/employee/:id/editPassword").put(authenticate, editEmployeePassword);
 
+  // stripe
+  server.post('/charge', (req, res) => {
+    stripe.charges.create(req.body, postStripeCharge(res));
+  });
 };

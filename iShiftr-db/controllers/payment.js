@@ -8,16 +8,18 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
   }
 }
 
-const paymentApi = app => {
-  app.get('/', (req, res) => {
-    res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
-  });
-
-  app.post('/', (req, res) => {
-    stripe.charges.create(req.body, postStripeCharge(res));
-  });
-
-  return app;
+const paymentApi = async (req, res) => {
+  try {
+    let {status} = await stripe.charges.create({
+      amount: req.body.amount,
+      currency: req.body.currency,
+      description: req.body.description,
+      source: req.body
+    });
+  }
+  catch (error) {
+    res.status(500).end();
+  }
 };
 
 module.exports = {

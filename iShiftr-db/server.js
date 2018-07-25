@@ -4,6 +4,7 @@ const helmet      = require('helmet');
 const morgan      = require('morgan');
 const routes      = require('./routes/routes');
 const server      = express();
+const stripe      = require("stripe")("sk_test_TwTTlid3GeOG6YPydOjARw4I");
 
 const corsOptions = {
     origin: 'https://ishiftr.netlify.com',
@@ -14,6 +15,7 @@ const corsOptions = {
 
 server.use(helmet());
 server.use(cors(corsOptions));
+server.use(require("body-parser").text());
 server.use(express.json());
 server.use(morgan('dev'));
 routes(server);
