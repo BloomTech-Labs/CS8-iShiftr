@@ -52,7 +52,7 @@ const getOneEmployee = (req, res) => {
         const id = req.params.id || _id;
         Employee
             .findById(id)
-            .select(-password)
+            .select(-"password")
             .then(employee => {
                 res.status(200).json({ employee })
             })

@@ -3,15 +3,19 @@ const Employee = require('../models/EmployeeModel');
 const Employer = require('../models/EmployerModel');
 
 const createSchedule = (req, res) => {
-    const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body
-    const schedule = new Schedule({ monday, tuesday, wednesday, thursday, friday, saturday, sunday });
+    const { date, startTime, endTime, shiftLength } = req.body
+    const schedule = new Schedule({ date, startTime, endTime, shiftLength });
     schedule
-        .save((error, schedule) => {
-            if (error) {
-                console.log("There was an error creating a schedule. Please try again");
-            }
-            res.json(schedule);
-        });
+        .save()
+        .then(newSched => {
+            Employer
+                .findById(req.params._id, {
+                    $push: { schedules: newSched._id }
+                })
+                .then()
+
+        }    
+        ;
 }
 
 const getSchedule = (req, res) => {

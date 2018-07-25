@@ -13,6 +13,21 @@ const createEmployer = (req, res) => {
         });
 }
 
+const getEmployer = (req, res) => {
+    if (req.params.id || _id) {
+        const id = req.params.id || _id;
+        Employer
+            .findById(id)
+            .select(-"password")
+            .then(employer => {
+                res.status(200).json({ employer })
+            })
+            .catch((error) => {
+                res.status(500).json({ Error: 'There was an error getting the employer', error })
+            })
+    }
+}
+
 const editEmployerPassword = (req, res) => {
     console.log("finding the employer: ",req);
     // const { _id, username } = req.employer;
@@ -66,5 +81,6 @@ const editEmployerPassword = (req, res) => {
 
 module.exports = {
     createEmployer,
+    getEmployer,
     editEmployerPassword
 };

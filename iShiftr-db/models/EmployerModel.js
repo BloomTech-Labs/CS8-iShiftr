@@ -36,6 +36,10 @@ const EmployerSchema = new Schema({
         type:Boolean,
         default: true,
     },
+    paid:{
+        type:Boolean,
+        default:false,
+    },
     employees: [{ type: ObjectId, ref:'Employee'}],
 });
 
