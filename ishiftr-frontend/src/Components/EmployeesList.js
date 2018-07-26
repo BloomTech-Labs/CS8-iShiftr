@@ -54,7 +54,7 @@ class EmployeesList extends React.Component {
     const authToken = localStorage.getItem('authToken');
     const config = {
         headers: {
-            'Authorization': 'Bearer '+ authToken            
+            Authorization: 'Bearer '+ authToken            
         },
     };
     console.log(id);

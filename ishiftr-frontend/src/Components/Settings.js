@@ -6,6 +6,8 @@ import '../css/ShiftSchedule.css';
 import axios from 'axios';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
+const id = localStorage.getItem('id');
+
 class Settings extends Component {
     constructor(props) {
         super(props);
@@ -35,7 +37,7 @@ class Settings extends Component {
         };
         console.log(config, "  props: ", this.props);
         axios
-            .get('https://ishiftr-db.herokuapp.com/api/employer/${this.props.employer._id}', config)
+            .get('https://ishiftr-db.herokuapp.com/api/employer/${id}', config)
             .then(response => {
                 this.setState({ employer: response.data });
             })
@@ -47,13 +49,14 @@ class Settings extends Component {
     passChanger = (event) => {
         event.preventDefault();
         const token = localStorage.getItem('authToken');
+        
         const config = {
             headers: {
                 'Authorization': 'Bearer '+ token
             },
         };
         axios
-            .post('https://ishiftr-db.herokuapp.com/api/${this.props.employer._id}/editPassword', config, this.state)
+            .post('https://ishiftr-db.herokuapp.com/api/${id}/editPassword', config, this.state)
             .then( response => {
                 console.log(response.data);
             })

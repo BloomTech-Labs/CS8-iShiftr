@@ -16,7 +16,9 @@ class AddEmployee extends Component {
             phoneNumber: '',
             availability: '',
             availableHours: '',
-            workHours: ''
+            workHours: '',
+            username: '',
+            password: ''
         };
         this.handleAddEmployee = this.handleAddEmployee.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -46,10 +48,10 @@ class AddEmployee extends Component {
         e.preventDefault();
         console.log(this.state)
         const id = localStorage.getItem('id');
-        const authToken = localStorage.getItem('authToken');
+        const token = localStorage.getItem('authToken');
         const config = {
         headers: {
-            'Authorization': 'Bearer '+ authToken            
+            Authorization: token            
         },
     };
         axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/createEmployee`, config, {
@@ -59,7 +61,9 @@ class AddEmployee extends Component {
            phoneNumber: this.state.phoneNumber,
            availability: this.state.availability,
            availableHours: this.state.availableHours,
-           workHours: this.state.workHours
+           workHours: this.state.workHours,
+           username: this.state.username,
+           password: this.state.password
         })
         .then((res) => {
             console.log(res.data);
@@ -101,6 +105,14 @@ class AddEmployee extends Component {
         <FormGroup>
           <Label for="workHours">Work Hours</Label>
           <Input onChange={this.handleChange} value={this.state.workHours} type="text" name="workHours" id="workHours" placeholder="number placeholder" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="username">Username</Label>
+          <Input onChange={this.handleChange} value={this.state.username} type="text" name="username" id="username" placeholder="number placeholder" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input onChange={this.handleChange} value={this.state.password} type="text" name="password" id="password" placeholder="number placeholder" />
         </FormGroup>
         <FormGroup>
                     <div className="addButtons">            
