@@ -82,7 +82,7 @@ class Landing extends React.Component {
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.                       
                     </p>
                     <div>
-                        <Link to='/Schedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
+                        <Link to='/ShiftSchedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
                     </div>
                 </div>
             </div>

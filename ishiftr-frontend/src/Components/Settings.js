@@ -29,34 +29,34 @@ class Settings extends Component {
     }
 
     componentDidMount() {
-        const token = localStorage.getItem('authToken');
+        const authToken = localStorage.getItem('authToken');
         const config = {
             headers: {
-                Authorization: `Bearer ${token}`
+                'Authorization': "Bearer " + authToken            
             },
         };
-        console.log(config, "  props: ", this.props);
         axios
-            .get(`https://ishiftr-db.herokuapp.com/api/employer/${id}`, config)
+            .get(`http://localhost:5000/api/employer/${id}`, config)
             .then(response => {
                 this.setState({ employer: response.data });
             })
             .catch(error => {
                 console.log("There was an error fetching the employer's data", error);
             });
+            
     }
 
     passChanger = (event) => {
         event.preventDefault();
-        const token = localStorage.getItem('authToken');
+        const authToken = localStorage.getItem('authToken');
         
         const config = {
             headers: {
-                Authorization: 'Bearer ${token}'
+                'Authorization': "Bearer " + authToken            
             },
         };
         axios
-            .post(`https://ishiftr-db.herokuapp.com/api/${id}/editPassword`, config, this.state)
+            .put(`http://localhost:5000/api/${id}/editPassword`, this.state, config)
             .then( response => {
                 console.log(response.data);
             })
@@ -80,18 +80,15 @@ class Settings extends Component {
                 <div>
                     <Menu />
                     <Col>
-                        {this.state.employer.map(employer => {
-                            return(
                                 <div>
                                     <div>
-                                        Email: {employer.email}
+                                        Email: {this.state.employer.email}
                                     </div>
                                     <div>
-                                        Phone: {employer.phoneNumber}
+                                        Phone: {this.state.employer.phoneNumber}
                                     </div>
                                 </div>
-                            );
-                        })}
+                        
                         
                         <div>
                             <Form onSubmit={this.passChanger} onChange={this.inputHandler}>
@@ -103,7 +100,7 @@ class Settings extends Component {
                                     <Label for="newPassword">New Password</Label>
                                     <Input required type="newPassword" name="newPassword" value={this.state.newPassword} placeholder="Enter your new password" />
                                 </FormGroup>
-                                <Button disabled={!this.validateForm()}>Save</Button>
+                                <Button type='submit' disabled={!this.validateForm()}>Save</Button>
                             </Form>
                         </div>
                     </Col>

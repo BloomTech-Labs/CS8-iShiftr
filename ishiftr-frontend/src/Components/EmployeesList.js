@@ -11,6 +11,14 @@ import '../css/employees.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+const id = localStorage.getItem('id');
+const authToken = localStorage.getItem('authToken');
+const config = {
+        headers: {
+            'Authorization': "Bearer " + authToken            
+        },
+};
+
 class EmployeesList extends React.Component {
     constructor(props) {
         super(props);
@@ -19,11 +27,11 @@ class EmployeesList extends React.Component {
 
         };
 
-        
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleEdit = (id, obj) => {
-        axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
+        axios.put(`http://localhost:5000/api/editEmployee/${id}`, obj)
         .then((res) => {
             console.log(res.data);
         })
@@ -32,10 +40,13 @@ class EmployeesList extends React.Component {
         });
     }
 
-    handleDelete = (id) => {
-        axios.delete(`https://ishiftr-db.herokuapp.com/api/deleteEmployee/${id}`)
+    handleDelete(id){
+        axios.delete(`http://localhost:5000/api/deleteEmployee/${id}`, config)
         .then((res) => {
             console.log(res.data);
+            this.setState({
+                employees: this.state.employees
+            })
         })
         .catch(function (error) {
             console.log('there was an error deleting employee', error);
@@ -49,26 +60,19 @@ class EmployeesList extends React.Component {
     //     });
     //     console.log('toggled again', this.state.modal);
     // }
-    componentDidMount() {
-    const id = localStorage.getItem('id');
-    const authToken = localStorage.getItem('authToken');
-    const config = {
-        headers: {
-            Authorization: 'Bearer '+ authToken            
-        },
-    };
-    console.log(id);
-    axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
-    .then((res) => {
-        console.log(res.data);
-        this.setState({
-            employees : res.data.Employees
+    componentDidMount() {  
+    
+        axios.get(`http://localhost:5000/api/${id}/employees`, config)
+        .then((res) => {
+            console.log(res.data);
+            this.setState({
+                employees : res.data
+            })
         })
-    })
-    .catch(function (error) {
-        console.log('there is an error', error);
-    });
-}
+        .catch(function (error) {
+            console.log('there is an error', error);
+        });
+    }
 
     render() {
         return (
@@ -84,7 +88,9 @@ class EmployeesList extends React.Component {
                     <Menu />               
                     <Col className="employeesList">
                     {this.state.employees.map(employee => {
-                        <Employee employee={employee} onEdit={this.handleEdit} onDelete={this.handleDelete} />
+                        return (
+                            <Employee key={employee._id} employee={employee} onEdit={this.handleEdit} onDelete={this.handleDelete} />
+                        )
                     })}
                         
                         <Link to="/AddEmployee">

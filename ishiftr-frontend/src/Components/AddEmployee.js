@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Button, Form, FormGroup, Label, Input, Fade } from 'reactstrap';
+import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import '../css/AddEmployee.css';
 import { Link } from 'react-router-dom';
-import employees from '../testEmployees';
+//import employees from '../testEmployees';
 import axios from 'axios';
 
 class AddEmployee extends Component {
@@ -31,7 +31,6 @@ class AddEmployee extends Component {
         this.setState({
           [e.target.name]: e.target.value
         });
-        console.log(this.state)
     }
 
     handleAddEmployee(e) {
@@ -48,13 +47,13 @@ class AddEmployee extends Component {
         e.preventDefault();
         console.log(this.state)
         const id = localStorage.getItem('id');
-        const token = localStorage.getItem('authToken');
+        const authToken = localStorage.getItem('authToken');
         const config = {
-        headers: {
-            Authorization: `Bearer ${token}`           
-        },
-    };
-        axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/createEmployee`, config, {
+            headers: {
+                'Authorization': "Bearer " + authToken            
+            },
+        };
+        axios.post(`http://localhost:5000/api/${id}/createEmployee`, {
            email: this.state.email,
            firstName: this.state.firstName,
            lastName: this.state.lastName,
@@ -64,7 +63,7 @@ class AddEmployee extends Component {
            workHours: this.state.workHours,
            username: this.state.username,
            password: this.state.password
-        })
+        }, config)
         .then((res) => {
             console.log(res.data);
             this.props.history.push('/Employees');

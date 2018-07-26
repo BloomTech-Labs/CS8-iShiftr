@@ -9,6 +9,14 @@ import axios from 'axios';
 //import moment from 'moment';
 //import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
+const id = localStorage.getItem('id');
+const authToken = localStorage.getItem('authToken');
+const config = {
+        headers: {
+            'Authorization': "Bearer " + authToken            
+        },
+};
+
 class CreateSchedule extends Component {
     constructor (props) {
         super(props)
@@ -61,16 +69,16 @@ class CreateSchedule extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         let formData = this.state;
-        axios.post(`https://localhost:5000/create`, {
+        console.log(formData.day);
+        axios.post(`http://localhost:5000/api/createSchedule/${id}`, {
+                day: formData.day,
                 date: formData.date,
                 startTime: formData.startTime,
                 endTime: formData.endTime,
-                duplicate: formData.duplicate,
-                autoAsign: formData.autoAsign,
-                day: formData.day,
-            })
+                //duplicate: formData.duplicate,
+                //autoAsign: formData.autoAsign,
+            }, config)
             .then(response => {
-                this.props.history.push('/Employees')
             })
             .catch(error => { console.log('Error: could not save data to db') });         
     }
@@ -89,7 +97,7 @@ class CreateSchedule extends Component {
                         <SignOut />                    
                     </div>
                 </div>                
-                <div className = 'container'>
+                <div className = 'schedule-container'>
                         <Menu />               
                         <div className = 'create-schedule'>
 

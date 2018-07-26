@@ -3,10 +3,10 @@
     flex-direction: column;
 }
 
-/* .container{
+.schedule-container{
     display: flex;
     margin-top: 50px;
-} */
+} 
 
 .create-schedule{
     margin: 35px 50px;
