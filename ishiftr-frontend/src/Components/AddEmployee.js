@@ -51,7 +51,7 @@ class AddEmployee extends Component {
         const token = localStorage.getItem('authToken');
         const config = {
         headers: {
-            Authorization: token            
+            Authorization: `Bearer ${token}`           
         },
     };
         axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/createEmployee`, config, {
@@ -112,7 +112,7 @@ class AddEmployee extends Component {
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input onChange={this.handleChange} value={this.state.password} type="text" name="password" id="password" placeholder="number placeholder" />
+          <Input onChange={this.handleChange} value={this.state.password} type="password" name="password" id="password" placeholder="number placeholder" />
         </FormGroup>
         <FormGroup>
                     <div className="addButtons">            

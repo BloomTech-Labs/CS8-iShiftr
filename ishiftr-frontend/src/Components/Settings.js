@@ -32,12 +32,12 @@ class Settings extends Component {
         const token = localStorage.getItem('authToken');
         const config = {
             headers: {
-                Authorization: token,
+                Authorization: `Bearer ${token}`
             },
         };
         console.log(config, "  props: ", this.props);
         axios
-            .get('https://ishiftr-db.herokuapp.com/api/employer/${id}', config)
+            .get(`https://ishiftr-db.herokuapp.com/api/employer/${id}`, config)
             .then(response => {
                 this.setState({ employer: response.data });
             })
@@ -52,11 +52,11 @@ class Settings extends Component {
         
         const config = {
             headers: {
-                'Authorization': 'Bearer '+ token
+                Authorization: 'Bearer ${token}'
             },
         };
         axios
-            .post('https://ishiftr-db.herokuapp.com/api/${id}/editPassword', config, this.state)
+            .post(`https://ishiftr-db.herokuapp.com/api/${id}/editPassword`, config, this.state)
             .then( response => {
                 console.log(response.data);
             })
@@ -80,12 +80,19 @@ class Settings extends Component {
                 <div>
                     <Menu />
                     <Col>
-                        <div>
-                            Email: {this.state.employer.email}
-                        </div>
-                        <div>
-                            Phone: {this.state.employer.phoneNumber}
-                        </div>
+                        {this.state.employer.map(employer => {
+                            return(
+                                <div>
+                                    <div>
+                                        Email: {employer.email}
+                                    </div>
+                                    <div>
+                                        Phone: {employer.phoneNumber}
+                                    </div>
+                                </div>
+                            );
+                        })}
+                        
                         <div>
                             <Form onSubmit={this.passChanger} onChange={this.inputHandler}>
                                 <FormGroup>
