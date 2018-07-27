@@ -43,7 +43,7 @@ class CheckoutForm extends React.Component {
    this.props.stripe.createToken({ name: "Jenny Rosen" }).then(({ token }) => {
      console.log("Token: ", token);
 
-     axios.post(`http://localhost:5000/api/${id}/charge`, token, config).then(res => {
+     axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/charge`, token, config).then(res => {
 
        console.log(res.data);
 

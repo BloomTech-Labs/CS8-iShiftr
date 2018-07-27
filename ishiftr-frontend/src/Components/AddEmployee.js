@@ -53,7 +53,7 @@ class AddEmployee extends Component {
                 'Authorization': "Bearer " + authToken            
             },
         };
-        axios.post(`http://localhost:5000/api/${id}/createEmployee`, {
+        axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/createEmployee`, {
            email: this.state.email,
            firstName: this.state.firstName,
            lastName: this.state.lastName,
