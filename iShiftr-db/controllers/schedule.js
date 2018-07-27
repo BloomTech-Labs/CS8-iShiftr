@@ -3,12 +3,15 @@ const Employee = require('../models/EmployeeModel');
 const Employer = require('../models/EmployerModel');
 
 const createSchedule = (req, res) => {
-    const { date, startTime, endTime, shiftLength } = req.body
-    const schedule = new Schedule({ date, startTime, endTime, shiftLength });
+    const { day, date, startTime, endTime } = req.body;
+    const schedule = new Schedule(req.body);
+    console.log(req.body.startTime);
+    console.log(schedule);
     schedule
         .save()
         .then(newSched => {
-            Employee
+            console.log('schedule ' , newSched);
+            Employer
                 .findByIdAndUpdate(req.params.id, {
                     $push: { schedules: newSched._id }
                 })
@@ -26,15 +29,16 @@ const createSchedule = (req, res) => {
 }
 
 const getSchedule = (req, res) => {
+    console.log('ID: ', req.params.id);
     if (req.params.id || _id) {
         const id = req.params.id || _id;
-        Employee
+        
+        Employer
             .findById(id)
             .sort({ _id: -1 })
             .populate('schedules')
-            .then((schedule) => {
-                console.log(schedule);
-                res.status(200).json({ Schedule: schedule });
+            .then((employer) => {
+                res.status(200).json(employer.schedules);
             })
             .catch((error) => {
                 res.status(500).json({ Error: "Unable to get the schedule" })

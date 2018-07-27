@@ -1,5 +1,4 @@
 const Employer = require('../models/EmployerModel');
-mysecret = 'authentication isnt working';
 
 const createEmployer = (req, res) => {
     const { username, password, email, firstName, lastName, phoneNumber } = req.body;
@@ -46,7 +45,7 @@ const editEmployerPassword = (req, res) => {
     //     expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
     // };
 
-    // const token = jwt.sign(payload, mysecret);
+    // const token = jwt.sign(payload, process.env.MY_SECRET);
     console.log(req.body._id)
     const id = req.body._id || req.params.id
 

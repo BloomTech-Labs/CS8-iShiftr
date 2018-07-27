@@ -41,6 +41,7 @@ const EmployerSchema = new Schema({
         default:false,
     },
     employees: [{ type: ObjectId, ref:'Employee'}],
+    schedules: [{type:ObjectId, ref: 'Schedule'}]
 });
 
 EmployerSchema.pre('save', function(next) {

@@ -4,11 +4,13 @@ const {Schema} = mongoose;
 const Employee = require('./EmployeeModel');
 
 const ScheduleSchema = new Schema({
-    date:String,
-    startTime:Number,
-    endtime:Number,
-    shiftLength:Number,
-    employees: [{ type: ObjectId, ref: 'Employee'}],
+    date:Date,
+    day: String,
+    startTime:String,
+    endTime:String,
+    //shiftLength:Number,
+    //employees: [{ type: ObjectId, ref: 'Employee'}],
+    
 });
 
 // const WeekSchema = new Schema({

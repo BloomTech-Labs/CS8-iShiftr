@@ -1,6 +1,8 @@
 const { authenticate, isAdmin } = require("../utils/middleware");
+const stripe = require("stripe")('sk_test_fiAgEhHfF9hOFaVwxF15EKQ2');
 const { employeeLogin } = require("../controllers/employeeLogin");
 const { login } = require("../controllers/employerLogin");
+const Employer = require("../models/EmployerModel");
 
 const {
   createEmployer,
@@ -22,6 +24,9 @@ const {
   getSchedule,
   getEmpsSched
 } = require("../controllers/schedule");
+const {
+  paymentApi
+} = require("../controllers/payment")
 
 module.exports = server => {
 
@@ -52,6 +57,9 @@ module.exports = server => {
   // create a schedule for an employee
   server.route("/api/createSchedule/:id").post(authenticate, isAdmin, createSchedule);
 
+  // get the general schedule
+  server.route("/api/schedule/:id").get(authenticate, isAdmin, getSchedule);
+
   // get the schedule of every employee
   server.route("/api/:id/schedule").get(authenticate, isAdmin, getEmpsSched);
   
@@ -66,7 +74,31 @@ module.exports = server => {
   server.route("/api/employee/:id/editPassword").put(authenticate, editEmployeePassword);
 
   // stripe
-  server.post('/charge', (req, res) => {
-    stripe.charges.create(req.body, postStripeCharge(res));
+  server.post('/api/:id/charge', (req, res) => {
+    console.log("Body: ", req.body)
+    // stripe.charges.create(req.body, paymentApi);
+    try{
+      const charge = stripe.charges.create({
+        amount: 500,
+        currency: 'usd',
+        description: '$5 for 5 credits',
+        source: req.body.id
+      })
+      Employer
+      .findByIdAndUpdate(req.params.id, {
+        $set: {paid: true}
+      })
+      .then(employer => {
+        res.status(200).json({ employer })
+      })
+      .catch((error) => {
+        res.status(500).json({ Error: 'There was an error getting the employer', error })
+      })
+
+    } catch(error){
+      console.log(error)
+    }
+      
+    
   });
 };

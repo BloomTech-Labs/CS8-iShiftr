@@ -39,7 +39,7 @@ const getEmployees = (req, res) => {
             .select(-"password")
             .populate('employees')
             .then(employer => {
-                res.status(200).json({ Employees: employer.employees })
+                res.status(200).json(employer.employees)
             })
             .catch((error) => {
                 res.status(500).json({ Error: 'There was an error', error })
@@ -54,7 +54,7 @@ const getOneEmployee = (req, res) => {
             .findById(id)
             .select(-"password")
             .then(employee => {
-                res.status(200).json({ employee })
+                res.status(200).json(employee)
             })
             .catch((error) => {
                 res.status(500).json({ Error: 'There was an error getting the employee', error })
@@ -66,7 +66,11 @@ const deleteEmployee = (req, res) => {
     Employee
         .findByIdAndRemove(req.params.id)
         .then((response) => {
-            res.status(200).json({ Message: 'Employee successfully deleted!' });
+            if(response) {
+                res.status(200).json({ Message: 'Employee successfully deleted!' });
+            } else {
+                res.status(404).json({Message:"Employee does not exist"})
+            }
         })
         .catch((error) => {
             res.status(500).json({ Error: 'There was an error deleting the Employee', error })

@@ -2,14 +2,12 @@ const jwt = require('jsonwebtoken');
 const Employer = require('../models/EmployerModel');
 const Employee = require('../models/EmployeeModel');
 
-mysecret = 'authentication isnt working';
-
 const authenticate = (req, res, next) => {
     const token = req.get('Authorization');
     const newToken = token.split(" ");
     console.log("token", newToken[1]);
     if (newToken[1]) {
-      jwt.verify(newToken[1], mysecret, (err, decoded) => {
+      jwt.verify(newToken[1], process.env.MY_SECRET, (err, decoded) => {
         // console.log('decoded: ', decoded.username, decoded.admin);
         if (err) return res.status(422).json(err);
         console.log("admin:",decoded.admin);
