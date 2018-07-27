@@ -1,39 +1,61 @@
 import React from 'react';
 import '../css/Landing.css';
-import {Redirect} from 'react-router'
+// import {Redirect} from 'react-router'
 import { Link } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import CoverFlow from 'coverflow-react';
 
 class Landing extends React.Component {
 // TODO: Create img carousel and more styling
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        modal: false
-        };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //     modal: false
+    //     };
 
         
-    }
+    // }
 
-    toggle = () => {
-        console.log('toggled');
-        this.setState({
-        modal: !this.state.modal
-        });
-        console.log('toggled again', this.state.modal);
-    }
+    // toggle = () => {
+    //     console.log('toggled');
+    //     this.setState({
+    //     modal: !this.state.modal
+    //     });
+    //     console.log('toggled again', this.state.modal);
+    // }
 
     
-    signIn = () => {
-        this.toggle();
-        // eslint-disable-next-line
-        <Redirect to="/ShiftSchedule"/>
+    // signIn = () => {
+    //     this.toggle();
+    //     // eslint-disable-next-line
+    //     <Redirect to="/ShiftSchedule"/>
         
-    }
+    // }
 
     render() {
+
+        const imagesArr = [
+            require('../assets/team.jpg'),
+            require('../assets/request.jpg'),
+            require('../assets/calendar.jpg'),            
+            require('../assets/powerup.jpg'),
+            require('../assets/pic.jpg'),
+            require('../assets/powerup.jpg'),
+            require('../assets/pic.jpg'),
+        ];
+
+        const labelsArr = [
+            'Simplify Your Employee Schedules',
+            'Advanced Scheduling Optimization',
+            'Up-to-date Schedule Viewings',
+            'Accessible From Anywhere',
+            'Value Employees Productivity',
+            'Accessible From Anywhere',
+            'Value Employees Productivity',
+        ];
+
         return (
             <React.Fragment>
             <div className="container">
@@ -41,27 +63,34 @@ class Landing extends React.Component {
                     <ul className="buttons-header">
                         <Link to="/SignUp"><Button className="button-registration" color="primary">Sign Up</Button></Link>
                         {/* <Link to="/SignIn"><Button onClick={this.toggle} className="button-registration" color="primary">Sign in</Button></Link> */}
-                        <Button className="button-registration" onClick={this.toggle}>Sign In</Button>
+                        {/* <Button className="button-registration" onClick={this.toggle}>Sign In</Button> */}
+                        <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>
                     </ul>                  
-                </div>
-
-                <div className="landing-img">
-                    <img src = {require('../assets/imgLanding.jpg')}  alt="placeholder" />
+                </div>                
+                <div className="landing-img">                  
+                    <CoverFlow
+                        labelsArr={labelsArr}
+                        width={1366} height={380} 
+                        itemRatio="6:5" background='white' 
+                        imagesArr={imagesArr}
+                        />
                 </div>
                 <div className="landing-text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.                       
+                    <p className="blurb">
+                    iShiftr gives you the flexibility of creating schedules for your employees in the most efficient way. 
+                    We adapt to your company’s needs by automating the way you manage employee hours and sudden changes, 
+                    such as absences and requested time-off, all with ease. What are you waiting for? Start Scheduling with iShiftr today!                       
                     </p>
                     <div>
-                        <Link to='/Schedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
+                        <Link to='/ShiftSchedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
                     </div>
                 </div>
             </div>
             <div>
-                <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                <ModalHeader toggle={this.toggle}>Please sign in</ModalHeader>
+                {/* <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                <ModalHeader toggle={this.toggle}>Please sign in</ModalHeader> */}
+                <Modal>
+                <ModalHeader >Please sign in</ModalHeader>
                 <ModalBody>
                     <Form className = "form-signin">
                         <FormGroup row>
