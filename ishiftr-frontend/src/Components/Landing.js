@@ -76,10 +76,10 @@ class Landing extends React.Component {
                         />
                 </div>
                 <div className="landing-text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.                       
+                    <p className="blurb">
+                    iShiftr gives you the flexibility of creating schedules for your employees in the most efficient way. 
+                    We adapt to your company’s needs by automating the way you manage employee hours and sudden changes, 
+                    such as absences and requested time-off, all with ease. What are you waiting for? Start Scheduling with iShiftr today!                       
                     </p>
                     <div>
                         <Link to='/ShiftSchedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
