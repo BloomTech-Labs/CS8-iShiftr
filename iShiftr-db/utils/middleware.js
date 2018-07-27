@@ -10,7 +10,7 @@ const authenticate = (req, res, next) => {
       jwt.verify(newToken[1], process.env.MY_SECRET, (err, decoded) => {
         // console.log('decoded: ', decoded.username, decoded.admin);
         if (err) return res.status(422).json(err);
-        console.log("admin:",decoded.admin);
+        // console.log("admin:",decoded.admin);
         req.decoded = decoded;
         next();
       });

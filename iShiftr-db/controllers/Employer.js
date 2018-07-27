@@ -19,7 +19,7 @@ const getEmployer = (req, res) => {
             .findById(id)
             .select(-"password")
             .then(employer => {
-                res.status(200).json({ employer })
+                res.status(200).json(employer)
             })
             .catch((error) => {
                 res.status(500).json({ Error: 'There was an error getting the employer', error })
