@@ -3,7 +3,7 @@
 
 iShiftr gives you the flexibility of creating schedules for your employees in the most efficient way. We adapt to your company's needs by automating the way you manage employee hours and sudden changes, such as absences and requested time-off, all with ease. 
 
-View app live on:
+View app live on: 
 
 [Backend](https://ishiftr-db.herokuapp.com/ "Backend")
 
