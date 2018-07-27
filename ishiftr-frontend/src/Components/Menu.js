@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import '../Menu.css';
+import { Link } from 'react-router-dom';
+import '../css/Menu.css';
 
 class Menu extends Component {
     render() {
         return (
             <div className="menu">
                 <ul>
-                    <li>Calendar</li>
-                    <li>Employees</li>
-                    <li>Create Schedule</li>
-                    <li>Billing</li>
-                    <li>Settings</li>
+                    <Link to = '/ShiftSchedule'>Calendar</Link>
+                    <Link to = '/Employees'>Employees</Link>
+                    <Link to = '/Create'>Create Schedule</Link>
+                    <Link to = '/Billing'>Billing</Link>
+                    <Link to = '/Settings'>Settings</Link>
                 </ul>
             </div>
         );

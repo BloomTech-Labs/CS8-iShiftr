@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
+// import 'react-dates/initialize';
 
 ReactDOM.render(
 <BrowserRouter>

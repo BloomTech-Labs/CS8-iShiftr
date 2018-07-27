@@ -1,0 +1,51 @@
+.gen-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.schedule {
+    display: flex;
+    width: 1400px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.schedule-row {
+    border: 1px solid black;
+    border-bottom:none;
+    border-top:none;
+    text-align: center;
+}
+
+.schedule-element-header {
+    width: 140px;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.employee{
+    max-width: 120px;
+    margin: 10px;
+    text-align: center;
+    
+}
+
+.employee-item{
+    margin-top: 10px;
+    border: 1px solid  black;
+    border-radius: 4px;
+    padding: 5px;
+
+}
+
+.employee-name {
+    background-color: gray;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 5px;
+
+}
