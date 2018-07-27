@@ -70,7 +70,7 @@ class CreateSchedule extends Component {
         e.preventDefault();
         let formData = this.state;
         console.log(formData.day);
-        axios.post(`http://localhost:5000/api/createSchedule/${id}`, {
+        axios.post(`https://ishiftr-db.herokuapp.com/api/createSchedule/${id}`, {
                 day: formData.day,
                 date: formData.date,
                 startTime: formData.startTime,
