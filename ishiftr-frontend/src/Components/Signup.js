@@ -3,51 +3,42 @@ import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import '../css/signup.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import { withRouter } from 'react-router';
 axios.defaults.withCredentials = true;
 
 class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            formData: {
-                email: '',            
-                username: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                phoneNumber: ''
-            }
+            email: '',            
+            username: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
         }
+        this.inputHandler = this.inputHandler.bind(this);
         this.signUpHandler = this.signUpHandler.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
     }
     // TODO: create Admin Sign up --first-- BackLog Employee SignUp
 
     // config: { headers: {'Content-Type': 'multipart/form-data' }}
-    handleInputChange(e) {
-        let formData = {...this.state.formData};
-        formData[e.target.name] = e.target.value;
-        this.setState({ 
-            formData 
-        });
-        console.log(this.state);
+    inputHandler = (event) => {
+        event.preventDefault();
+        let new_state = this.state;
+        new_state[event.target.name] = event.target.value;
+        this.setState({ new_state })
     }
 
 
-    signUpHandler(e, formData) {
+    signUpHandler = (e) => {
         e.preventDefault();        
-        axios.post('https://ishiftr-db.herokuapp.com/', formData, {
-            // headers: {'Access-Control-Allow-Origin': '*'}            
-            // username: this.state.username,
-            // password: this.state.password,
-            // email: this.state.email,
-            // firstName: this.state.firstName,
-            // lastName: this.state.lastName,
-            // phoneNumber: this.state.phoneNumber
-        })
-        .then(function (res) {
+        // axios.post('https://ishiftr-db.herokuapp.com/', formData, {
+        console.log(this.props);
+        axios.post('https://ishiftr-db.herokuapp.com/api/register',this.state)
+        .then((res) =>{
             console.log(res);
+            this.props.history.push('/')
         })
         .catch(function (error) {
             console.log('there is an error signing up', error);
@@ -61,41 +52,41 @@ class SignUp extends Component {
                 <div>
                     <h3>Please Register Your Account Below</h3>
                 </div>
-                <Form className = "form" onSubmit={this.signUpHandler}>
+                <Form className = "form" onChange={this.inputHandler} onSubmit={this.signUpHandler}>
                     <FormGroup row>
                         <Label sm ={4} for="username">Username:</Label>
                         <Col sm ={8}>
-                            <Input onChange={this.handleInputChange} value={this.state.username} type="text" name="username" id="#username" placeholder="Choose a username" />
+                            <Input value={this.state.username} type="text" name="username" id="#username" placeholder="Choose a username" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label sm ={4} for="firstname">First Name:</Label>
+                        <Label sm ={4} for="firstName">First Name:</Label>
                         <Col sm ={8}>
-                            <Input  onChange={this.handleInputChange}  value={this.state.firstName} type="text" name="firstName" id="#firstname" placeholder="First Name" />
+                            <Input value={this.state.firstName} type="text" name="firstName" id="#firstname" placeholder="First Name" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label sm ={4} for="lastname">Last Name:</Label>
+                        <Label sm ={4} for="lastName">Last Name:</Label>
                         <Col sm ={8}>
-                            <Input onChange={this.handleInputChange} value={this.state.lastName} type="text" name="lastName" id="#lastname" placeholder="Last Name" />
+                            <Input value={this.state.lastName} type="text" name="lastName" id="#lastname" placeholder="Last Name" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label sm ={4} for="email">Email:</Label>
                         <Col sm ={8}>
-                            <Input onChange={this.handleInputChange}  value={this.state.email}type="email" name="email" id="#email" placeholder="Enter Your Email" />
+                            <Input value={this.state.email}type="email" name="email" id="#email" placeholder="Enter Your Email" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label sm = {4}for="password">Password:</Label>
                         <Col sm ={8}>
-                            <Input onChange={this.handleInputChange} value={this.state.password} type="password" name="password" id="#password" placeholder="Enter a password" />
+                            <Input value={this.state.password} type="password" name="password" id="#password" placeholder="Enter a password" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label sm = {4}for="re-password">Phone Number:</Label>
+                        <Label sm = {4}for="phoneNumber">Phone Number:</Label>
                         <Col sm ={8}>
-                            <Input onChange={this.handleInputChange} type="tel" data-country="US" name="phoneNumber" id="#phonenumber" placeholder="Area Code First" />
+                            <Input value={this.state.phoneNumber} type="tel" data-country="US" name="phoneNumber" id="#phonenumber" placeholder="Area Code First" />
                         </Col>
                     </FormGroup>
                     <Button color = "primary" type="submit">Register</Button> <br />
@@ -106,4 +97,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

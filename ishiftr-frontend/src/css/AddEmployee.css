@@ -1,0 +1,31 @@
+.employeeSelect {
+    display: inline-block;
+    width: 50%;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+#employeeSelect {
+}
+
+option {
+    font-size: 18px;
+    padding: 25px;
+}
+
+.backButton {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.addButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+.fade {
+    opacity: 100;
+}

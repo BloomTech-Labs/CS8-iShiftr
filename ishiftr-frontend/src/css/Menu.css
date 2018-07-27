@@ -1,15 +1,19 @@
 .menu {    
     border: 1px solid black;
     border-radius: 3px;
-    width: 250px;
+    width: 200px;
     height: auto;
     margin-top: 35px;
-    padding: 0px 30px 30px 0;
+    padding: 20px 30px 30px 0;
     font-size: 20px; 
     box-sizing: border-box;       
 }
 
-.menu li {
+.menu ul {
+    display: flex;
+    flex-direction: column;
+}
+.menu ul Link {
     list-style: none;
     font-size: 1.3rem;
     text-align: left;

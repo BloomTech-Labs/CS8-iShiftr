@@ -24,14 +24,15 @@ class Signin extends Component {
 
     loginHandler(e) {
         e.preventDefault();
-        this.setState({
-            username: this.state.username,
-            password: this.state.password
-        })
-        axios.post('https://ishiftr-db.herokuapp.com/employerLogin', this.state)
+        // this.setState({
+        //     username: this.state.username,
+        //     password: this.state.password
+        // })
+        axios.post('https://ishiftr-db.herokuapp.com/api/employerLogin', this.state)
         .then(response => {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
+            localStorage.setItem('id', response.data.id);
                 this.props.history.push('/ShiftSchedule');
         })
         .catch(err => {

@@ -5,7 +5,7 @@ import '../css/ShiftSchedule.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { Breadcrumb, BreadcrumbItem, Col } from 'reactstrap';
 import SignOut from './Signout';
-import DragDropContext from './TestCal';
+import Schedule from './TestCal';
 
 
 class ShiftSchedule extends React.Component {
@@ -28,14 +28,14 @@ class ShiftSchedule extends React.Component {
                 <div className = 'editShift'>
                     <button>
                         <span>Edit Shift</span>
-                        <i class="fas fa-pencil-alt"></i>
+                        <i className="fas fa-pencil-alt"></i>
                     </button>
                 </div>
 
                 <div className = 'mcContainer'>
                     <Menu />               
                     <Col className = 'calendar'>
-                        <DragDropContext />
+                        <Schedule />
                     </Col>
                 </div>                                
             </div>

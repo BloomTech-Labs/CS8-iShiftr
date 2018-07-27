@@ -11,9 +11,9 @@ class Landing extends React.Component {
 
     // constructor(props) {
     //     super(props);
-    //     // this.state = {
-    //     // modal: false
-    //     // };
+    //     this.state = {
+    //     modal: false
+    //     };
 
         
     // }
@@ -41,13 +41,17 @@ class Landing extends React.Component {
             require('../assets/request.jpg'),
             require('../assets/calendar.jpg'),            
             require('../assets/powerup.jpg'),
-            require('../assets/pic.jpg')
+            require('../assets/pic.jpg'),
+            require('../assets/powerup.jpg'),
+            require('../assets/pic.jpg'),
         ];
 
         const labelsArr = [
             'Simplify Your Employee Schedules',
             'Advanced Scheduling Optimization',
             'Up-to-date Schedule Viewings',
+            'Accessible From Anywhere',
+            'Value Employees Productivity',
             'Accessible From Anywhere',
             'Value Employees Productivity',
         ];
@@ -64,16 +68,21 @@ class Landing extends React.Component {
                     </ul>                  
                 </div>                
                 <div className="landing-img">                  
-                    <CoverFlow  labelsArr={labelsArr} width="1366" height="350" itemRatio="6:5" background='white' imagesArr={imagesArr} />
+                    <CoverFlow
+                        labelsArr={labelsArr}
+                        width={1366} height={380} 
+                        itemRatio="6:5" background='white' 
+                        imagesArr={imagesArr}
+                        />
                 </div>
                 <div className="landing-text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.                       
+                    <p className="blurb">
+                    iShiftr gives you the flexibility of creating schedules for your employees in the most efficient way. 
+                    We adapt to your company’s needs by automating the way you manage employee hours and sudden changes, 
+                    such as absences and requested time-off, all with ease. What are you waiting for? Start Scheduling with iShiftr today!                       
                     </p>
                     <div>
-                        <Link to='/Schedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
+                        <Link to='/ShiftSchedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
                     </div>
                 </div>
             </div>
