@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { MY_SECRET } = require('../config');
 const Employer = require('../models/EmployerModel');
 
 const login = (req, res) => {
@@ -19,11 +18,12 @@ const login = (req, res) => {
                 }
                 if (hashMatch) {
                     const payload = {
-                        username: employer.username
+                        username: employer.username,
+                        admin: employer.admin
                     };
                     const token = jwt.sign(payload, process.env.MY_SECRET);
                     let id = employer.id;
-                    console.log(id);
+                    console.log("login: ",id, token);
                     res.status(200).json( {token, id})
                 }
             });

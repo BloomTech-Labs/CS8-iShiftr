@@ -4,35 +4,23 @@ const {Schema} = mongoose;
 const Employee = require('./EmployeeModel');
 
 const ScheduleSchema = new Schema({
-    monday: {
-        type: Date,
-        required: false,
-    },
-    tuesday: {
-        type: Date,
-        required: false,
-    },
-    wednesday: {
-        type: Date,
-        required: false,
-    },
-    thursday: {
-        type: Date,
-        required: false,
-    },
-    friday: {
-        type: Date,
-        required: false,
-    },
-    saturday:{
-        type: Date,
-        required: false,
-    },
-    sunday: {
-        type: Date,
-        required: false,
-    },    
-    employees: [{ type: ObjectId, ref: 'Employee'}],
+    date:Date,
+    day: String,
+    startTime:String,
+    endTime:String,
+    //shiftLength:Number,
+    //employees: [{ type: ObjectId, ref: 'Employee'}],
+    
 });
 
+// const WeekSchema = new Schema({
+//     day: String,
+//     shifts: [ShiftSchema]
+// });
+
+// const ScheduleSchema = new Schema({
+//     week: [WeekSchema]
+// });
+
 module.exports = mongoose.model('Schedule', ScheduleSchema, 'schedules');
+// module.exports = mongoose.model('Shift', ShiftSchema);

@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const { MY_SECRET } = require("../config");
 const Employee = require("../models/EmployeeModel");
 
 const employeeLogin = (req, res) => {
@@ -7,9 +6,11 @@ const employeeLogin = (req, res) => {
 
   Employee.findOne({ username }, (error, employee) => {
     if (error) {
+      console.log(error);
       return res.status(403).json({ error: "Invalid Username/Password" });
     }
     if (employee === null) {
+      console.log("422");
       return res
         .status(422)
         .json({ error: "No Employee with that username was found." });
@@ -21,7 +22,8 @@ const employeeLogin = (req, res) => {
         }
         if (hashMatch) {
           const payload = {
-            username: employee.username
+            username: employee.username,
+            admin: employee.admin
           };
           const token = jwt.sign(payload, process.env.MY_SECRET);
           let id = employee.id;

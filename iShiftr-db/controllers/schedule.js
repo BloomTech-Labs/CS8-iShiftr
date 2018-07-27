@@ -3,28 +3,42 @@ const Employee = require('../models/EmployeeModel');
 const Employer = require('../models/EmployerModel');
 
 const createSchedule = (req, res) => {
-    const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body
-    const schedule = new Schedule({ monday, tuesday, wednesday, thursday, friday, saturday, sunday });
+    const { day, date, startTime, endTime } = req.body;
+    const schedule = new Schedule(req.body);
+    console.log(req.body.startTime);
+    console.log(schedule);
     schedule
-        .save((error, schedule) => {
-            if (error) {
-                console.log("There was an error creating a schedule. Please try again");
-            }
-            res.json(schedule);
+        .save()
+        .then(newSched => {
+            console.log('schedule ' , newSched);
+            Employer
+                .findByIdAndUpdate(req.params.id, {
+                    $push: { schedules: newSched._id }
+                })
+                .then(schedule => {
+                    console.log("response: ", schedule);
+                    res.status(200).json({ Message: "schedule saved in the schedule collection" });
+                })
+                .catch(error => {
+                    res.status(500).json({ error: "There was an error saving the schedule" });
+                });
+        })
+        .catch(error=> {
+            res.status(500).json({Error: "There was an error creating the schedule"})
         });
 }
 
 const getSchedule = (req, res) => {
+    console.log('ID: ', req.params.id);
     if (req.params.id || _id) {
         const id = req.params.id || _id;
-        Employee
+        
+        Employer
             .findById(id)
             .sort({ _id: -1 })
-            .limit(1)
             .populate('schedules')
-            .then((schedule) => {
-                console.log(schedule);
-                res.status(200).json({ Schedule: schedule });
+            .then((employer) => {
+                res.status(200).json(employer.schedules);
             })
             .catch((error) => {
                 res.status(500).json({ Error: "Unable to get the schedule" })

@@ -2,14 +2,32 @@ const Employee = require('../models/EmployeeModel');
 const Employer = require('../models/EmployerModel');
 
 const createEmployee = (req, res) => {
-    const {username, password, email, firstName, lastName, phoneNumber, availability, workHours} = req.body;
-    const employee = new Employee({username, password, email, firstName, lastName, phoneNumber, availability, workHours});
+    console.log("body and params:", req.body, req.params);
+    const { username, password, email, firstName, lastName, phoneNumber, availability, availableHours } = req.body;
+    const employee = new Employee({ username, password, email, firstName, lastName, phoneNumber, availability, availableHours });
     employee
         .save((error, employee) => {
+            console.log("employee:", employee);
+            // employeeId = employee._id;
             if (error) {
-                console.log("There was an error creating the user. Please try again");
+                console.log("There was an error creating the user. Please try again:", error);
             }
-            res.json(employee);
+            // console.log("emplid",employee._id);
+            Employer.findByIdAndUpdate(req.params.id, {
+                $push: { employees: employee._id }
+            })
+                .then(employer => {
+                    // employerId = employer._id;s
+                    console.log("response: ", employer);
+                    res.status(200).json({ Message: "Employee saved in the Employers collection" });
+                })
+                .catch(error => {
+                    res.status(500).json({ error: "There was an error saving the employee" });
+                });
+            // employee.employer.push(employer);
+            // employee.save();
+            // res.json(employee);
+            console.log("Employee saved");
         });
 }
 
@@ -18,14 +36,14 @@ const getEmployees = (req, res) => {
         const id = req.params.id || _id;
         Employer
             .findById(id)
-            .select(-password)
+            .select(-"password")
             .populate('employees')
             .then(employer => {
-                res.status(200).json({ Employees: employer.employees })
+                res.status(200).json(employer.employees)
             })
             .catch((error) => {
                 res.status(500).json({ Error: 'There was an error', error })
-            })
+            });
     }
 }
 
@@ -34,9 +52,9 @@ const getOneEmployee = (req, res) => {
         const id = req.params.id || _id;
         Employee
             .findById(id)
-            .select(-password)
+            .select(-"password")
             .then(employee => {
-                res.status(200).json({ employee })
+                res.status(200).json(employee)
             })
             .catch((error) => {
                 res.status(500).json({ Error: 'There was an error getting the employee', error })
@@ -48,7 +66,11 @@ const deleteEmployee = (req, res) => {
     Employee
         .findByIdAndRemove(req.params.id)
         .then((response) => {
-            res.status(200).json({ Message: 'Employee successfully deleted!' });
+            if(response) {
+                res.status(200).json({ Message: 'Employee successfully deleted!' });
+            } else {
+                res.status(404).json({Message:"Employee does not exist"})
+            }
         })
         .catch((error) => {
             res.status(500).json({ Error: 'There was an error deleting the Employee', error })
@@ -56,23 +78,26 @@ const deleteEmployee = (req, res) => {
 };
 
 const editEmployeePassword = (req, res) => {
-    const { _id, username } = req.employee;
+    // const { _id, username } = req.employee;
     const { currentPassword, newPassword } = req.body;
     if (!currentPassword || !newPassword) {
         re.status(422).json({ Message: 'Please enter both current and new passwords' })
     }
-    const payload = {
-        username: employee.username
-    };
-    const options = {
-        expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
-    };
-    const token = jwt.sign(payload, process.env.MY_SECRET, options);
+    // const payload = {
+    //     username: employee.username
+    // };
+    // const options = {
+    //     expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
+    // };
+    // const token = jwt.sign(payload, process.env.MY_SECRET, options);
     // let opts = {
     //     new: true
     // }
+
+    const id = req.body._id || req.params.id;
+
     Employee
-        .findById(_id)
+        .findById(id)
         .then((employee) => {
             employee.checkPassword(currentPassword, (error, isValid) => {
                 if (error) {
@@ -80,12 +105,12 @@ const editEmployeePassword = (req, res) => {
                 }
                 if (isValid) {
                     employee.password = newPassword;
-                    Employee
+                    employee
                         .save()
                         .then((response) => {
                             const temp = { ...response._doc }
                             delete temp.password;
-                            res.json({ token, employee: temp });
+                            res.json({ employee: temp });
                         })
                         .catch((error) => {
                             res.status(501).json(error);
@@ -101,51 +126,23 @@ const editEmployeePassword = (req, res) => {
 };
 
 const editEmployee = (req, res) => {
-    const { username, password } = req.body;
-  
-    if (username !== undefined) {
-      return res
-        .status(400)
-        .json({ errorMessage: "Username can not be changed!" });
+    const { username } = req.body;
+    console.log(username);
+    if (username == null) {
+        return res
+            .status(404)
+            .json({ error: "User not found." });
     }
-  
-    if (password !== undefined) {
-      return res
-        .status(400)
-        .json({ errorMessage: "Password can not be changed here!" });
-    }
-  
-    Employee.findByIdAndUpdate(req.params.id, req.body)
-      .then(employeeUpdated => {
-        if (employeeUpdated === null) {
-          res.status(404).json({ error: "Employee could not be updated!" });
-        } else {
-          User.findById(employeeUpdated.id)
-  
-            .then(updatedEmployee => {
-              res.status(200).json(updatedEmployee);
-            })
-            .catch(err => {
-              if (config.env === "development") {
-                return res.status(500).json(err);
-              } else {
-                return res.status(500).json({
-                  errorMessage: "Encountered an update error problem!"
-                });
-              }
-            });
-        }
-      })
-      .catch(err => {
-        if (config.env === "development") {
-          return res.status(500).json(err);
-        } else {
-          return res.status(500).json({
-            errorMessage: "Encountered an update error problem!"
-          });
-        }
-      });
-  };
+
+    Employee
+        .findByIdAndUpdate(req.params.id, req.body, {new :true})
+        .then(updatedEmployee => {
+            res.status(200).json({Message: "Employee updated"});
+        })
+        .catch(error => {
+            res.status(500).json({Error: "There was an error updating the employee"});
+        });
+};
 
 module.exports = {
     createEmployee,
@@ -153,5 +150,5 @@ module.exports = {
     getOneEmployee,
     deleteEmployee,
     editEmployeePassword,
-    editEmployee 
+    editEmployee
 };

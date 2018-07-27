@@ -1,32 +1,38 @@
 const jwt = require('jsonwebtoken');
 const Employer = require('../models/EmployerModel');
 const Employee = require('../models/EmployeeModel');
-const { MY_SECRET } = require('../config');
 
 const authenticate = (req, res, next) => {
     const token = req.get('Authorization');
-    if(token) {
-        jwt.verify(token, process.env.MY_SECRET, (error, decoded) => {
-            if (err) {
-                return res.status(422).json(error);
-            }
-            req.decoded = decoded;
-            next();
-        });
+    const newToken = token.split(" ");
+    console.log("token", newToken[1]);
+    if (newToken[1]) {
+      jwt.verify(newToken[1], process.env.MY_SECRET, (err, decoded) => {
+        // console.log('decoded: ', decoded.username, decoded.admin);
+        if (err) return res.status(422).json(err);
+        console.log("admin:",decoded.admin);
+        req.decoded = decoded;
+        next();
+      });
     } else {
-        return res.status(403).json({ error: 'No token provided, must be set on Authorization header'});
+      return res.status(403).json({
+        error: 'No token provided, must be set on the Authorization Header',
+      });
     }
-}
+  };
 
 const isAdmin = (req, res, next) => {
-    if (req.decoded._doc.admin == true) {
+  console.log(req.decoded);
+    if (req.decoded.admin == true) {
+        console.log('admin verified');
         next();
     } else {
         //return an error if the user is not an admin
         res.status(403).json({ error: 'You are not authorized to perform this operation'});
     }
-}
+};
 
 module.exports = {
-    authenticate
+    authenticate,
+    isAdmin
 };
