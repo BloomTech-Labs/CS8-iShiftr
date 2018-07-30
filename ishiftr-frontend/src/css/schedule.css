@@ -1,36 +1,16 @@
-.gen-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.schedule {
-    display: flex;
-    width: 1400px;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.schedule-row {
-    border: 1px solid black;
-    border-bottom:none;
-    border-top:none;
-    text-align: center;
-}
 
 .schedule-element-header {
-    width: 140px;
     border-bottom: 1px solid black;
-    padding: 10px;
     text-align: center;
 }
 
 .employee{
     max-width: 120px;
-    margin: 10px;
+    margin-bottom: 10px;
     text-align: center;
+    cursor: move;
+    cursor: -webkit-grabbing;
+
     
 }
 

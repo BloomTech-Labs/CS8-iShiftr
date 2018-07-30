@@ -12,16 +12,7 @@ class Dashboard extends Component {
       <Container className="topContainer">
         <div className="row-header">
           <div>
-            <Breadcrumb>
-              <BreadcrumbItem>
-                <a href="/">Home</a>
-              </BreadcrumbItem>
-              <BreadcrumbItem active>Dashboard</BreadcrumbItem>
-            </Breadcrumb>
             <EmployeeMenu />
-          </div>
-          <div className="row-signout">
-            <SignOut />
           </div>
         </div>
         <Row>

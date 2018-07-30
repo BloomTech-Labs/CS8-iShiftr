@@ -24,10 +24,10 @@ class EmployeeOnShift extends Component {
     console.log(filteredEmployees);
     
       return (
-        <div className = 'employee'>
+        <div>
             {filteredEmployees.map((employee, index) =>{
                 return(
-                    <div key = {index} className='employee-item'>
+                    <div key = {index} className = 'employee border rounded'>
                         <div className = 'employee-name'>{employee.firstName}</div>
                         <div>{employee.availability}</div>
                         <div>{employee.availableHours}</div>

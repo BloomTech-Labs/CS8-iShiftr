@@ -1,15 +1,10 @@
 import React from 'react';
-import Menu from '../Components/Menu';
-//import Calendar from './Calendar';
-import '../css/ShiftSchedule.css';
-import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { Breadcrumb, BreadcrumbItem, Col, Container } from 'reactstrap';
-// import { Form, FormGroup, Label, Input } from 'reactstrap';
-import SignOut from './Signout';
-import Employee from './Employee';
-import '../css/employees.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Employee from './Employee';
+import Loading from './Loading';
+import '../css/employeesList.css';
+
 
 const id = localStorage.getItem('id');
 const authToken = localStorage.getItem('authToken');
@@ -23,7 +18,7 @@ class EmployeesList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        employees: []
+        employees: ''
 
         };
 
@@ -31,7 +26,7 @@ class EmployeesList extends React.Component {
     }
 
     handleEdit = (id, obj) => {
-        axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
+        axios.put(`http://localhost:5000/api/editEmployee/${id}`, obj)
         .then((res) => {
             console.log(res.data);
         })
@@ -41,7 +36,7 @@ class EmployeesList extends React.Component {
     }
 
     handleDelete(id){
-        axios.delete(`https://ishiftr-db.herokuapp.com/api/deleteEmployee/${id}`, config)
+        axios.delete(`http://localhost:5000/api/deleteEmployee/${id}`, config)
         .then((res) => {
             console.log(res.data);
             this.setState({
@@ -51,18 +46,11 @@ class EmployeesList extends React.Component {
         .catch(function (error) {
             console.log('there was an error deleting employee', error);
         });
-      }
+    }
 
-    // toggle = () => {
-    //     console.log('toggled');
-    //     this.setState({
-    //     modal: !this.state.modal
-    //     });
-    //     console.log('toggled again', this.state.modal);
-    // }
     componentDidMount() {  
     
-        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
+        axios.get(`http://localhost:5000/api/${id}/employees`, config)
         .then((res) => {
             console.log(res.data);
             this.setState({
@@ -76,34 +64,30 @@ class EmployeesList extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Breadcrumb>
-                    <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                    <BreadcrumbItem active>Employees</BreadcrumbItem>
-                </Breadcrumb>
-                <div className="row-signout">
-                    <SignOut />
-                </div>
-                <div className="mcContainer">
-                    <Menu />               
-                    <Col className="employeesList">
-                    {this.state.employees.map(employee => {
-                        return (
-                            <Employee key={employee._id} employee={employee} onEdit={this.handleEdit} onDelete={this.handleDelete} />
-                        )
-                    })}
+            <div className = 'pl-5'>            
+                {
+                    this.state.employees ? (           
+                    <div className = 'row'>
+                        {this.state.employees.map(employee => {
+                            return (
+                                <Employee key={employee._id} employee={employee} onEdit={this.handleEdit} onDelete={this.handleDelete} />
+                            )
+                        })}
                         
-                        <Link to="/AddEmployee">
-                            <button className ='addBtn'>
+                        <Link to="/admin-dashboard/AddEmployee">
+                            <div className ='addBtn'>
                                 <span className = 'center'>
                                     <i style={{fontSize: "2em"}} className="fas fa-plus-circle"> </i> 
                                     Add Employee
                                 </span>
-                            </button>
+                            </div>
                         </Link>                     
-                    </Col>                    
-                </div>                
-            </Container>
+                    </div>
+                    ) : (
+                        <Loading />
+                    )
+                }                                   
+            </div>
         );
     }
 }

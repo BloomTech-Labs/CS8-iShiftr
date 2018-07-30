@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Container, Button} from 'reactstrap';
-import SignOut from './Signout';
-import Menu from '../Components/Menu';
 import '../css/CreateSchedule.css';
 import axios from 'axios';
-//import DatePicker from 'react-datepicker';
-//import TimeRange from 'react-time-range';
-//import moment from 'moment';
-//import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 const id = localStorage.getItem('id');
 const authToken = localStorage.getItem('authToken');
@@ -31,33 +25,6 @@ class CreateSchedule extends Component {
         };
       }
     
-    // datePickerHandleChange =(date)=> {
-    //     //let date = event.target.value
-    //     this.setState({
-    //       date: date
-    //     });
-    // }
-
-    // timePickerHandleChage = (time) => {
-    //     if(time.startTime && time.endTime) {
-    //         this.setState({
-    //             startTime: time.startTime,
-    //             endTime: time.endTime
-    //         })
-    //     }
-    // }
-
-    // onStartTimeChange = (time) => {
-    //     this.setState({
-    //         startTime:  time
-    //     })
-    // }
-
-    // onEndTimeChange = (time) => {
-    //     this.setState({
-    //         endTime: time
-    //     })
-    // }
 
     handleFormChange = (e) =>{
         this.setState({
@@ -70,7 +37,7 @@ class CreateSchedule extends Component {
         e.preventDefault();
         let formData = this.state;
         console.log(formData.day);
-        axios.post(`https://ishiftr-db.herokuapp.com/api/createSchedule/${id}`, {
+        axios.post(`http://localhost:5000/api/createSchedule/${id}`, {
                 day: formData.day,
                 date: formData.date,
                 startTime: formData.startTime,
@@ -85,66 +52,39 @@ class CreateSchedule extends Component {
     
 
     render() {
-        console.log(this.state.day, this.state.duplicate, this.state.autoAsign)
-        return (
-            <Container className="topContainer">
-                <div className="rowHeader">
-                    <Breadcrumb>
-                        <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                        <BreadcrumbItem active>Create Schedule</BreadcrumbItem>                    
-                    </Breadcrumb>
-                    <div className="row-signout">
-                        <SignOut />                    
-                    </div>
-                </div>                
-                <div className = 'schedule-container'>
-                        <Menu />               
-                        <div className = 'create-schedule'>
-
-                        <form onChange = {this.handleFormChange}>
-                            Date:
-                            <input type="date" name="date"/>
-                        </form>
-                            {/*<DatePicker
-                                className="calendarPicker"
-                                inline
-                                selected={this.state.date}
-                                onChange={this.datePickerHandleChange}
-                            />*/}
-                        </div>
-                        <div className = 'dataPicker'>
-                            <div>
-                                {/*<TimeRange
-                                    startMoment={this.state.startTime}
-                                    endMoment={this.state.endTime}
-                                    onChange={this.timePickerHandleChage}
-                                    onStartTimeChange={this.onStartTimeChange}
-                                    onEndTimeChange = {this.onEndTimeChange}
-                                />*/}
-                                <form onChange = {this.handleFormChange}>
-                                    <input type="time" name="startTime" value = {this.state.startTime}/>
-                                    to 
-                                    <input type="time" name="endTime" value = {this.state.endTime}/>
-                                </form>
+        return (               
+            <div className = 'row justify-content-center'>              
+                <div className = 'col col-8 justify-content-center'>
+                    <form className = 'mb-2' onChange = {this.handleFormChange}>
+                        <span className = 'mr-3'>Date: </span>
+                        <input className = 'px-3' type="date" name="date"/>
+                    </form>
+                    <form className = 'mb-3' onChange = {this.handleFormChange}>
+                            <span className = 'mr-2'>Time: </span>  
+                        <input type="time" name="startTime" value = {this.state.startTime}/>
+                            <span>To </span> 
+                        <input type="time" name="endTime" value = {this.state.endTime}/>
+                    </form>
+                        <form className = 'mb-3' onChange = {this.handleFormChange} onSubmit = {this.onSubmit}>
+                            <div className = 'mb-4'>
+                                <span className ='mr-2'>Day: </span>
+                                <input type="radio" name="day" value="Monday"/>M
+                                <input type="radio" name="day" value="Tuesday"/>T
+                                <input type="radio" name="day" value="Wednesday"/>W 
+                                <input type="radio" name="day" value="Thursday"/>Th<br/>
+                                <input type="radio" name="day" value="Friday"/>F
+                                <input type="radio" name="day" value="Saturday"/>SAT
+                                <input type="radio" name="day" value="Sunday"/>S<br/>
                             </div>
-                                <form className ='daysForm' onChange = {this.handleFormChange} onSubmit = {this.onSubmit}>
-                                    <input type="radio" name="day" value="Monday"/>M
-                                    <input type="radio" name="day" value="Tuesday"/>T
-                                    <input type="radio" name="day" value="Wednesday"/>W 
-                                    <input type="radio" name="day" value="Thursday"/>Th<br/>
-                                    <input type="radio" name="day" value="Friday"/>F
-                                    <input type="radio" name="day" value="Saturday"/>SAT
-                                    <input type="radio" name="day" value="Sunday"/>S<br/>
 
-                                    <div className='checkboxes'>
-                                        <input type="checkbox" name="duplicate" value="duplicate"/> Duplicate Previous week Schedule<br/>
-                                        <input type="checkbox" name="autoAsign" value="autoAsign"/> Auto Asign Shifts
-                                    </div>
-                                    <Button color='primary' className='btnGen' type="submit">Generate Schedule</Button>
-                                </form>  
-                        </div>    
-                </div>                                
-            </Container>
+                            <div className = 'mb-3'>
+                                <input type="checkbox" name="duplicate" value="duplicate"/> Duplicate Previous week Schedule<br/>
+                                <input type="checkbox" name="autoAsign" value="autoAsign"/> Auto Asign Shifts
+                            </div>
+                            <Button color='primary' className='btnGen mb-3 px-5' type="submit">Generate Schedule</Button>
+                    </form>  
+                </div>   
+            </div>                                
         );
     }
 }
