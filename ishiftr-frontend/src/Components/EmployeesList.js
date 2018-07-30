@@ -26,7 +26,7 @@ class EmployeesList extends React.Component {
     }
 
     handleEdit = (id, obj) => {
-        axios.put(`http://localhost:5000/api/editEmployee/${id}`, obj)
+        axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
         .then((res) => {
             console.log(res.data);
         })
@@ -36,7 +36,7 @@ class EmployeesList extends React.Component {
     }
 
     handleDelete(id){
-        axios.delete(`http://localhost:5000/api/deleteEmployee/${id}`, config)
+        axios.delete(`https://ishiftr-db.herokuapp.com/api/deleteEmployee/${id}`, config)
         .then((res) => {
             console.log(res.data);
             this.setState({
@@ -50,7 +50,7 @@ class EmployeesList extends React.Component {
 
     componentDidMount() {  
     
-        axios.get(`http://localhost:5000/api/${id}/employees`, config)
+        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
         .then((res) => {
             console.log(res.data);
             this.setState({
