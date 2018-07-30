@@ -28,7 +28,7 @@ class EmployeeSignin extends Component {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
             localStorage.setItem('id', response.data.id);
-                this.props.history.push('/ShiftSchedule');
+                this.props.history.push('/Dashboard');
         })
         .catch(err => {
             console.log('sign in error', err);
@@ -39,6 +39,7 @@ class EmployeeSignin extends Component {
         return (
             <div>
                 <Form className = "form" onChange={this.inputHandler} onSubmit={this.loginHandler}>
+                    <p>Employees sign in here</p>
                     <FormGroup row>
                         <Label sm ={4} for="username">Username:</Label>
                         <Col sm ={8}>
@@ -59,4 +60,4 @@ class EmployeeSignin extends Component {
     }
 }
 
-export default employeeSignin;
+export default EmployeeSignin;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import EmployeeSignin from './employeeSignin';
 
 class Signin extends Component {
     constructor(props) {
@@ -43,17 +44,20 @@ class Signin extends Component {
     render() {
         return (
             <div>
+            <div>
+                
                 <Form className = "form" onChange={this.inputHandler} onSubmit={this.loginHandler}>
+                    <p>Employers sign in here</p>
                     <FormGroup row>
                         <Label sm ={4} for="username">Username:</Label>
                         <Col sm ={8}>
-                            <Input type="text" name="username" id="#username" placeholder="enter username" />
+                            <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label sm = {4}for="password">Password:</Label>
                         <Col sm ={8}>
-                            <Input type="password" name="password" id="#password" placeholder="enter password" />
+                            <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
                         </Col>
                     </FormGroup>
                     {/* <FormGroup row>
@@ -65,6 +69,8 @@ class Signin extends Component {
                     <Button color = "primary" type="submit">Sign In</Button> <br />
                     <Link to="/"><Button color = "primary">Go Back</Button></Link>
                 </Form>
+            </div>
+            <EmployeeSignin />
             </div>
         );
     }
