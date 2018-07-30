@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios';
 
 class EmployeeSignin extends Component {
@@ -23,7 +23,7 @@ class EmployeeSignin extends Component {
 
     loginHandler(e) {
         e.preventDefault();
-        axios.post('https://ishiftr-db.herokuapp.com/api/employeeLogin', this.state)
+        axios.post('http://localhost:5000/api/employeeLogin', this.state)
         .then(response => {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
@@ -60,4 +60,4 @@ class EmployeeSignin extends Component {
     }
 }
 
-export default EmployeeSignin;
+export default withRouter(EmployeeSignin);
