@@ -1,44 +1,27 @@
 import React from 'react';
-import Menu from '../Components/Menu';
-//import Calendar from './Calendar';
 import '../css/ShiftSchedule.css';
-import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { Breadcrumb, BreadcrumbItem, Col } from 'reactstrap';
-import SignOut from './Signout';
 import Schedule from './TestCal';
 
 
 class ShiftSchedule extends React.Component {
     render() {
-        return (
-            <div className = 'container'>
-
-                <div className = 'row-header'>
-                    <div>
-                        <Breadcrumb>
-                            <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                            <BreadcrumbItem active>Schedule</BreadcrumbItem>
-                        </Breadcrumb>
+        return (                        
+                <div className = 'row justify-content-center'>
+                    <h3><strong>Weekly Schedule</strong></h3>
+                    
+                    <div className = 'col col-12 mt-3 editShift'>
+                        <div>
+                            <p>Navigation</p>
+                        </div>
+                        <button className='border'>
+                            <span>Edit Shift</span>
+                            <i className="fas fa-pencil-alt"></i>
+                        </button>
                     </div>
-                    <div className="row-signout">
-                        <SignOut />
-                    </div>
-                </div>
-
-                <div className = 'editShift'>
-                    <button>
-                        <span>Edit Shift</span>
-                        <i className="fas fa-pencil-alt"></i>
-                    </button>
-                </div>
-
-                <div className = 'mcContainer'>
-                    <Menu />               
-                    <Col className = 'calendar'>
-                        <Schedule />
-                    </Col>
-                </div>                                
-            </div>
+                    <div className ='row col-12 mt-3'>            
+                            <Schedule />
+                    </div>    
+                </div>                                    
         );
     }
 }

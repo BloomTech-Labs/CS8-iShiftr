@@ -36,7 +36,7 @@ class Settings extends Component {
             },
         };
         axios
-            .get(`https://ishiftr-db.herokuapp.com/api/employer/${id}`, config)
+            .get(`http://localhost:5000/api/employer/${id}`, config)
             .then(response => {
                 this.setState({ employer: response.data });
             })
@@ -56,7 +56,7 @@ class Settings extends Component {
             },
         };
         axios
-            .put(`https://ishiftr-db.herokuapp.com/api/${id}/editPassword`, this.state, config)
+            .put(`http://localhost:5000/api/${id}/editPassword`, this.state, config)
             .then( response => {
                 console.log(response.data);
             })
@@ -68,17 +68,7 @@ class Settings extends Component {
     render() {
         return (
             <Container className="topContainer">
-                <div className="rowHeader">
-                    <Breadcrumb>
-                        <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
-                        <BreadcrumbItem active>Settings</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="row-signout">
-                        <SignOut />
-                    </div>
-                </div>
                 <div>
-                    <Menu />
                     <Col>
                                 <div>
                                     <div>

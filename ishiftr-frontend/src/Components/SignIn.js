@@ -28,12 +28,12 @@ class Signin extends Component {
         //     username: this.state.username,
         //     password: this.state.password
         // })
-        axios.post('https://ishiftr-db.herokuapp.com/api/employerLogin', this.state)
+        axios.post('http://localhost:5000/api/employerLogin', this.state)
         .then(response => {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
             localStorage.setItem('id', response.data.id);
-                this.props.history.push('/ShiftSchedule');
+                this.props.history.push('/admin-dashboard/ShiftSchedule');
         })
         .catch(err => {
             console.log('sign in error', err);

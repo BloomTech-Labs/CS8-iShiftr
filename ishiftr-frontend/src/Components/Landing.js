@@ -1,38 +1,12 @@
 import React from 'react';
-import '../css/Landing.css';
 // import {Redirect} from 'react-router'
 import { Link } from 'react-router-dom'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import CoverFlow from 'coverflow-react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+//import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import '../css/Landing.css';
 
 class Landing extends React.Component {
-// TODO: Create img carousel and more styling
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //     modal: false
-    //     };
-
-        
-    // }
-
-    // toggle = () => {
-    //     console.log('toggled');
-    //     this.setState({
-    //     modal: !this.state.modal
-    //     });
-    //     console.log('toggled again', this.state.modal);
-    // }
-
-    
-    // signIn = () => {
-    //     this.toggle();
-    //     // eslint-disable-next-line
-    //     <Redirect to="/ShiftSchedule"/>
-        
-    // }
 
     render() {
 
@@ -62,8 +36,6 @@ class Landing extends React.Component {
                 <div className="nav">
                     <ul className="buttons-header">
                         <Link to="/SignUp"><Button className="button-registration" color="primary">Sign Up</Button></Link>
-                        {/* <Link to="/SignIn"><Button onClick={this.toggle} className="button-registration" color="primary">Sign in</Button></Link> */}
-                        {/* <Button className="button-registration" onClick={this.toggle}>Sign In</Button> */}
                         <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>
                     </ul>                  
                 </div>                
@@ -85,32 +57,6 @@ class Landing extends React.Component {
                         <Link to='/ShiftSchedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
                     </div>
                 </div>
-            </div>
-            <div>
-                {/* <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                <ModalHeader toggle={this.toggle}>Please sign in</ModalHeader> */}
-                <Modal>
-                <ModalHeader >Please sign in</ModalHeader>
-                <ModalBody>
-                    <Form className = "form-signin">
-                        <FormGroup row>
-                            <Label sm ={4} for="email">Email:</Label>
-                            <Col sm ={8}>
-                                <Input type="email" name="email" id="#email" placeholder="enter email" />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label sm = {4}for="password">Password:</Label>
-                            <Col sm ={8}>
-                                <Input type="password" name="password" id="#password" placeholder="enter password" />
-                            </Col>
-                        </FormGroup>
-                    </Form>
-                </ModalBody>
-                <ModalFooter>
-                    <Button onClick ={this.signIn} color="primary">Sign In</Button>{' '}
-                </ModalFooter>
-                </Modal>
             </div>
             </React.Fragment>
         );

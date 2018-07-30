@@ -7,7 +7,9 @@ class SignOut extends Component {
         return (
             <div>
                 <Link to="/">
-                    <Button type="submit" onClick={() => { localStorage.removeItem("authToken"); localStorage.removeItem("id") }} color = "success">Sign Out</Button>
+                    <Button className = 'bg-white border-white text-dark' type="submit" onClick={() => { 
+                        localStorage.removeItem("authToken"); localStorage.removeItem("id") }}>Sign Out
+                    </Button>
                 </Link>
             </div>
         );
