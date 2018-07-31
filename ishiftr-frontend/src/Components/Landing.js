@@ -65,7 +65,7 @@ class Landing extends React.Component {
                     such as absences and requested time-off, all with ease. What are you waiting for?<br/> Start Scheduling with iShiftr today!                       
                     </p>
                     <div>
-                        <Link to={this.checkLogin()}><Button className="scheduleButton " color="primary"> Schedule Now </Button></Link>
+                        <Link to={this.checkLogin()}><Button className="scheduleButton "> Schedule Now </Button></Link>
                     </div>
                 </div>
             </div>

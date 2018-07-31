@@ -23,45 +23,32 @@ class Schedule extends React.Component {
     }
 
     componentDidMount(){
-        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
+        axios.get(`http://localhost:5000/api/${id}/employees`, config)
             .then((res) => {
                 console.log(res.data);
                 this.setState({
-                    employees : res.data
+                    employees : res.data,
+                    schedules: this.props.schedule
                 })
             })
             .catch(function (error) {
                 console.log('there is an error', error);
             });
-
-        
-        axios.get(`https://ishiftr-db.herokuapp.com/api/schedule/${id}`, config)
-            .then((res) => {
-                console.log(res.data);
-                this.setState({
-                    schedules : res.data
-                })
-            })
-            .catch(function (error) {
-                console.log('there is an error', error);
-            });
+   
     }
 
 
 
     render() {
+        console.log(this.state.employees);
         return (
-                this.state.schedules.map(schedule => {
-                    return (
-                        <div key={schedule._id} className = 'col px-4 mx-1 border-right border-dark' >
+                        <div className = 'col px-4 mx-1 border-right border-dark' >
                             <div className='schedule-element-header mb-4'>
-                                <div><strong>{schedule.day}</strong></div>
-                                <div>{moment(schedule.date).format('LL')}</div> 
+                                <div><strong>{this.state.schedules.day}</strong></div>
+                                <div>{moment(this.state.schedules.date).format('LL')}</div> 
                             </div>
-                            <EmployeeOnShift day={schedule.day} employees={this.state.employees}/>
-                        </div>
-                    )
-                })  
+                            <EmployeeOnShift day={this.state.schedules.day} employees={this.state.employees}/>
+                        </div>       
         );
     }
 }
