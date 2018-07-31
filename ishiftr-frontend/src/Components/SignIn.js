@@ -55,57 +55,42 @@ class Signin extends Component {
     render() {
         return (
             <div className='centerContent py-5'>
-                <Nav tabs className = 'justify-content-center col-6' >
-                    <NavItem className ='halfWidth'>
+                <Nav tabs className = 'justify-content-center col col-4 mx-0 px-0 nav-border' >
+                    <NavItem className ='mx-0 tab-navs bg-colored'>
                         <NavLink
-                        className ='fullWidth border-white' 
-                        onClick={() => { this.toggle('1'); }}
-                        >
-                        Employer Sign In
+                            className ='no-border mx-0 px-0 bg-colored' 
+                            onClick={() => { this.toggle('1'); }}
+                            >
+                            Employer Sign In
                         </NavLink>
                     </NavItem>
-                    <NavItem className='halfWidth'>
+                    <NavItem className='mx-0 tab-navs bg-colored'>
                         <NavLink
-
-                        className ='fullWidth border-white'
-                        onClick={() => { this.toggle('2'); }}
-                        >
-                        Employee Sign In
+                            className ='no-border mx-0 px-0 bg-colored'
+                            onClick={() => { this.toggle('2'); }}
+                            >
+                            Employee Sign In
                         </NavLink>
                     </NavItem>
                 </Nav>
-            <TabContent activeTab={this.state.activeTab} className = 'col col-6 border border-danger'>
-              <TabPane tabId="1" className = 'col-12'>
-                <Row className = 'col-12 border border-dark'>                    
-                  <Form className="row col-8" onChange={this.inputHandler} onSubmit={this.loginHandler}>
-                    <FormGroup row>
-                        <Label for="username">Username:</Label>
-                        <Col>
-                            <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="password">Password:</Label>
-                        <Col>
-                            <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
-                        </Col>
-                    </FormGroup>
-                    <Button color = "primary" type="submit">Sign In</Button> <br />
-                    <Link to="/"><Button color = "primary">Go Back</Button></Link>
-                  </Form>
-                </Row>
-              </TabPane>
+                <TabContent activeTab={this.state.activeTab} className = 'col col-4 py-4 content-border shadow'>
+                    <TabPane tabId="1">
+                        <div className = 'centeredContend'>                    
+                            <Form className="col-12" onChange={this.inputHandler} onSubmit={this.loginHandler}>
+                                <Label for="username">Username:</Label>
+                                <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
+                                <Label for="password">Password:</Label>
+                                <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
+                                <Button className ='mb-3 py-2 signBtn' type="submit">Sign In</Button> <br />
+                                <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link>
+                            </Form>
+                        </div>
+                    </TabPane>
 
-              <TabPane tabId="2">
-                <Row>
-                  <Col sm="6">
-                  <EmployeeSignin />
-                  </Col>
-                </Row>
-              </TabPane>
-
-
-            </TabContent>
+                    <TabPane tabId="2">
+                        <EmployeeSignin />
+                    </TabPane>
+                </TabContent>
           </div>    
         );
     }
