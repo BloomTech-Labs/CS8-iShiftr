@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import classnames from 'classnames';
 import axios from 'axios';
 import EmployeeSignin from './employeeSignin';
+import '../css/signin.css'
 
 class Signin extends Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             username: '',
             password: '',
+            activeTab: '1'
         }
         this.loginHandler = this.loginHandler.bind(this);
 
@@ -40,38 +43,70 @@ class Signin extends Component {
             console.log('sign in error', err);
         });
     };
+
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+          this.setState({
+            activeTab: tab
+          });
+        }
+    }
     
     render() {
         return (
-            <div>
-            <div>
-                
-                <Form className = "form" onChange={this.inputHandler} onSubmit={this.loginHandler}>
-                    <p>Employers sign in here</p>
+            <div className='centerContent py-5'>
+                <Nav tabs className = 'justify-content-center col-6' >
+                    <NavItem className ='halfWidth'>
+                        <NavLink
+                        className ='fullWidth border-white' 
+                        onClick={() => { this.toggle('1'); }}
+                        >
+                        Employer Sign In
+                        </NavLink>
+                    </NavItem>
+                    <NavItem className='halfWidth'>
+                        <NavLink
+
+                        className ='fullWidth border-white'
+                        onClick={() => { this.toggle('2'); }}
+                        >
+                        Employee Sign In
+                        </NavLink>
+                    </NavItem>
+                </Nav>
+            <TabContent activeTab={this.state.activeTab} className = 'col col-6 border border-danger'>
+              <TabPane tabId="1" className = 'col-12'>
+                <Row className = 'col-12 border border-dark'>                    
+                  <Form className="row col-8" onChange={this.inputHandler} onSubmit={this.loginHandler}>
                     <FormGroup row>
-                        <Label sm ={4} for="username">Username:</Label>
-                        <Col sm ={8}>
+                        <Label for="username">Username:</Label>
+                        <Col>
                             <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label sm = {4}for="password">Password:</Label>
-                        <Col sm ={8}>
+                        <Label for="password">Password:</Label>
+                        <Col>
                             <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
                         </Col>
                     </FormGroup>
-                    {/* <FormGroup row>
-                        <Label sm = {4}for="re-password">Re-pass:</Label>
-                        <Col sm ={8}>
-                            <Input type="password" name="re-password" id="#re-password" placeholder="Retype password" />
-                        </Col>
-                    </FormGroup> */}
                     <Button color = "primary" type="submit">Sign In</Button> <br />
                     <Link to="/"><Button color = "primary">Go Back</Button></Link>
-                </Form>
-            </div>
-            <EmployeeSignin />
-            </div>
+                  </Form>
+                </Row>
+              </TabPane>
+
+              <TabPane tabId="2">
+                <Row>
+                  <Col sm="6">
+                  <EmployeeSignin />
+                  </Col>
+                </Row>
+              </TabPane>
+
+
+            </TabContent>
+          </div>    
         );
     }
 }

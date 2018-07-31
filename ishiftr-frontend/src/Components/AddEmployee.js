@@ -66,7 +66,7 @@ class AddEmployee extends Component {
         }, config)
         .then((res) => {
             console.log(res.data);
-            this.props.history.push('/Employees');
+            this.props.history.push('/admin-dashboard/Employees');
         })
         .catch(function (error) {
             console.log('there is an error', error);

@@ -20,7 +20,7 @@ class Dashboard extends Component {
     super(props)
     this.state = {
       employee: '',
-      timeOffDate: Date,
+      timeOffDate: null,
       timeOffReason: ''
     }
   }

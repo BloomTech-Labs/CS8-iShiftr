@@ -1,0 +1,22 @@
+.centerContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.halfWidth{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 4px;
+}
+
+.fullWidth{
+    width: 100%;
+    background-color: white;
+}
+
+.halfWidth:hover{
+    border-top: 4px solid #0092C1;
+}

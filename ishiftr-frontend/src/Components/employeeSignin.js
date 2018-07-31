@@ -39,7 +39,6 @@ class EmployeeSignin extends Component {
         return (
             <div>
                 <Form className = "form" onChange={this.inputHandler} onSubmit={this.loginHandler}>
-                    <p>Employees sign in here</p>
                     <FormGroup row>
                         <Label sm ={4} for="username">Username:</Label>
                         <Col sm ={8}>
