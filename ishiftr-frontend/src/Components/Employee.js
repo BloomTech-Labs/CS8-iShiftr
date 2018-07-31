@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {CardText} from 'reactstrap';
+import moment from 'moment';
 import '../css/employee.css';
 
 class Employee extends Component {
@@ -50,7 +51,7 @@ class Employee extends Component {
                     <fieldset className='fieldset px-2'>
                         <legend className = 'legend'>Requested Time Off:</legend>
                         <div>
-                          July 20th:  <input className = 'ml-2' type="checkbox" name="vehicle" value="coming form state" /><span className = 'ml-2'>Approved</span><br/>
+                          {moment(this.state.employee.timeOffDate).format('LL')}  <input className = 'ml-2' type="checkbox" name="vehicle" value="coming form state" /><span className = 'ml-2'>Approved</span><br/>
                           July 20th:  <input className = 'ml-2' type="checkbox" name="vehicle" value="coming from state" /><span className = 'ml-2'>Approved</span>                            
                         </div>                                               
                     </fieldset>

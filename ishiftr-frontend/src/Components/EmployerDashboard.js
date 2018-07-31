@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
 import { Route, withRouter, Link} from 'react-router-dom';
-
-//import { Breadcrumb, BreadcrumbItem} from 'reactstrap';
-
-//import Signin from './SignIn';
-//import SignUp from './Signup';
 import ShiftSchedule from './ShiftSchedule';
 import EmployeesList from './EmployeesList';
 import CreateSchedule from './CreateSchedule';

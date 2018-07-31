@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios';
 
 class EmployeeSignin extends Component {
@@ -28,7 +28,7 @@ class EmployeeSignin extends Component {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
             localStorage.setItem('id', response.data.id);
-                this.props.history.push('/ShiftSchedule');
+                this.props.history.push('/Dashboard');
         })
         .catch(err => {
             console.log('sign in error', err);
@@ -37,26 +37,18 @@ class EmployeeSignin extends Component {
     
     render() {
         return (
-            <div>
-                <Form className = "form" onChange={this.inputHandler} onSubmit={this.loginHandler}>
-                    <FormGroup row>
-                        <Label sm ={4} for="username">Username:</Label>
-                        <Col sm ={8}>
-                            <Input type="text" name="username" id="#username" placeholder="enter username" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label sm = {4}for="password">Password:</Label>
-                        <Col sm ={8}>
-                            <Input type="password" name="password" id="#password" placeholder="enter password" />
-                        </Col>
-                    </FormGroup>
-                    <Button color = "primary" type="submit">Sign In</Button> <br />
-                    <Link to="/"><Button color = "primary">Go Back</Button></Link>
-                </Form>
-            </div>
+            <div className = 'centeredContend'>                    
+            <Form className="col-12" onChange={this.inputHandler} onSubmit={this.loginHandler}>
+                <Label for="username">Employee username:</Label>
+                <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
+                <Label for="password">Empoloyee password:</Label>
+                <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
+                <Button className = 'mb-3 py-2 signBtn'type="submit">Sign In</Button> <br />
+                <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link>
+            </Form>
+        </div>
         );
     }
 }
 
-export default employeeSignin;
+export default withRouter(EmployeeSignin);

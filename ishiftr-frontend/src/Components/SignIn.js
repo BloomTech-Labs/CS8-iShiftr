@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import classnames from 'classnames';
 import axios from 'axios';
+import EmployeeSignin from './employeeSignin';
+import '../css/signin.css'
 
 class Signin extends Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             username: '',
             password: '',
+            activeTab: '1'
         }
         this.loginHandler = this.loginHandler.bind(this);
 
@@ -28,7 +32,7 @@ class Signin extends Component {
         //     username: this.state.username,
         //     password: this.state.password
         // })
-        axios.post('http://localhost:5000/api/employerLogin', this.state)
+        axios.post('https://ishiftr-db.herokuapp.com/api/employerLogin', this.state)
         .then(response => {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
@@ -39,33 +43,55 @@ class Signin extends Component {
             console.log('sign in error', err);
         });
     };
+
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+          this.setState({
+            activeTab: tab
+          });
+        }
+    }
     
     render() {
         return (
-            <div>
-                <Form className = "form" onChange={this.inputHandler} onSubmit={this.loginHandler}>
-                    <FormGroup row>
-                        <Label sm ={4} for="username">Username:</Label>
-                        <Col sm ={8}>
-                            <Input type="text" name="username" id="#username" placeholder="enter username" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label sm = {4}for="password">Password:</Label>
-                        <Col sm ={8}>
-                            <Input type="password" name="password" id="#password" placeholder="enter password" />
-                        </Col>
-                    </FormGroup>
-                    {/* <FormGroup row>
-                        <Label sm = {4}for="re-password">Re-pass:</Label>
-                        <Col sm ={8}>
-                            <Input type="password" name="re-password" id="#re-password" placeholder="Retype password" />
-                        </Col>
-                    </FormGroup> */}
-                    <Button color = "primary" type="submit">Sign In</Button> <br />
-                    <Link to="/"><Button color = "primary">Go Back</Button></Link>
-                </Form>
-            </div>
+            <div className='centerContent py-5'>
+                <Nav tabs className = 'justify-content-center col col-4 mx-0 px-0 nav-border' >
+                    <NavItem className ='mx-0 tab-navs bg-colored'>
+                        <NavLink
+                            className ='no-border mx-0 px-0 bg-colored' 
+                            onClick={() => { this.toggle('1'); }}
+                            >
+                            Employer Sign In
+                        </NavLink>
+                    </NavItem>
+                    <NavItem className='mx-0 tab-navs bg-colored'>
+                        <NavLink
+                            className ='no-border mx-0 px-0 bg-colored'
+                            onClick={() => { this.toggle('2'); }}
+                            >
+                            Employee Sign In
+                        </NavLink>
+                    </NavItem>
+                </Nav>
+                <TabContent activeTab={this.state.activeTab} className = 'col col-4 py-4 content-border shadow'>
+                    <TabPane tabId="1">
+                        <div className = 'centeredContend'>                    
+                            <Form className="col-12" onChange={this.inputHandler} onSubmit={this.loginHandler}>
+                                <Label for="username">Username:</Label>
+                                <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
+                                <Label for="password">Password:</Label>
+                                <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
+                                <Button className ='mb-3 py-2 signBtn' type="submit">Sign In</Button> <br />
+                                <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link>
+                            </Form>
+                        </div>
+                    </TabPane>
+
+                    <TabPane tabId="2">
+                        <EmployeeSignin />
+                    </TabPane>
+                </TabContent>
+          </div>    
         );
     }
 }

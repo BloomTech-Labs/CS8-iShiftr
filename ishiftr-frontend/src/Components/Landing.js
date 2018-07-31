@@ -6,7 +6,18 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 //import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import '../css/Landing.css';
 
+let url;
+
 class Landing extends React.Component {
+
+    checkLogin = () => {
+        let id = localStorage.getItem('id');
+        if (id){
+            return url = '/admin-dashboard'
+        } else {
+           return url = '/Signup'
+        }       
+    }
 
     render() {
 
@@ -47,14 +58,14 @@ class Landing extends React.Component {
                         imagesArr={imagesArr}
                         />
                 </div>
-                <div className="landing-text">
+                <div className="landing-text px-5 mb-4">
                     <p className="blurb">
                     iShiftr gives you the flexibility of creating schedules for your employees in the most efficient way. 
                     We adapt to your company’s needs by automating the way you manage employee hours and sudden changes, 
-                    such as absences and requested time-off, all with ease. What are you waiting for? Start Scheduling with iShiftr today!                       
+                    such as absences and requested time-off, all with ease. What are you waiting for?<br/> Start Scheduling with iShiftr today!                       
                     </p>
                     <div>
-                        <Link to='/ShiftSchedule'><Button className="scheduleButton" color="primary"> Schedule Now </Button></Link>
+                        <Link to={this.checkLogin()}><Button className="scheduleButton " color="primary"> Schedule Now </Button></Link>
                     </div>
                 </div>
             </div>

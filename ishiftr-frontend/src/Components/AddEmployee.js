@@ -53,7 +53,7 @@ class AddEmployee extends Component {
                 'Authorization': "Bearer " + authToken            
             },
         };
-        axios.post(`http://localhost:5000/api/${id}/createEmployee`, {
+        axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/createEmployee`, {
            email: this.state.email,
            firstName: this.state.firstName,
            lastName: this.state.lastName,
@@ -66,7 +66,7 @@ class AddEmployee extends Component {
         }, config)
         .then((res) => {
             console.log(res.data);
-            this.props.history.push('/Employees');
+            this.props.history.push('/admin-dashboard/Employees');
         })
         .catch(function (error) {
             console.log('there is an error', error);
