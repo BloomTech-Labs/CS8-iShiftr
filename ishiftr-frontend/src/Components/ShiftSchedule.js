@@ -75,14 +75,6 @@ class ShiftSchedule extends React.Component {
                             )}
                     </div> 
 
-
-                    
-                    
-                    <div>
-                    
-                    </div>
-                <hr />
-
                 </div>                                    
         );
     }

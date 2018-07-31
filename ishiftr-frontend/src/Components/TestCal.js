@@ -42,17 +42,13 @@ class Schedule extends React.Component {
     render() {
         console.log(this.state.employees);
         return (
-                
-                    
                         <div className = 'col px-4 mx-1 border-right border-dark' >
                             <div className='schedule-element-header mb-4'>
                                 <div><strong>{this.state.schedules.day}</strong></div>
                                 <div>{moment(this.state.schedules.date).format('LL')}</div> 
                             </div>
                             <EmployeeOnShift day={this.state.schedules.day} employees={this.state.employees}/>
-                        </div>
-                    
-                 
+                        </div>       
         );
     }
 }

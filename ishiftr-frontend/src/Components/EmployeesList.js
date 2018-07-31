@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Notifications, {notify} from 'react-notify-toast';
+import { Alert } from 'reactstrap';
 import Employee from './Employee';
 import Loading from './Loading';
 import '../css/employeesList.css';
+let myColor = { background: '#0E1717', text: "#FFFFFF"}; 
 
 
 const id = localStorage.getItem('id');
@@ -18,15 +21,15 @@ class EmployeesList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        employees: ''
-
+            employees: '',
+            deletMsg: ''
         };
 
         this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleEdit = (id, obj) => {
-        axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
+        axios.put(`http://localhost:5000/api/editEmployee/${id}`, obj)
         .then((res) => {
             console.log(res.data);
         })
@@ -36,25 +39,27 @@ class EmployeesList extends React.Component {
     }
 
     handleDelete(id){
-        axios.delete(`https://ishiftr-db.herokuapp.com/api/deleteEmployee/${id}`, config)
-        .then((res) => {
-            console.log(res.data);
+        axios.delete(`http://localhost:5000/api/deleteEmployee/${id}`, config)
+        .then((res) => {          
             this.setState({
-                employees: this.state.employees
+                deletMsg: res.data.Message
             })
+            notify.show(this.state.deletMsg, myColor);
+            
         })
         .catch(function (error) {
             console.log('there was an error deleting employee', error);
         });
+        console.log("data from delete: ", this.state.employees);
     }
 
     componentDidMount() {  
     
-        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
+        axios.get(`http://localhost:5000/api/${id}/employees`, config)
         .then((res) => {
-            console.log(res.data);
             this.setState({
                 employees : res.data
+
             })
         })
         .catch(function (error) {
@@ -64,7 +69,17 @@ class EmployeesList extends React.Component {
 
     render() {
         return (
-            <div className = 'pl-5'>            
+            <div className = 'pl-5'>
+
+            { this.state.deletMsg? (
+
+                    <div className='main mt-4'>
+                        <Notifications />
+                    </div>
+                ) : (
+                    ''
+                )
+            }          
                 {
                     this.state.employees ? (           
                     <div className = 'row'>

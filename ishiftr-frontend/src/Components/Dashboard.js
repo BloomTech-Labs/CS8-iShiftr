@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Button, Row } from "reactstrap";
 import axios from 'axios';
-import SignOut from "./Signout";
 import EmployeeMenu from "../Components/employeeMenu";
-import { Breadcrumb, BreadcrumbItem, Container, Col } from "reactstrap";
+import { Container, Col } from "reactstrap";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import "../css/Dashboard.css";
 
@@ -26,7 +25,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount(){
-    axios.get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
+    axios.get(`http://localhost:5000/api/employee/${id}`, config)
         .then((res) => {
             console.log(res.data);
             this.setState({
@@ -47,7 +46,7 @@ class Dashboard extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
+    axios.put(`http://localhost:5000/api/employee/${id}/editEmployee`, {
       timeOffDate: this.state.timeOffDate,
       timeOffReason: this.state.timeOffReason
     }, config)
