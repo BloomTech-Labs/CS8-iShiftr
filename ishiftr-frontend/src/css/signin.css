@@ -59,9 +59,11 @@
 }
 
 .canclBtn {
-    background-color: #4ACCF6;
+    background-color: #4ACCF6 !important;
+    border: none !important;
 }
 
 .signBtn {
-    background-color: #00B9F4
+    background-color: #00B9F4 !important;
+    border: none !important;
 }

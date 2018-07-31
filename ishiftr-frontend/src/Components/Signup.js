@@ -93,7 +93,7 @@ class SignUp extends Component {
         </div>*/}
 
             <form onChange={this.inputHandler} onSubmit={this.signUpHandler} className = 'row center col-12 '>
-                <div className="col col-6 border center shadow py-4">
+                <div className="col col-6 center py-4">
                     <div className = 'col col-8 center'>
                         <h1>Sign Up</h1>
                         <p>Please fill in this form to create an account.</p>

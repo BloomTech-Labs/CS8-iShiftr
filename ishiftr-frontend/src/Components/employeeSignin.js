@@ -40,9 +40,9 @@ class EmployeeSignin extends Component {
             <div className = 'centeredContend'>                    
             <Form className="col-12" onChange={this.inputHandler} onSubmit={this.loginHandler}>
                 <Label for="username">Employee username:</Label>
-                <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
-                <Label for="password">Empoloyee password:</Label>
-                <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
+                <Input type="text" name="username" id="employeeUsername" placeholder="enter username" />
+                <Label for="password">Employee password:</Label>
+                <Input type="password" name="password" id="employeePassword" placeholder="enter password" />
                 <Button className = 'mb-3 py-2 signBtn'type="submit">Sign In</Button> <br />
                 <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link>
             </Form>
