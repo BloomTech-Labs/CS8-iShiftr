@@ -35,7 +35,7 @@ class SignUp extends Component {
         e.preventDefault();        
         // axios.post('https://ishiftr-db.herokuapp.com/', formData, {
         console.log(this.props);
-        axios.post('http://localhost:5000/api/register',this.state)
+        axios.post('https://ishiftr-db.herokuapp.com/api/register',this.state)
         .then((res) =>{
             console.log(res);
             this.props.history.push('/admin-dashboard')
