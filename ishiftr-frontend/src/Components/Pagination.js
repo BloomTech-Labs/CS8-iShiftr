@@ -59,7 +59,7 @@ class Pagination extends React.Component {
         var totalPages = Math.ceil(totalItems / pageSize);
  
         var startPage, endPage;
-        if (totalPages <= 7) {
+        if (totalPages <= 10) {
             // less than 10 total pages so show all
             startPage = 1;
             endPage = totalPages;
