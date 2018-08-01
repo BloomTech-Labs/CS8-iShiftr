@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import '../css/ShiftSchedule.css';
 import Schedule from './TestCal';
 import Pagination from './Pagination';
+
 
 const id = localStorage.getItem('id');
 const authToken = localStorage.getItem('authToken');
@@ -63,10 +65,10 @@ class ShiftSchedule extends React.Component {
                         <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
                         </div>
                         </div>
-                        <button className='border'>
+                        <Link to = '/admin-dashboard/editShift'><button className='border'>
                             <span>Edit Shift</span>
                             <i className="fas fa-pencil-alt"></i>
-                        </button>
+                        </button> </Link>
                     </div>
                     <div className ='row col-12 mt-3'>            
                             

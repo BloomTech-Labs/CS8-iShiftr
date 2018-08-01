@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import '../css/stripe.css';
-import '../css/ShiftSchedule.css';
 import CheckoutForm from './Stripe';
 
 class Billing extends Component {
     render() {
         return (
-            <div>
-                <div className = 'mcContainer'>
+                <div className ='row justify-content-center'>
+                        <h1 className = 'col col-12 centered'>Billing</h1>
                         <StripeProvider apiKey="pk_test_6CbxWkRuf3AOplwNMZEd6OPk">
-                            <div className="billing">
-                                <h1>Billing</h1>
+                            <div className = 'col col-5 py-3'>
                                     <Elements>
                                         <CheckoutForm {...this.props} />
                                     </Elements>
                             </div>
                         </StripeProvider>              
                 </div>                                
-            </div>
         );
     }
 }

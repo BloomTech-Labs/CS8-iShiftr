@@ -45,21 +45,20 @@ class EmployeesList extends React.Component {
                 deletMsg: res.data.Message
             })
             notify.show(this.state.deletMsg, myColor);
-            
+            this.componentDidMount();    
         })
         .catch(function (error) {
             console.log('there was an error deleting employee', error);
         });
         console.log("data from delete: ", this.state.employees);
+        
     }
 
     componentDidMount() {  
-    
         axios.get(`http://localhost:5000/api/${id}/employees`, config)
         .then((res) => {
             this.setState({
                 employees : res.data
-
             })
         })
         .catch(function (error) {

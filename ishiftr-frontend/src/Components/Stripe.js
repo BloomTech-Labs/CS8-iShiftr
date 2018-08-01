@@ -34,7 +34,7 @@ class CheckoutForm extends React.Component {
  render() {
    return (
      <div>
-       <h3>Enter Your Payment Info Below:</h3>
+       <h4 className ='centered'>Enter Your Payment Info Below:</h4>
        <div className="cardNumber">
           <CardNumberElement className="cardInput" placeholder="CC#" />
           <CardExpiryElement className="cardInput" placeholder="EXP" />

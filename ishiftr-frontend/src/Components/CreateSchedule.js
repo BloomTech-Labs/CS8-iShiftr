@@ -36,7 +36,12 @@ class CreateSchedule extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         let formData = this.state;
-        console.log(formData.day);
+        let newDate = new Date(formData.date);
+        let day = newDate.getDate() + 1;
+        let month= newDate.getMonth() + 1;
+        let year = newDate.getFullYear()
+        formData.date = `${month}-${day}-${year}`;
+        console.log(formData.day, formData.date);
         axios.post(`http://localhost:5000/api/createSchedule/${id}`, {
                 day: formData.day,
                 date: formData.date,
@@ -54,7 +59,8 @@ class CreateSchedule extends Component {
     render() {
         return (               
             <div className = 'row justify-content-center'>              
-                <div className = 'col col-8 justify-content-center'>
+                <div className = 'col col-6 justify-content-center border border-dark rounded p-4'>
+                   <h5 className = 'font-weight-bold mb-5'>Fill out the form below to create your schedule:</h5>
                     <form className = 'mb-2' onChange = {this.handleFormChange}>
                         <span className = 'mr-3'>Date: </span>
                         <input className = 'px-3' type="date" name="date"/>
@@ -66,22 +72,24 @@ class CreateSchedule extends Component {
                         <input type="time" name="endTime" value = {this.state.endTime}/>
                     </form>
                         <form className = 'mb-3' onChange = {this.handleFormChange} onSubmit = {this.onSubmit}>
-                            <div className = 'mb-4'>
+                           <div className = 'mb-4 flexBox'>
                                 <span className ='mr-2'>Day: </span>
-                                <input type="radio" name="day" value="Monday"/>M
-                                <input type="radio" name="day" value="Tuesday"/>T
-                                <input type="radio" name="day" value="Wednesday"/>W 
-                                <input type="radio" name="day" value="Thursday"/>Th<br/>
-                                <input type="radio" name="day" value="Friday"/>F
-                                <input type="radio" name="day" value="Saturday"/>SAT
-                                <input type="radio" name="day" value="Sunday"/>S<br/>
+                                <div>
+                                    <input type="radio" name="day" value="Monday"/>Mon
+                                    <input type="radio" name="day" value="Tuesday"/>Tues
+                                    <input type="radio" name="day" value="Wednesday"/>Wed 
+                                    <input type="radio" name="day" value="Thursday"/>Thu<br/>
+                                    <input type="radio" name="day" value="Friday"/>Fri
+                                    <input type="radio" name="day" value="Saturday"/>Sat
+                                    <input type="radio" name="day" value="Sunday"/>Sun<br/>
+                                </div>
                             </div>
 
                             <div className = 'mb-3'>
                                 <input type="checkbox" name="duplicate" value="duplicate"/> Duplicate Previous week Schedule<br/>
                                 <input type="checkbox" name="autoAsign" value="autoAsign"/> Auto Asign Shifts
                             </div>
-                            <Button color='primary' className='btnGen mb-3 px-5' type="submit">Generate Schedule</Button>
+                            <Button className='btnGen px-5' type="submit">Generate Schedule</Button>
                     </form>  
                 </div>   
             </div>                                
