@@ -78,9 +78,9 @@ class Signin extends Component {
                         <div className = 'centeredContend'>                    
                             <Form className="col-12" onChange={this.inputHandler} onSubmit={this.loginHandler}>
                                 <Label for="username">Username:</Label>
-                                <Input type="text" name="username" id="#employerUsername" placeholder="enter username" />
+                                <Input type="text" name="username" id="#employerUsername" placeholder="enter username" required />
                                 <Label for="password">Password:</Label>
-                                <Input type="password" name="password" id="#employerPassword" placeholder="enter password" />
+                                <Input type="password" name="password" id="#employerPassword" placeholder="enter password" required />
                                 <Button className ='mb-3 py-2 signBtn' type="submit">Sign In</Button> <br />
                                 <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link>
                             </Form>
