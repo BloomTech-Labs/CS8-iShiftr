@@ -12,7 +12,8 @@ class Signin extends Component {
         this.state = {
             username: '',
             password: '',
-            activeTab: '1'
+            activeTab: '1',
+            isLoading: false
         }
         this.loginHandler = this.loginHandler.bind(this);
 
@@ -23,11 +24,14 @@ class Signin extends Component {
         event.preventDefault();
         let new_state = this.state;
         new_state[event.target.name] = event.target.value;
-        this.setState({ new_state })
+        this.setState({ new_state })        
     }
 
     loginHandler(e) {
         e.preventDefault();
+        this.setState({
+            isLoading: true
+        })
         // this.setState({
         //     username: this.state.username,
         //     password: this.state.password
@@ -81,7 +85,8 @@ class Signin extends Component {
                                 <Input type="text" name="username" id="#employerUsername" placeholder="enter username" required />
                                 <Label for="password">Password:</Label>
                                 <Input type="password" name="password" id="#employerPassword" placeholder="enter password" required />
-                                <Button className ='mb-3 py-2 signBtn' type="submit">Sign In</Button> <br />
+                                {this.state.isLoading ?
+                                <Button className ='mb-3 py-2 signBtn' isLoading={this.state.isLoading} type="submit">Please Wait, Signing in <i className="fa fa-spinner fa-spin"></i></Button> : <Button className ='mb-3 py-2 signBtn' type="submit">Sign In</Button>} <br />
                                 <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link>
                             </Form>
                         </div>
