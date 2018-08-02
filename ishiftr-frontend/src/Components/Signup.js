@@ -110,7 +110,7 @@ class SignUp extends Component {
                         <label for="email"><b>Email:</b></label>
                         <input value={this.state.email} type="text" name="email" id="email" placeholder="Your email" required />
                         <label for="password"><b>Password:</b></label>
-                        <input value={this.state.password} type="text" name="password" id="password" placeholder="Password" required />
+                        <input value={this.state.password} type="password" name="password" id="password" placeholder="Password" required />
                         <label for="phoneNumber"><b>Phone Number:</b></label>
                         <input value={this.state.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter a phone number" required />                                    
 
