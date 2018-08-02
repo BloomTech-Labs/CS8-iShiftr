@@ -40,8 +40,6 @@ RUN yarn start or npm start to get your App up and running on http://localhost:3
 
 # iShiftr API
 
----
-
 ## Endpoints
 
 ---
@@ -215,6 +213,15 @@ Gets the logged in Employee's data/information if the correct token is passed.
 Edits the password of the logged in Employee if the token and correct information is passed
 
 ---
+
+Edits the password of the logged in Employee if the token and correct information is passed.
+
+---
+
+| Field           | Type       | Required |
+| --------------  |------------|----------|
+| Password        | String(5+) | Yes      |
+| Confirm Password| String     | Yes      |
 
 # Team of ```iShiftr```
 ### - Cristina Laryea [@crispad](https://github.com/crispad)
