@@ -16,6 +16,7 @@ class SignUp extends Component {
             firstName: '',
             lastName: '',
             phoneNumber: '',
+            isLoading: false
         }
         this.inputHandler = this.inputHandler.bind(this);
         this.signUpHandler = this.signUpHandler.bind(this);
@@ -32,7 +33,10 @@ class SignUp extends Component {
 
 
     signUpHandler = (e) => {
-        e.preventDefault();        
+        e.preventDefault(); 
+        this.setState({
+            isLoading: true
+        })       
         // axios.post('https://ishiftr-db.herokuapp.com/', formData, {
         console.log(this.props);
         axios.post('https://ishiftr-db.herokuapp.com/api/register',this.state)
@@ -115,7 +119,9 @@ class SignUp extends Component {
                         <input value={this.state.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter a phone number" required />                                    
 
                         <div className="clearfix">
-                            <button type="submit" class="signupbtn">Sign Up</button>
+                        {this.state.isLoading ?
+                            <button type="submit" class="signupbtn" isLoading={this.state.isLoading}>Please Wait, Signing Up <i className="fa fa-spinner fa-spin"></i></button> : 
+                            <button type="submit" class="signupbtn">Sign Up</button>}
                             <Link to='/'><button type="button" class="cancelbtn">Go Back</button></Link>
                             
                         </div>
