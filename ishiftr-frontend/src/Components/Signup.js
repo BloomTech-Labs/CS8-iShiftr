@@ -38,7 +38,7 @@ class SignUp extends Component {
         axios.post('http://localhost:5000/api/register',this.state)
         .then((res) =>{
             console.log(res);
-            this.props.history.push('/admin-dashboard')
+            this.props.history.push('/Signin')
         })
         .catch(function (error) {
             console.log('there is an error signing up', error);

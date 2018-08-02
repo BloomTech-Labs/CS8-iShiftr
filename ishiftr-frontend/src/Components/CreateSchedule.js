@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Container, Button} from 'reactstrap';
+import Notifications, {notify} from 'react-notify-toast';
 import '../css/CreateSchedule.css';
 import axios from 'axios';
 
@@ -51,6 +52,7 @@ class CreateSchedule extends Component {
                 //autoAsign: formData.autoAsign,
             }, config)
             .then(response => {
+                notify.show("Success! You made a schedule for one day.");
             })
             .catch(error => { console.log('Error: could not save data to db') });         
     }
@@ -58,9 +60,13 @@ class CreateSchedule extends Component {
 
     render() {
         return (               
-            <div className = 'row justify-content-center'>              
-                <div className = 'col col-6 justify-content-center border border-dark rounded p-4'>
-                   <h5 className = 'font-weight-bold mb-5'>Fill out the form below to create your schedule:</h5>
+            <div className = 'row justify-content-center'>
+                <div className='main mt-4'>
+                    <Notifications />
+                </div>              
+                <div className = 'col col-6 justify-content-center border rounded p-4'>
+                   <h5 className = 'font-weight-bold centered'>Fill out the form below to create your schedule:</h5>
+                   <p className ='mb-5 centered'>Notice that the schedule can only be created for one day at a time.</p>
                     <form className = 'mb-2' onChange = {this.handleFormChange}>
                         <span className = 'mr-3'>Date: </span>
                         <input className = 'px-3' type="date" name="date"/>

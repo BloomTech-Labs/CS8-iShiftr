@@ -37,7 +37,7 @@ class Signin extends Component {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
             localStorage.setItem('id', response.data.id);
-                this.props.history.push('/admin-dashboard/ShiftSchedule');
+                this.props.history.push('/admin-dashboard');
         })
         .catch(err => {
             console.log('sign in error', err);

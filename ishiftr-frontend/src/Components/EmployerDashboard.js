@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, withRouter, Link} from 'react-router-dom';
+import axios  from 'axios';
 import ShiftSchedule from './ShiftSchedule';
 import EmployeesList from './EmployeesList';
 import CreateSchedule from './CreateSchedule';
@@ -13,8 +14,39 @@ import Menu from './Menu';
 import EditShift from './EditShift';
 
 class EmployerDashboard extends Component {
-  render() {
+    constructor(props){
+        super(props)
+        this.state = {
+            employer: ''
+        }
+    }
+
+
+    componentDidMount(){
+        const id = localStorage.getItem('id');
+        const authToken = localStorage.getItem('authToken');
+        const config = {
+            headers: {
+                'Authorization': "Bearer " + authToken            
+            },
+        };
+        axios
+            .get(`http://localhost:5000/api/employer/${id}`, config)
+            .then(response => {
+                this.setState({ employer: response.data });   
+            })
+            .catch(error => {
+                console.log("There was an error fetching the employer's data", error);
+            });
+            
+    }
+
+
+  render() {  
+      console.log(this.state.employer)
     let path = this.props.location.pathname.split('/');
+    let firstName = this.state.employer.firstName
+    let lastName = this.state.employer.lastName
     return (
 
         // A wrapper for all the contains of the dashboard 
@@ -39,6 +71,18 @@ class EmployerDashboard extends Component {
                     <Menu />  
                 </div>
                 <div className='col col-10'>
+                    <Route exact path = '/admin-dashboard' 
+                        render={() => 
+                        <div className = 'py-5 centeredDash border'>
+                            <div className = 'traspBackground'>
+                                <h4>Welcome to your dashboard, <span className = 'capitalText'>{firstName} {lastName}</span>!</h4>
+                                <p>Make a selection from the menu items on the left.</p>
+                                <p>To start, click the Employees section to begin adding your employees.</p>
+                            </div>
+                        </div>
+
+                     }
+                     />
                     <Route path="/admin-dashboard/ShiftSchedule" component={ShiftSchedule} />
                     <Route path="/admin-dashboard/Employees" component={EmployeesList} />
                     <Route path="/admin-dashboard/Create" component={CreateSchedule} />

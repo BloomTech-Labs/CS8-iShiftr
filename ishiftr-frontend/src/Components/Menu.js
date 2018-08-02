@@ -1,8 +1,54 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 import '../css/Menu.css';
 
 class Menu extends Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            employer: '',
+            check: false
+        }
+        
+    }
+
+    // checkPayment = () => {
+    //     console.log("paid:", this.state.employer.paid);
+    //     console.log("check", this.state.check)
+        
+    //     if (this.state.employer.paid){
+    //         this.setState({
+    //             check: true
+    //         })
+    //     }
+              
+    // }
+
+
+    componentDidMount(){
+        const id = localStorage.getItem('id');
+        const authToken = localStorage.getItem('authToken');
+        const config = {
+            headers: {
+                'Authorization': "Bearer " + authToken            
+            },
+        };
+        axios
+            .get(`http://localhost:5000/api/employer/${id}`, config)
+            .then(response => {
+                this.setState({ employer: response.data });   
+            })
+            .catch(error => {
+                console.log("There was an error fetching the employer's data", error);
+            });            
+    }
+    
+
+    
+
+    
     render() {
         return (
             <div className='menu'>
@@ -18,4 +64,4 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+export default withRouter(Menu);

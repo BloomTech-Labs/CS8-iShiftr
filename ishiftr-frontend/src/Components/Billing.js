@@ -9,7 +9,7 @@ class Billing extends Component {
                 <div className ='row justify-content-center'>
                         <h1 className = 'col col-12 centered'>Billing</h1>
                         <StripeProvider apiKey="pk_test_6CbxWkRuf3AOplwNMZEd6OPk">
-                            <div className = 'col col-5 py-3'>
+                            <div className = 'col col-5 py-2'>
                                     <Elements>
                                         <CheckoutForm {...this.props} />
                                     </Elements>
