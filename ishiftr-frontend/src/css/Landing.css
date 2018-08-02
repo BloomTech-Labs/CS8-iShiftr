@@ -51,7 +51,9 @@ body {
     height: 30px;
     font-size: 13px !important;
     background: #fff !important;
-    color: #1757B1 !important;
+    color: white;
     text-align: center;
     padding: 5px;
+    background: #00B9F4 !important;
+    border: none !important;
 }

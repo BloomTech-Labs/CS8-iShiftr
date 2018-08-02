@@ -16,6 +16,7 @@ class SignUp extends Component {
             firstName: '',
             lastName: '',
             phoneNumber: '',
+            isLoading: false
         }
         this.inputHandler = this.inputHandler.bind(this);
         this.signUpHandler = this.signUpHandler.bind(this);
@@ -32,10 +33,13 @@ class SignUp extends Component {
 
 
     signUpHandler = (e) => {
-        e.preventDefault();        
+        e.preventDefault(); 
+        this.setState({
+            isLoading: true
+        })       
         // axios.post('https://ishiftr-db.herokuapp.com/', formData, {
         console.log(this.props);
-        axios.post('http://localhost:5000/api/register',this.state)
+        axios.post('https://ishiftr-db.herokuapp.com/api/register',this.state)
         .then((res) =>{
             console.log(res);
             this.props.history.push('/Signin')
@@ -100,7 +104,7 @@ class SignUp extends Component {
                         <p>Already have an account? <Link to="/Signin" style={{color:"dodgerblue"}}>Sign In</Link></p>
                     </div>
                         <hr/>
-                    <div>
+                    <div className="signupForm">
                         <label for="username"><b>Username:</b></label>
                         <input value={this.state.username} type="text" name="username" id="username" placeholder="Choose a username" required />
                         <label for="firstName"><b>First Name:</b></label>
@@ -110,12 +114,14 @@ class SignUp extends Component {
                         <label for="email"><b>Email:</b></label>
                         <input value={this.state.email} type="text" name="email" id="email" placeholder="Your email" required />
                         <label for="password"><b>Password:</b></label>
-                        <input value={this.state.password} type="text" name="password" id="password" placeholder="Password" required />
+                        <input value={this.state.password} type="password" name="password" id="password" placeholder="Password" required />
                         <label for="phoneNumber"><b>Phone Number:</b></label>
                         <input value={this.state.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter a phone number" required />                                    
 
                         <div className="clearfix">
-                            <button type="submit" class="signupbtn">Sign Up</button>
+                        {this.state.isLoading ?
+                            <button type="submit" class="signupbtn" isLoading={this.state.isLoading}>Please Wait, Signing Up <i className="fa fa-spinner fa-spin"></i></button> : 
+                            <button type="submit" class="signupbtn">Sign Up</button>}
                             <Link to='/'><button type="button" class="cancelbtn">Go Back</button></Link>
                             
                         </div>

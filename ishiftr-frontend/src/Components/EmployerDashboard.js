@@ -31,7 +31,7 @@ class EmployerDashboard extends Component {
             },
         };
         axios
-            .get(`http://localhost:5000/api/employer/${id}`, config)
+            .get(`https://ishiftr-db.herokuapp.com/api/employer/${id}`, config)
             .then(response => {
                 this.setState({ employer: response.data });   
             })

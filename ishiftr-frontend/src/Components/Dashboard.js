@@ -25,7 +25,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount(){
-    axios.get(`http://localhost:5000/api/employee/${id}`, config)
+    axios.get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
         .then((res) => {
             console.log(res.data);
             this.setState({
@@ -46,7 +46,7 @@ class Dashboard extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:5000/api/employee/${id}/editEmployee`, {
+    axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
       timeOffDate: this.state.timeOffDate,
       timeOffReason: this.state.timeOffReason
     }, config)
