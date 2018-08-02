@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Container, Col} from 'reactstrap';
-import SignOut from './Signout';
-import Menu from '../Components/Menu';
-import '../css/ShiftSchedule.css';
 import axios from 'axios';
+import { Breadcrumb, BreadcrumbItem, Container, Col} from 'reactstrap';
+import '../css/ShiftSchedule.css';
+import '../css/settings.css'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const id = localStorage.getItem('id');
@@ -67,33 +66,35 @@ class Settings extends Component {
 
     render() {
         return (
-            <Container className="topContainer">
-                <div>
-                    <Col>
-                        <div>
+
+                <div className = 'row justify-content-center'>
+
+                    <div className = 'col col-6 pt-4 border rounded'>
+                    <div className = 'col col-12'>
+                            <p><strong>Account information:</strong></p>        
+
                             <div>
                                 Email: {this.state.employer.email}
                             </div>
-                            <div>
+                            <div className = 'mb-5'>
                                 Phone: {this.state.employer.phoneNumber}
                             </div>
-                        </div>
-                        <div>
-                            <Form onSubmit={this.passChanger} onChange={this.inputHandler}>
+
+                    <Form className = 'mt-5'onSubmit={this.passChanger} onChange={this.inputHandler}>
+                                <p><strong>Change your password:</strong></p>
                                 <FormGroup>
                                     <Label for="currentPassword">Current Password</Label>
                                     <Input required type="text" name="currentPassword" value={this.state.currentPassword} placeholder="Enter your current password" />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="newPassword">New Password</Label>
-                                    <Input required type="newPassword" name="newPassword" value={this.state.newPassword} placeholder="Enter your new password" />
+                                    <Input required type="password" name="newPassword" value={this.state.newPassword} placeholder="Enter your new password" />
                                 </FormGroup>
-                                <Button type='submit' disabled={!this.validateForm()}>Save</Button>
+                                <Button className = 'mb-4 submitBtn py-3'type='submit' disabled={!this.validateForm()}>Save</Button>
                             </Form>
                         </div>
-                    </Col>
+                    </div>
                 </div>
-            </Container>
         );
     }
 }

@@ -19,11 +19,15 @@ option {
     width: 50%;
     align-items: center;
     margin-top: 15px;
+    background-color: #4ACCF6 !important;
+    border: none !important;
 }
 
 .addButtons {
     display: flex;
     flex-direction: column;
+    background-color: #00B9F4 !important;
+    border: none !important;
 }
 
 .fade {

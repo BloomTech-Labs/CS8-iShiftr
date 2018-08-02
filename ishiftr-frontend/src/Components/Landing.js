@@ -1,9 +1,8 @@
 import React from 'react';
-// import {Redirect} from 'react-router'
 import { Link } from 'react-router-dom'
 import CoverFlow from 'coverflow-react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-//import { Form, FormGroup, Label, Input, Col } from 'reactstrap';
+
 import '../css/Landing.css';
 
 let url;
@@ -43,8 +42,8 @@ class Landing extends React.Component {
 
         return (
             <React.Fragment>
-            <div className="container">
-                <div className="nav">
+            <div className="container border">
+                <div className="nav border border-dark">
                     <ul className="buttons-header">
                         <Link to="/SignUp"><Button className="button-registration" color="primary">Sign Up</Button></Link>
                         <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>

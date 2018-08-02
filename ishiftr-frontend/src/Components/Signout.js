@@ -8,7 +8,7 @@ class SignOut extends Component {
             <div>
                 <Link to="/">
                     <Button className = 'bg-white border-white text-dark' type="submit" onClick={() => { 
-                        localStorage.removeItem("authToken"); localStorage.removeItem("id") }}>Sign Out
+                        localStorage.removeItem("authToken"); localStorage.removeItem("id"); localStorage.removeItem('employer'); }}>Sign Out
                     </Button>
                 </Link>
             </div>
