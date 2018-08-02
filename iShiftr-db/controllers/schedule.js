@@ -71,8 +71,24 @@ const getEmpsSched = (req, res) => {
     }
 }
 
+const deleteSchedule = (req, res) => {
+    Schedule
+        .findByIdAndRemove(req.params.id)
+        .then((response) => {
+            if(response) {
+                res.status(200).json({ Message: 'Schedule successfully deleted!' });
+            } else {
+                res.status(404).json({Message:"Schedule does not exist"})
+            }
+        })
+        .catch((error) => {
+            res.status(500).json({ Error: 'There was an error deleting the Schedule', error })
+        });
+}
+
 module.exports = {
     createSchedule,
     getSchedule,
-    getEmpsSched
+    getEmpsSched,
+    deleteSchedule
 };

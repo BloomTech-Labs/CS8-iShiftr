@@ -4,7 +4,7 @@ const {Schema} = mongoose;
 const Employee = require('./EmployeeModel');
 
 const ScheduleSchema = new Schema({
-    date:Date,
+    date:String,
     day: String,
     startTime:String,
     endTime:String,
