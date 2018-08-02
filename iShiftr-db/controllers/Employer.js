@@ -1,4 +1,5 @@
 const Employer = require('../models/EmployerModel');
+mysecret = 'authentication isnt working';
 
 const createEmployer = (req, res) => {
     const { username, password, email, firstName, lastName, phoneNumber } = req.body;
@@ -28,7 +29,7 @@ const getEmployer = (req, res) => {
 }
 
 const editEmployerPassword = (req, res) => {
-    console.log("finding the employer: ",req);
+    console.log("finding the employer: ", req.body.employer);
     // const { _id, username } = req.employer;
     const { currentPassword, newPassword } = req.body;
 
@@ -45,9 +46,8 @@ const editEmployerPassword = (req, res) => {
     //     expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
     // };
 
-    // const token = jwt.sign(payload, process.env.MY_SECRET);
-    console.log(req.body._id)
-    const id = req.body._id || req.params.id
+    // const token = jwt.sign(payload, mysecret);
+    const id = req.body.employer.id || req.params.id
 
     Employer
         .findById(id)

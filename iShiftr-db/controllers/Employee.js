@@ -126,16 +126,16 @@ const editEmployeePassword = (req, res) => {
 };
 
 const editEmployee = (req, res) => {
-    const { username } = req.body;
-    console.log(username);
-    if (username == null) {
-        return res
-            .status(404)
-            .json({ error: "User not found." });
-    }
+    const { id } = req.params;
+    console.log(id);
+    // if (user == null) {
+    //     return res
+    //         .status(404)
+    //         .json({ error: "User not found." });
+    // }
 
     Employee
-        .findByIdAndUpdate(req.params.id, req.body, {new :true})
+        .findByIdAndUpdate(id, req.body, {new :true})
         .then(updatedEmployee => {
             res.status(200).json({Message: "Employee updated"});
         })

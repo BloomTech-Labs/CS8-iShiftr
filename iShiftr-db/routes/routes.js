@@ -22,7 +22,8 @@ const {
 const {
   createSchedule,
   getSchedule,
-  getEmpsSched
+  getEmpsSched,
+  deleteSchedule
 } = require("../controllers/schedule");
 const {
   paymentApi
@@ -63,6 +64,9 @@ module.exports = server => {
   // get the schedule of every employee
   server.route("/api/:id/schedule").get(authenticate, isAdmin, getEmpsSched);
   
+  // delete one schedule
+  server.route("/api/schedule/:id").delete(authenticate, isAdmin, deleteSchedule);
+  
   //--------------------------Employee Routes--------------------------//
   // Employee login
   server.route("/api/employeeLogin").post(employeeLogin);
@@ -72,6 +76,9 @@ module.exports = server => {
 
   // editing the employee's password
   server.route("/api/employee/:id/editPassword").put(authenticate, editEmployeePassword);
+  
+  //editing the employee
+  server.route("/api/employee/:id/editEmployee").put(authenticate, editEmployee)
 
   // stripe
   server.post('/api/:id/charge', (req, res) => {
