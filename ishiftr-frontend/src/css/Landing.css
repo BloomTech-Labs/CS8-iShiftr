@@ -1,5 +1,5 @@
 body {
-    padding: 10px;
+    
 }
 
 .nav {    
@@ -12,6 +12,7 @@ body {
     list-style: none;
     display: flex;
     flex-direction: row;
+    
 }
 
 .landing-img {
@@ -23,16 +24,22 @@ body {
 }
 
 .scheduleButton {
-    margin-top: 20px;
+    margin-top: 40px;
     width: 160px !important;
     height: 60px !important;
     font-size: 20px !important;
-    background: #00B9F4 !important;
-    border: none !important;
+    background: none !important;
+    border: solid 2px white !important;
+}
+
+.scheduleButton:hover {
+    background-color: white !important;
+    color:  rgba(5, 180, 249, .89) !important;
 }
 
 .landing-text {
-    margin-top: 40px;
+    margin-top: 100px;
+    padding: 60px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,9 +47,11 @@ body {
 }
 
 .blurb {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
+    color: #fff;    
+    font-size: 2rem;
     text-align:  center;
+    font-family: 'Roboto', sans-serif;
+    padding: 0 40px;
 }
 
 .button-registration {
@@ -50,10 +59,54 @@ body {
     width: 80px !important; 
     height: 30px;
     font-size: 13px !important;
-    background: #fff !important;
+    background: none !important;
     color: white;
     text-align: center;
     padding: 5px;
-    background: #00B9F4 !important;
-    border: none !important;
+    border: solid 2px white !important;
+}
+
+.button-registration:hover {
+    background-color: white !important;
+    color:  rgba(5, 180, 249, .89) !important;
+}
+
+.background {
+    height: 100vh;
+    width: 100%;
+    background: url(../assets/workspace2x.jpg);
+}
+
+.background2x {
+    background-color: rgba(5, 180, 249, .89);
+    height: 100vh;
+}
+
+.Intro {
+    font-size: 40px;
+    color: #fff;
+}
+
+.CTA {
+    margin-top: 15px;
+}
+
+.halfBackground {
+    background: white;
+    height: 200px;
+}
+
+.halfIntro {
+    color:  rgba(5, 180, 249, .89);
+    padding-top: 50px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.halfblurb {
+    color:rgba(5, 180, 249, .89);   
+    font-size: 2rem;
+    text-align:  center;
+    font-family: 'Roboto', sans-serif;
+    padding: 0 40px;
 }

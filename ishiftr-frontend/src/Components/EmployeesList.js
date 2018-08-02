@@ -29,13 +29,14 @@ class EmployeesList extends React.Component {
     }
 
     handleEdit = (id, obj) => {
-        axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
-        .then((res) => {
-            console.log(res.data);
-        })
-        .catch(function (error) {
-            console.log('there was an error editing employee', error);
-        });
+        // this.props.history.push('/admin-dashboard/AddEmployee');
+        // axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
+        // .then((res) => {
+        //     console.log(res.data);
+        // })
+        // .catch(function (error) {
+        //     console.log('there was an error editing employee', error);
+        // });
     }
 
     handleDelete(id){

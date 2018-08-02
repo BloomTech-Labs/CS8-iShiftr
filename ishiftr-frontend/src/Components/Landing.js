@@ -20,30 +20,31 @@ class Landing extends React.Component {
 
     render() {
 
-        const imagesArr = [
-            require('../assets/team.jpg'),
-            require('../assets/request.jpg'),
-            require('../assets/calendar.jpg'),            
-            require('../assets/powerup.jpg'),
-            require('../assets/pic.jpg'),
-            require('../assets/powerup.jpg'),
-            require('../assets/pic.jpg'),
-        ];
+        // const imagesArr = [
+        //     require('../assets/team.jpg'),
+        //     require('../assets/request.jpg'),
+        //     require('../assets/calendar.jpg'),            
+        //     require('../assets/powerup.jpg'),
+        //     require('../assets/pic.jpg'),
+        //     require('../assets/powerup.jpg'),
+        //     require('../assets/pic.jpg'),
+        // ];
 
-        const labelsArr = [
-            'Simplify Your Employee Schedules',
-            'Advanced Scheduling Optimization',
-            'Up-to-date Schedule Viewings',
-            'Accessible From Anywhere',
-            'Value Employees Productivity',
-            'Accessible From Anywhere',
-            'Value Employees Productivity',
-        ];
+        // const labelsArr = [
+        //     'Simplify Your Employee Schedules',
+        //     'Advanced Scheduling Optimization',
+        //     'Up-to-date Schedule Viewings',
+        //     'Accessible From Anywhere',
+        //     'Value Employees Productivity',
+        //     'Accessible From Anywhere',
+        //     'Value Employees Productivity',
+        // ];
 
         return (
-            <React.Fragment>
-            <div className="container">            
-                <div className="nav">
+            
+            <div className="background">
+                <div className="background2x">
+                <div className="nav p-2">
                 <div className="col justify-content-left">
                 <img src={require('../assets/iShiftr3_50.png')} />
                 </div>                
@@ -52,26 +53,34 @@ class Landing extends React.Component {
                         <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>
                     </ul>                  
                 </div>                
-                <div className="landing-img">                  
+                {/* <div className="landing-img">
+                                  
                     <CoverFlow
                         labelsArr={labelsArr}
                         width={1366} height={380} 
                         itemRatio="6:5" background='white' 
                         imagesArr={imagesArr}
                         />
-                </div>
-                <div className="landing-text px-5 mb-4">
+                </div> */}
+                <div className="landing-text px-5">
+                    <h1 className="mb-5 Intro">Scheduling Made Easy</h1>
                     <p className="blurb">
                     iShiftr gives you the flexibility of creating schedules for your employees in the most efficient way. 
                     We adapt to your company’s needs by automating the way you manage employee hours and sudden changes, 
-                    such as absences and requested time-off, all with ease. What are you waiting for?<br/> Start Scheduling with iShiftr today!                       
+                    such as absences and requested time-off, all with ease. What are you waiting for?                                         
                     </p>
+                    <p className="blurb CTA">Start Scheduling with iShiftr today!</p>
                     <div>
                         <Link to={this.checkLogin()}><Button className="scheduleButton "> Schedule Now </Button></Link>
                     </div>
                 </div>
+                <div className="halfBackground">
+                    <h1 className="mb-5 col halfIntro">Services We Offer:</h1>
+                        <p className="halfblurb">Check out the following services below</p>
+                </div>
+                </div>     
+                
             </div>
-            </React.Fragment>
         );
     }
 }
