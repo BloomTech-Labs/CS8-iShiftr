@@ -35,7 +35,7 @@ class SignUp extends Component {
         e.preventDefault();        
         // axios.post('https://ishiftr-db.herokuapp.com/', formData, {
         console.log(this.props);
-        axios.post('http://localhost:5000/api/register',this.state)
+        axios.post('https://ishiftr-db.herokuapp.com/api/register',this.state)
         .then((res) =>{
             console.log(res);
             this.props.history.push('/Signin')
@@ -100,7 +100,7 @@ class SignUp extends Component {
                         <p>Already have an account? <Link to="/Signin" style={{color:"dodgerblue"}}>Sign In</Link></p>
                     </div>
                         <hr/>
-                    <div>
+                    <div className="signupForm">
                         <label for="username"><b>Username:</b></label>
                         <input value={this.state.username} type="text" name="username" id="username" placeholder="Choose a username" required />
                         <label for="firstName"><b>First Name:</b></label>

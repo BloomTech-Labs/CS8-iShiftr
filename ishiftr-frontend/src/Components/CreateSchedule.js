@@ -43,7 +43,7 @@ class CreateSchedule extends Component {
         let year = newDate.getFullYear()
         formData.date = `${month}-${day}-${year}`;
         console.log(formData.day, formData.date);
-        axios.post(`http://localhost:5000/api/createSchedule/${id}`, {
+        axios.post(`https://ishiftr-db.herokuapp.com/api/createSchedule/${id}`, {
                 day: formData.day,
                 date: formData.date,
                 startTime: formData.startTime,

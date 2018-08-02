@@ -39,7 +39,7 @@ class ShiftSchedule extends React.Component {
 
     componentDidMount(){
 
-        axios.get(`http://localhost:5000/api/schedule/${id}`, config)
+        axios.get(`https://ishiftr-db.herokuapp.com/api/schedule/${id}`, config)
                 .then((res) => {
                     console.log(res.data);
                     this.setState({

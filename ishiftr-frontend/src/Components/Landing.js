@@ -42,10 +42,13 @@ class Landing extends React.Component {
 
         return (
             <React.Fragment>
-            <div className="container border">
-                <div className="nav border border-dark">
+            <div className="container">            
+                <div className="nav">
+                <div className="col justify-content-left">
+                <img src={require('../assets/iShiftr3_50.png')} />
+                </div>                
                     <ul className="buttons-header">
-                        <Link to="/SignUp"><Button className="button-registration" color="primary">Sign Up</Button></Link>
+                        <Link to="/SignUp"><Button className="button-registration">Sign Up</Button></Link>
                         <Link to="/SignIn"><Button className="button-registration">Sign In</Button></Link>
                     </ul>                  
                 </div>                
