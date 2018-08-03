@@ -1,0 +1,25 @@
+.empWelcome {
+    display: inline-block;    
+}
+
+.assignedShift{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: -50px;
+    margin-right: 20px;
+}
+
+.shiftBox p {
+    padding: 40px;
+}
+
+.timeOff p {
+    padding: 40px;
+}
+
+.submitTime label {
+    padding-right: 30px;
+    padding-left: 30px;
+    width: 160px;
+}

@@ -245,8 +245,9 @@ class AddEmployee extends Component {
         if (this.state.employee === undefined) newEmployee = this.state.employee._id;
         console.log(this.state.employee._id);
         return (            
-            <div className = 'row justify-content-center'>
+            <div className = 'row justify-content-center'>                
                 <Form className ='col col-6 py-4 border rounded' onChange={this.handleChange} onSubmit={this.submitEmployee}>
+                <h3 className="formHeading">To add an Employee, fill out the form below:</h3>
                 <FormGroup>
                 <Label for="firstName">Employee First Name</Label>
                 <Input onChange={this.handleChange} value={this.state.employee.firstName} type="text" name="firstName" id="firstName" placeholder="Enter your employee's first name" required />

@@ -18,11 +18,20 @@
     background-color: #658327;
     opacity: 0.8;
     color: white;
-    padding: 10px;
+    padding: 40px;
     font-weight: 700;
     text-align: center;
     margin-top: 100px;
+    font-size: 18px;
+    
+}
 
+.empText {
+    font-weight: 600;
+}
+
+.traspBackground .selection {
+    font-weight: 100;
 }
 
 .capitalText{
