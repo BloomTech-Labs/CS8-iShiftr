@@ -29,7 +29,8 @@ class EmployeesList extends React.Component {
     }
 
     handleEdit = (id, obj) => {
-        // this.props.history.push('/admin-dashboard/AddEmployee');
+        // <AddEmployee employee={employees.filter(employee => (employee.id === id))}/>
+        this.props.history.push('/admin-dashboard/AddEmployee');
         // axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
         // .then((res) => {
         //     console.log(res.data);

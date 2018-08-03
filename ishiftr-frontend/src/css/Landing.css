@@ -28,13 +28,15 @@ body {
     width: 160px !important;
     height: 60px !important;
     font-size: 20px !important;
-    background: none !important;
-    border: solid 2px white !important;
+    background: white !important;
+    border: none !important;
+    color:rgba(5, 180, 249, .89) !important; 
 }
 
 .scheduleButton:hover {
     background-color: white !important;
     color:  rgba(5, 180, 249, .89) !important;
+    font-size: 22px !important;
 }
 
 .landing-text {
@@ -51,7 +53,7 @@ body {
     font-size: 2rem;
     text-align:  center;
     font-family: 'Roboto', sans-serif;
-    padding: 0 40px;
+    padding: 0 60px;
 }
 
 .button-registration {
@@ -62,11 +64,18 @@ body {
     background: none !important;
     color: white;
     text-align: center;
-    padding: 5px;
+    padding: 4px !important;
     border: solid 2px white !important;
 }
 
 .button-registration:hover {
+    background-color: white !important;
+    color:  rgba(5, 180, 249, .89) !important;
+    font-size: 14px !important;
+    padding: 2px !important;
+}
+
+.ctaBtn {
     background-color: white !important;
     color:  rgba(5, 180, 249, .89) !important;
 }
@@ -74,7 +83,8 @@ body {
 .background {
     height: 100vh;
     width: 100%;
-    background: url(../assets/workspace2x.jpg);
+    background: url(../assets/workspace2x.jpg) no-repeat;
+    background-size: cover;
 }
 
 .background2x {
@@ -83,8 +93,9 @@ body {
 }
 
 .Intro {
-    font-size: 40px;
+    font-size: 35px;
     color: #fff;
+    letter-spacing: 10px;
 }
 
 .CTA {
@@ -93,20 +104,45 @@ body {
 
 .halfBackground {
     background: white;
-    height: 200px;
+    height: 800px;
 }
 
 .halfIntro {
     color:  rgba(5, 180, 249, .89);
-    padding-top: 50px;
+    padding-top: 80px;
     font-size: 25px;
     text-align: center;
 }
 
 .halfblurb {
     color:rgba(5, 180, 249, .89);   
-    font-size: 2rem;
+    font-size: 16px;
     text-align:  center;
     font-family: 'Roboto', sans-serif;
-    padding: 0 40px;
+    padding-bottom: 40px;
+    margin-top: -25px;
+}
+
+.services {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 20px;
+    margin-top: 20px;
+    
+}
+
+.serviceOne {
+    display: flex;
+    justify-content: left;
+    color:rgba(5, 180, 249, .89);
+    margin-top: 35px;
+    padding: 0 60px;  
+}
+
+.serviceOneImg {
+    width: 200px;
+    height: 140px;
+    margin-top: -20px;
+    margin-left: -80px;
 }
