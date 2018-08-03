@@ -7,7 +7,8 @@ class Employee extends Component {
   constructor(props){
     super(props)
     this.state= {
-      employee: ''
+      employee: '',
+      isDisabled: false
     }
   }
 
@@ -15,8 +16,11 @@ class Employee extends Component {
     this.props.onDelete(this.props.employee._id)
   }
 
-  onEdit = () => {
-    this.props.onEdit(this.props.employee._id)
+  onEdit = (id) => {
+    this.props.onEdit(this.props.employee._id);
+    this.setState({
+      isDisabled: true
+    })
   }
 
   componentDidMount(){
@@ -30,7 +34,7 @@ class Employee extends Component {
       <div className = 'px-2'>       
             <div body outline color="primary" className ='card p-4 border border-dark rounded'>
                   <div className = 'icons'>
-                    <div >
+                    <div onClick={this.onEdit}>
                       <i className="fas fa-pencil-alt"></i>
                     </div>
                     <div onClick={this.onDelete}>
@@ -38,9 +42,11 @@ class Employee extends Component {
                     </div>                
                   </div>
                 <CardText>
-                  <p className ='font-weight-bold my-0'>{this.props.employee.firstName} {this.props.employee.lastName}</p>
-                  <p className ='my-0'>{this.props.employee.email}</p>
-                  <p className ='my-0'>{this.props.employee.phoneNumber}</p>
+                  <form>
+                  <input className ='font-weight-bold my-0'>{this.props.employee.firstName} {this.props.employee.lastName}</input>
+                  <input className ='my-0'>{this.props.employee.email}</input>
+                  <input className ='my-0'>{this.props.employee.phoneNumber}</input>
+                  </form>                  
                 </CardText>
                 <form>
                     <fieldset className='fieldset px-2'>

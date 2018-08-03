@@ -223,6 +223,8 @@ Edits the password of the logged in Employee if the token and correct informatio
 | Password        | String(5+) | Yes      |
 | Confirm Password| String     | Yes      |
 
+---
+
 # Team of ```iShiftr```
 ### - Cristina Laryea [@crispad](https://github.com/crispad)
 ### - Aquila Strother [@astro11](https://github.com/astro11)

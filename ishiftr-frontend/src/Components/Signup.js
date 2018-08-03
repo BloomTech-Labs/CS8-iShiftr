@@ -120,9 +120,9 @@ class SignUp extends Component {
 
                         <div className="clearfix">
                         {this.state.isLoading ?
-                            <button type="submit" class="signupbtn" isLoading={this.state.isLoading}>Please Wait, Signing Up <i className="fa fa-spinner fa-spin"></i></button> : 
-                            <button type="submit" class="signupbtn">Sign Up</button>}
-                            <Link to='/'><button type="button" class="cancelbtn">Go Back</button></Link>
+                            <button type="submit" className="signupbtn" isLoading={this.state.isLoading}>Please Wait, Signing Up <i className="fa fa-spinner fa-spin"></i></button> : 
+                            <button type="submit" className="signupbtn">Sign Up</button>}
+                            {/* <Link to='/'><button type="button" class="cancelbtn">Go Back</button></Link> */}
                             
                         </div>
                     </div>
