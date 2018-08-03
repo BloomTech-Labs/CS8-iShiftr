@@ -10,10 +10,12 @@
     text-align: center;
     cursor: pointer;
 }
-.tab-navs:hover{
+
+.tab-navs:hover {
     border-top: 4px solid #0092C1;
     background-color: white;
 }
+
 .nav-border{
     border: 1px solid lightgray;
     border-bottom: none;
@@ -44,8 +46,6 @@
     background-color: white;
 }
 
-
-
 .centeredContend{
     display: flex;
     flex-direction: column;
@@ -66,4 +66,8 @@
 .signBtn {
     background-color: #00B9F4 !important;
     border: none !important;
+}
+
+.tabHeight {
+    background: #54CCF4;
 }

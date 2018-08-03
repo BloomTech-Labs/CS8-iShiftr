@@ -60,9 +60,9 @@ class Signin extends Component {
         return (
             <div className='centerContent py-5'>
                 <Nav tabs className = 'justify-content-center col col-4 mx-0 px-0 nav-border' >
-                    <NavItem className ='mx-0 tab-navs bg-colored'>
+                    <NavItem className ='mx-0 tab-navs tabHeight '>
                         <NavLink
-                            className ='no-border mx-0 px-0 bg-colored' 
+                            className ='no-border mx-0 px-0 ' 
                             onClick={() => { this.toggle('1'); }}
                             >
                             Employer Sign In
@@ -81,13 +81,13 @@ class Signin extends Component {
                     <TabPane tabId="1">
                         <div className = 'centeredContend'>                    
                             <Form className="col-12" onChange={this.inputHandler} onSubmit={this.loginHandler}>
-                                <Label for="username">Username:</Label>
+                                <Label for="username">Employer Username:</Label>
                                 <Input type="text" name="username" id="#employerUsername" placeholder="enter username" required />
-                                <Label for="password">Password:</Label>
+                                <Label for="password">Employer Password:</Label>
                                 <Input type="password" name="password" id="#employerPassword" placeholder="enter password" required />
                                 {this.state.isLoading ?
                                 <Button className ='mb-3 py-2 signBtn' isLoading={this.state.isLoading} type="submit">Please Wait, Signing in <i className="fa fa-spinner fa-spin"></i></Button> : <Button className ='mb-3 py-2 signBtn' type="submit">Sign In</Button>} <br />
-                                <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link>
+                                {/* <Link to="/"><Button className = 'mb-3 py-2 canclBtn'>Go Back</Button></Link> */}
                             </Form>
                         </div>
                     </TabPane>
