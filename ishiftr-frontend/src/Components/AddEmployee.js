@@ -248,36 +248,36 @@ class AddEmployee extends Component {
             <div className = 'row justify-content-center'>
                 <Form className ='col col-6 py-4 border rounded' onChange={this.handleChange} onSubmit={this.submitEmployee}>
                 <FormGroup>
-                <Label for="firstName">First Name</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.firstName} type="text" name="firstName" id="firstName" placeholder="enter first name" required />
+                <Label for="firstName">Employee First Name</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.firstName} type="text" name="firstName" id="firstName" placeholder="Enter your employee's first name" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="lastName">Last Name</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.lastName} type="text" name="lastName" id="lastName" placeholder="enter last name" required />
+                <Label for="lastName">Employee Last Name</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.lastName} type="text" name="lastName" id="lastName" placeholder="Enter your employee's last name" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="email">Email</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.email} type="email" name="email" id="email" placeholder="enter email" required />
+                <Label for="email">Employee Email</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.email} type="email" name="email" id="email" placeholder="Enter your employee's email address" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="phoneNumber">Phone Number</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="enter phone number" required />
+                <Label for="phoneNumber">Employee Phone Number</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter your employee's phone number" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="availability">Availability</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.availability} type="text" name="availability" id="availability" placeholder="enter day of availablity for employee (e.g, Monday)" required />
+                <Label for="availability">Employee Availability</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.availability} type="text" name="availability" id="availability" placeholder="Enter the day of employee's availability (e.g, Monday)" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="availableHours">Available Hours</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.availableHours} type="text" name="availableHours" id="availableHours" placeholder="enter hours (e.g 9-5)" required />
+                <Label for="availableHours">Employee Available Hours</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.availableHours} type="text" name="availableHours" id="availableHours" placeholder="Enter hours (e.g 9-5)" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="username">Username</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.username} type="text" name="username" id="username" placeholder="choose a username for your employee" required />
+                <Label for="username">Employee Username</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.username} type="text" name="username" id="username" placeholder="Choose a username for your employee" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="password">Password</Label>
-                <Input onChange={this.handleChange} value={this.state.employee.password} type="password" name="password" id="password" placeholder="choose a password" required />
+                <Label for="password">Employee Password</Label>
+                <Input onChange={this.handleChange} value={this.state.employee.password} type="password" name="password" id="password" placeholder="Choose a password for your employee" required />
                 </FormGroup>
                 <FormGroup>
                     <div className = 'col col-12'>            
@@ -288,7 +288,7 @@ class AddEmployee extends Component {
                             <Button type="submit" className="backButton mr-5 ml-1 col col-5">Update Employee</Button>
                         )}           
                         <Link to="/admin-dashboard/Employees">
-                            <Button className="backButton col col-5 ml-4">Go Back</Button>
+                            <Button className="backButton col col-5 ml-4">Cancel</Button>
                         </Link>
                         
                     </div>
