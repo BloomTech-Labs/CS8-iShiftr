@@ -46,10 +46,11 @@
 
 .blurb {
     color: #fff;    
-    font-size: 2rem;
+    font-size: 20px;
     text-align:  center;
     font-family: 'Roboto', sans-serif;
     padding: 0 60px;
+    line-height: 1.6;
 }
 
 .button-registration {
@@ -92,6 +93,7 @@
     font-size: 35px;
     color: #fff;
     letter-spacing: 10px;
+    text-align: center;
 }
 
 .CTA {
@@ -122,9 +124,10 @@
 .services {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     font-size: 20px;
-    margin-top: 20px;
+    margin-bottom: 60px;
+    text-align: left;
     
 }
 
@@ -140,5 +143,9 @@
     width: 200px;
     height: 140px;
     margin-top: -20px;
-    margin-left: -80px;
+}
+
+div.col.justify-content-left.topHeader {
+    padding-left: 0px;
+    padding-right: 0px;
 }
