@@ -43,7 +43,7 @@ class CreateSchedule extends Component {
         let year = newDate.getFullYear()
         formData.date = `${month}-${day}-${year}`;
         console.log(formData.day, formData.date);
-        axios.post(`http://localhost:5001/api/createSchedule/${id}`, {
+        axios.post(`https://ishiftr-db.herokuapp.com/api/createSchedule/${id}`, {
                 day: formData.day,
                 date: formData.date,
                 startTime: formData.startTime,
@@ -61,8 +61,8 @@ class CreateSchedule extends Component {
     render() {
         return (               
             <div className = 'row justify-content-center'>
-                <div className='main mt-4'>
-                    <Notifications />
+                <Notifications />
+                <div className='main mt-4'>                    
                 </div>              
                 <div className = 'col col-6 justify-content-center border rounded p-4'>
                    <h5 className = 'font-weight-bold centered'>Fill out the form below to create your schedule:</h5>

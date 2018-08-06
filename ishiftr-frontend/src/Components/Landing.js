@@ -76,18 +76,18 @@ class Landing extends React.Component {
                 </div>
                 <div className="halfBackground">
                     <h1 className="mb-5 col halfIntro">WE DO THE WORK FOR YOU</h1>
-                        <p className="halfblurb">Key Features Below:</p>                        
+                        <p className="halfblurb">Key Features Below</p>                        
                 <div className="services">
-                    <p className="serviceOne">Easily drag and drop schedules even while<br /> you're on the go</p>
-                    <img className="serviceOneImg" src={require('../assets/schedule.png')} />
+                    <p className="serviceOne">Easily generate employee schedules even<br /> while you are on the go</p>
+                    <img className="serviceOneImg" src={require('../assets/sync.png')} />
                 </div>
                 <div className="services">
-                    <p className="serviceOne">We offer easy and convenient schedule <br /> management to suite your company needs</p>
-                    <img className="serviceOneImg" src={require('../assets/employeeAccess.png')} />
+                    <p className="serviceOne">Schedule management that properly aligns<br /> with your company needs</p>
+                    <img className="serviceOneImg" src={require('../assets/companyNeeds.png')} />
                 </div>
                 <div className="services">
-                    <p className="serviceOne">iShiftr can be easily integrated to work with<br />  your existing payroll system</p>
-                    <img className="serviceOneImg" src={require('../assets/dashboard.png')} />
+                    <p className="serviceOne">iShiftr simplifies your scheduling tasks by<br />  managing employees time off and availability</p>
+                    <img className="serviceOneImg" src={require('../assets/events.png')} />
                 </div>
                 </div>                
                 </div>                

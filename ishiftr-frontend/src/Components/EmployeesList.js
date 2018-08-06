@@ -41,7 +41,7 @@ class EmployeesList extends React.Component {
     }
 
     handleDelete(id){
-        axios.delete(`http://localhost:5001/api/deleteEmployee/${id}`, config)
+        axios.delete(`https://ishiftr-db.herokuapp.com/api/deleteEmployee/${id}`, config)
         .then((res) => {          
             this.setState({
                 deletMsg: res.data.Message
@@ -57,7 +57,7 @@ class EmployeesList extends React.Component {
     }
 
     componentDidMount() {  
-        axios.get(`http://localhost:5001/api/${id}/employees`, config)
+        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
         .then((res) => {
             this.setState({
                 employees : res.data
