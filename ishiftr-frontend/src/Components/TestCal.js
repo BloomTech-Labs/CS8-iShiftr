@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import moment from 'moment';
+//import moment from 'moment';
 import EmployeeOnShift from './EmployeeOnShift';
 import '../css/schedule.css';
 
@@ -23,7 +23,7 @@ class Schedule extends React.Component {
     }
 
     componentDidMount(){
-        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
+        axios.get(`http://localhost:5001/api/${id}/employees`, config)
             .then((res) => {
                 console.log(res.data);
                 this.setState({

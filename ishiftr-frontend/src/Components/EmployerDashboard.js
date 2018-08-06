@@ -12,6 +12,7 @@ import SignOut from './Signout';
 import '../css/employerDashboard.css';
 import Menu from './Menu';
 import EditShift from './EditShift';
+import EditEmployee from './EditEmployee';
 
 class EmployerDashboard extends Component {
     constructor(props){
@@ -90,6 +91,7 @@ class EmployerDashboard extends Component {
                     <Route path="/admin-dashboard/Settings" component={Settings} />
                     <Route path="/admin-dashboard/AddEmployee" component={AddEmployee} />
                     <Route path = "/admin-dashboard/editShift" component = {EditShift} />
+                    <Route path = "/admin-dashboard/editEmployee/:id" component = {EditEmployee} />
                     <Route path="/Dashboard" component={Dashboard} />
                 </div>
 
