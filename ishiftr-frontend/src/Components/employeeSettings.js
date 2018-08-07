@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Notifications, {notify} from 'react-notify-toast';
 import '../css/ShiftSchedule.css';
 import '../css/settings.css'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
@@ -56,10 +57,10 @@ class employeeSettings extends Component {
         axios
             .put(`http://localhost:5001/api/employee/${id}/editPassword`, this.state, config)
             .then( response => {
-                console.log(response.data);
+                notify.show("Success! Your password has been changed!");
             })
             .catch( error => {
-                alert("There was an error changing the password");
+                notify.show("There was an error changing the password");
             })
     }
 
@@ -67,6 +68,7 @@ class employeeSettings extends Component {
         return (
 
                 <div className = 'row justify-content-center'>
+                <Notifications />
                     <div className = 'col col-6 pt-4 border rounded'>
                     <div className = 'col col-12'>
                             <p><strong>Account information:</strong></p>        

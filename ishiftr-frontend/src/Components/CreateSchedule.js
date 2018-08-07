@@ -53,6 +53,14 @@ class CreateSchedule extends Component {
             }, config)
             .then(response => {
                 notify.show("Success! You made a schedule for one day.");
+                this.setState({
+                    date: '',
+                    startTime: '',
+                    endTime: '',
+                    duplicate: '',
+                    autoAsign: '',
+                    day: '',          
+                  });
             })
             .catch(error => { console.log('Error: could not save data to db') });         
     }
