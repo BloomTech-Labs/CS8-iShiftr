@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Notifications, {notify} from 'react-notify-toast';
-import { Alert } from 'reactstrap';
 import Employee from './Employee';
 import Loading from './Loading';
 import '../css/employeesList.css';
@@ -28,20 +27,9 @@ class EmployeesList extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    handleEdit = (id, obj) => {
-        // <AddEmployee employee={employees.filter(employee => (employee.id === id))}/>
-        this.props.history.push('/admin-dashboard/AddEmployee');
-        // axios.put(`https://ishiftr-db.herokuapp.com/api/editEmployee/${id}`, obj)
-        // .then((res) => {
-        //     console.log(res.data);
-        // })
-        // .catch(function (error) {
-        //     console.log('there was an error editing employee', error);
-        // });
-    }
 
     handleDelete(id){
-        axios.delete(`https://ishiftr-db.herokuapp.com/api/deleteEmployee/${id}`, config)
+        axios.delete(`http://localhost:5001/api/deleteEmployee/${id}`, config)
         .then((res) => {          
             this.setState({
                 deletMsg: res.data.Message
@@ -52,12 +40,11 @@ class EmployeesList extends React.Component {
         .catch(function (error) {
             console.log('there was an error deleting employee', error);
         });
-        console.log("data from delete: ", this.state.employees);
         
     }
 
     componentDidMount() {  
-        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
+        axios.get(`http://localhost:5001/api/${id}/employees`, config)
         .then((res) => {
             this.setState({
                 employees : res.data

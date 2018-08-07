@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import '../css/AddEmployee.css';
 import { Link } from 'react-router-dom';
-//import employees from '../testEmployees';
+
 import axios from 'axios';
 
 class AddEmployee extends Component {
@@ -53,7 +53,7 @@ class AddEmployee extends Component {
                 'Authorization': "Bearer " + authToken            
             },
         };
-        axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/createEmployee`, {
+        axios.post(`http://localhost:5001/api/${id}/createEmployee`, {
            email: this.state.email,
            firstName: this.state.firstName,
            lastName: this.state.lastName,

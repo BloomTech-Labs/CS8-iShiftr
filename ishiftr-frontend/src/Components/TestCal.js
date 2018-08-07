@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-//import moment from 'moment';
 import EmployeeOnShift from './EmployeeOnShift';
 import '../css/schedule.css';
 
@@ -23,9 +22,9 @@ class Schedule extends React.Component {
     }
 
     componentDidMount(){
-        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
+        axios.get(`http://localhost:5001/api/${id}/employees`, config)
             .then((res) => {
-                console.log(res.data);
+                console.log("response in testCal", res.data);
                 this.setState({
                     employees : res.data,
                     schedules: this.props.schedule
@@ -40,7 +39,7 @@ class Schedule extends React.Component {
 
 
     render() {
-        console.log(this.state.employees);
+        console.log("employees from testCal", this.state.employees);
         return (
                         <div className = 'col px-4 mx-1 border-right border-dark' >
                             <div className='schedule-element-header mb-4'>

@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
-import {CardText} from 'reactstrap';
-import moment from 'moment';
 import '../css/employee.css';
-import axios from '../../node_modules/axios';
-//const id = localStorage.getItem('id');
-const authToken = localStorage.getItem('authToken');
-const config = {
-        headers: {
-            'Authorization': "Bearer " + authToken            
-        },
-};
 
 class Employee extends Component {
   constructor(props){
@@ -25,14 +15,6 @@ class Employee extends Component {
     this.props.onDelete(this.props.employee._id)
   }
 
-  // onEdit = (id, obj) => {
-  //   axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, obj, config)
-  //   .then(res => {
-  //     this.setState({
-  //       msg: res.data.Message
-  //     })
-  //   })
-  // }
 
   componentDidMount(){
     this.setState({
@@ -41,11 +23,18 @@ class Employee extends Component {
   }
 
   render() {
+
+        let newDate = new Date(this.state.employee.timeOffDate);
+        let day = newDate.getDate() + 1;
+        let month= newDate.getMonth() + 1;
+        let year = newDate.getFullYear()
+        let timeOffDate = `${month}-${day}-${year}`;
+        console.log(timeOffDate)
     
     const id =  this.props.employee._id;
     return (
       <div className = 'px-2'>       
-            <div body outline color="primary" className ='card p-4 border border-dark rounded'>
+            <div color="primary" className ='card p-4 border border-dark rounded'>
                   <div className = 'icons'>
                     <Link to = {`/admin-dashboard/editEmployee/${id}`}>
                       <div onClick={this.onEdit}>
@@ -56,13 +45,13 @@ class Employee extends Component {
                       <i className="far fa-trash-alt "></i>
                     </div>                
                   </div>
-                <CardText>
+                <div>
                   <form>
-                  <div className ='font-weight-bold my-0'>{this.props.employee.firstName} {this.props.employee.lastName}</div>
-                  <div className ='my-0'>{this.props.employee.email}</div>
-                  <div className ='my-0'>{this.props.employee.phoneNumber}</div>
+                  <p className ='font-weight-bold my-0'>{this.props.employee.firstName} {this.props.employee.lastName}</p>
+                  <p className ='my-0'>{this.props.employee.email}</p>
+                  <p className ='my-0'>{this.props.employee.phoneNumber}</p>
                   </form>                  
-                </CardText>
+                </div>
                 <form>
                     <fieldset className='fieldset px-2'>
                         <legend className = 'legend legend-1'>Availability:</legend>
@@ -74,8 +63,7 @@ class Employee extends Component {
                         <div>
 
 
-                          {this.state.employee.timeOffDate}  <input className = 'ml-2' type="checkbox" name="vehicle" value={this.state.employee.timeOffDate} /><span className = 'ml-2'>Approved</span><br/>
-                          July 20th:  <input className = 'ml-2' type="checkbox" name="vehicle" value="coming from state" /><span className = 'ml-2'>Approved</span>                            
+                          {timeOffDate}  <input className = 'ml-2' type="checkbox" name="vehicle" value={this.state.employee.timeOffDate} /><span className = 'ml-2'>Approved</span><br/>
                         
                         </div>                                               
                     </fieldset>

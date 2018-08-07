@@ -22,6 +22,10 @@
     align-items: center;
 }
 
+.row a:hover{
+    text-decoration: none;
+}
+
 
 .center{
     display: flex;

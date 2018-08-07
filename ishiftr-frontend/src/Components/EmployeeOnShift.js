@@ -1,27 +1,15 @@
 import React, { Component } from 'react'
-//import axios from 'axios';
+
 
 class EmployeeOnShift extends Component {
-//     constructor(props){
-//       super(props)
-//       this.state = {
-//           employees: [],
-//           day: ''
-//       }
-//   }
-//     componentDidMount(){
-//             this.setState({
-//                 employees: this.props.employees,
-//                 day: this.props.day
-//             })
-//     }
+
   
   render(){
     console.log("from onshift", this.props.employees, this.props.day);
     let filteredEmployees = this.props.employees.filter(employee =>{
         return employee.availability === this.props.day;
     })
-    console.log(filteredEmployees);
+
     
       return (
         <div>

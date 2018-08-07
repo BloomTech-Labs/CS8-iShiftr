@@ -14,16 +14,12 @@ const config = {
         },
 };
 
-
 class ShiftSchedule extends React.Component {
 
     constructor() {
         super();
  
-        // an example array of 150 items to be paged
-        var exampleItems = [...Array(50).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
- 
-        this.state = {
+            this.state = {
             exampleItems: [],
             pageOfItems: []
         };
@@ -39,7 +35,7 @@ class ShiftSchedule extends React.Component {
 
     componentDidMount(){
 
-        axios.get(`https://ishiftr-db.herokuapp.com/api/schedule/${id}`, config)
+        axios.get(`http://localhost:5001/api/schedule/${id}`, config)
                 .then((res) => {
                     console.log(res.data);
                     this.setState({
@@ -57,32 +53,34 @@ class ShiftSchedule extends React.Component {
         return (                        
                 <div className = 'row justify-content-center'>
                     <h3><strong>Weekly Schedule</strong></h3>
-                    {/* {this.state.exampleItems.length < 0 ? (
-                    <React.Fragment> */}
+                    {this.state.exampleItems.length > 0 ? (
+                    <React.Fragment> 
                      
-                    <div className = 'col col-12 mt-3 editShift'>
-                        <div>
-                        <div className="text-center">
-                        
-                        <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
-                        </div>
-                        </div>
-                        <Link to = '/admin-dashboard/editShift'><button className='border'>
-                            <span>Edit Shift</span>
-                            <i className="fas fa-pencil-alt"></i>
-                        </button> </Link>
-                    </div>
-                    <div className ='row col-12 mt-3'>            
+                        <div className = 'col col-12 mt-3 editShift'>
+                            <div>
+                            <div className="text-center">
                             
-                            {this.state.pageOfItems.map(item =>
-                                <Schedule schedule = {item} />
-                            )}
-                    </div>
-                    {/* </React.Fragment>
+                            <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+                            </div>
+                            </div>
+                            <Link to = '/admin-dashboard/editShift'><button className='border'>
+                                <span>Edit Shift</span>
+                                <i className="fas fa-pencil-alt"></i>
+                            </button> </Link>
+                        </div>
+                        <div className ='row col-12 mt-3'>            
+                                
+                                {this.state.pageOfItems.map(item =>
+                                    <Schedule key = {item._id} schedule = {item} />
+                                )}
+                        </div>
+                    </React.Fragment>
                     ) : (
-                    <div className="col col-12 mt-5">
-                        <h4 className="text-align-center">Your Calendar Schedule is Empty. Please Go to the Create Schedule Section</h4>
-                    </div>)}                      */}
+                        <div className="col col-12 mt-5">
+                            <h4 className="text-align-center">Your Calendar Schedule is Empty. Please Go to the Create Schedule Section</h4>
+                        </div>
+                    )}
+                
                 </div>                                    
         );
     }

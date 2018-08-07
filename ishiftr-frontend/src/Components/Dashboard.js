@@ -26,7 +26,7 @@
     }
 
     componentDidMount(){
-      axios.get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
+      axios.get(`http://localhost:5001/api/employee/${id}`, config)
           .then((res) => {
               console.log(res.data);
               this.setState({
@@ -47,7 +47,7 @@
 
     handleClick = (e) => {
       e.preventDefault();
-      axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
+      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
         timeOffDate: this.state.timeOffDate,
         timeOffReason: this.state.timeOffReason
       }, config)

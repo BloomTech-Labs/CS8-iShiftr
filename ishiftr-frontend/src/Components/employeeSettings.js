@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Breadcrumb, BreadcrumbItem, Container, Col} from 'reactstrap';
 import '../css/ShiftSchedule.css';
 import '../css/settings.css'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
@@ -35,7 +34,7 @@ class employeeSettings extends Component {
             },
         };
         axios
-            .get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
+            .get(`http://localhost:5001/api/employee/${id}`, config)
             .then(response => {
                 this.setState({ employee: response.data });
             })
@@ -55,7 +54,7 @@ class employeeSettings extends Component {
             },
         };
         axios
-            .put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editPassword`, this.state, config)
+            .put(`http://localhost:5001/api/employee/${id}/editPassword`, this.state, config)
             .then( response => {
                 console.log(response.data);
             })

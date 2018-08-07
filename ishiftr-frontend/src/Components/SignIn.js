@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col, Form, FormGroup, Input, Label } from 'reactstrap';
-import { Link } from 'react-router-dom'
-import classnames from 'classnames';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Button, Form, Input, Label } from 'reactstrap';
 import axios from 'axios';
 import EmployeeSignin from './employeeSignin';
 import Notifications, {notify} from 'react-notify-toast';
@@ -32,13 +30,9 @@ class Signin extends Component {
         this.setState({
             isLoading: true
         })
-        // this.setState({
-        //     username: this.state.username,
-        //     password: this.state.password
-        // })
-        axios.post('https://ishiftr-db.herokuapp.com/api/employerLogin', this.state)
+        
+        axios.post('http://localhost:5001/api/employerLogin', this.state)
         .then(response => {
-            console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
             localStorage.setItem('id', response.data.id);
                 this.props.history.push('/admin-dashboard');

@@ -2,11 +2,6 @@ import React from 'react';
 import '../css/pagination.css';
  
  
-const defaultProps = {
-    initialPage: 1,
-    pageSize: 7
-}
- 
 class Pagination extends React.Component {
     constructor(props) {
         super(props);

@@ -36,7 +36,7 @@ class Menu extends Component {
             },
         };
         axios
-            .get(`https://ishiftr-db.herokuapp.com/api/employer/${id}`, config)
+            .get(`http://localhost:5001/api/employer/${id}`, config)
             .then(response => {
                 this.setState({ employer: response.data });   
             })

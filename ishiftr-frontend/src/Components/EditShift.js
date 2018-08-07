@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom';
-import moment from 'moment';
 import axios from 'axios';
 import '../css/editShift.css'
 
@@ -22,8 +21,7 @@ class EditShift extends Component {
     }
 
     handleDelete = (id) => {
-        console.log("ID:", id);
-        axios.delete(`https://ishiftr-db.herokuapp.com/api/schedule/${id}`, config)
+        axios.delete(`http://localhost:5001/api/schedule/${id}`, config)
         .then((res) => {          
             this.setState({
                 deletMsg: res.data.Message
@@ -37,9 +35,8 @@ class EditShift extends Component {
     }
 
     componentDidMount(){
-        axios.get(`https://ishiftr-db.herokuapp.com/api/schedule/${id}`, config)
+        axios.get(`http://localhost:5001/api/schedule/${id}`, config)
                 .then((res) => {
-                    console.log(res.data);
                     this.setState({
                         schedules : res.data
                     })
@@ -50,8 +47,6 @@ class EditShift extends Component {
     }
 
     render() {
-
-        console.log(this.state.schedules);
         return (
             <div>
                 {this.state.schedules.map(schedule =>{

@@ -12,6 +12,8 @@ import '../css/employerDashboard.css';
 import Menu from './Menu';
 import EditShift from './EditShift';
 import EditEmployee from './EditEmployee';
+
+
 class EmployerDashboard extends Component {
     constructor(props){
         super(props)
@@ -30,7 +32,7 @@ class EmployerDashboard extends Component {
             },
         };
         axios
-            .get(`https://ishiftr-db.herokuapp.com/api/employer/${id}`, config)
+            .get(`http://localhost:5001/api/employer/${id}`, config)
             .then(response => {
                 this.setState({ employer: response.data });   
             })
@@ -41,8 +43,7 @@ class EmployerDashboard extends Component {
     }
 
 
-  render() {  
-      console.log(this.state.employer)
+  render() {
     let path = this.props.location.pathname.split('/');
     let firstName = this.state.employer.firstName
     let lastName = this.state.employer.lastName
