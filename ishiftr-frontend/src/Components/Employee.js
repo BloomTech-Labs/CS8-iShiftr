@@ -74,7 +74,7 @@ class Employee extends Component {
                         <div>
 
 
-                          {moment(this.state.employee.timeOffDate).format('LL')}  <input className = 'ml-2' type="checkbox" name="vehicle" value="coming form state" /><span className = 'ml-2'>Approved</span><br/>
+                          {this.state.employee.timeOffDate}  <input className = 'ml-2' type="checkbox" name="vehicle" value={this.state.employee.timeOffDate} /><span className = 'ml-2'>Approved</span><br/>
                           July 20th:  <input className = 'ml-2' type="checkbox" name="vehicle" value="coming from state" /><span className = 'ml-2'>Approved</span>                            
                         
                         </div>                                               

@@ -145,12 +145,10 @@ class EditEmployee extends Component {
                 <Input onChange={this.handleChange} value={this.state.password} type="password" name="password" id="password" placeholder="choose a password" required />
                 </FormGroup>
                 <FormGroup>
-                    <div className = 'col col-12'>            
-                        
-                        <Button type="submit" className="backButton mr-5 ml-1 col col-5">Add Employee</Button>
-                                        
+                    <div className = 'col col-12'>                      
+                        <Button type="submit" className="backButton mr-5 ml-1 col col-5">Save Changes</Button>                                        
                         <Link to="/admin-dashboard/Employees">
-                            <Button className="backButton col col-5 ml-4">Go Back</Button>
+                            <Button className="backButton col col-5 ml-4">Cancel</Button>
                         </Link>
                         
                     </div>

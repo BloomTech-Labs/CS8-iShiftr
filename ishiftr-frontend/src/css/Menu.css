@@ -15,4 +15,8 @@
 }
 .disabled-link {
     pointer-events: none;
-  }
+}
+
+  .fa-2x {
+    font-size: 15px;
+}

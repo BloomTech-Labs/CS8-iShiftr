@@ -7,13 +7,11 @@ import CreateSchedule from './CreateSchedule';
 import Billing from './Billing';
 import Settings from './Settings';
 import AddEmployee from './AddEmployee';
-import Dashboard from './Dashboard';
 import SignOut from './Signout';
 import '../css/employerDashboard.css';
 import Menu from './Menu';
 import EditShift from './EditShift';
 import EditEmployee from './EditEmployee';
-
 class EmployerDashboard extends Component {
     constructor(props){
         super(props)
@@ -91,8 +89,7 @@ class EmployerDashboard extends Component {
                     <Route path="/admin-dashboard/Settings" component={Settings} />
                     <Route path="/admin-dashboard/AddEmployee" component={AddEmployee} />
                     <Route path = "/admin-dashboard/editShift" component = {EditShift} />
-                    <Route path = "/admin-dashboard/editEmployee/:id" component = {EditEmployee} />
-                    <Route path="/Dashboard" component={Dashboard} />
+                    <Route path = "/admin-dashboard/editEmployee/:id" component = {EditEmployee} />                    
                 </div>
 
             </div>

@@ -78,36 +78,36 @@ class AddEmployee extends Component {
             <div className = 'row justify-content-center'>
                 <Form className ='col col-6 py-4 border rounded' onChange={this.handleChange} onSubmit={this.createEmployee}>
                 <FormGroup>
-                <Label for="firstName">First Name</Label>
-                <Input onChange={this.handleChange} value={this.state.firstName} type="text" name="firstName" id="firstName" placeholder="enter first name" required />
+                <Label for="firstName">Employee First Name</Label>
+                <Input onChange={this.handleChange} value={this.state.firstName} type="text" name="firstName" id="firstName" placeholder="enter employee's first name" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="lastName">Last Name</Label>
-                <Input onChange={this.handleChange} value={this.state.lastName} type="text" name="lastName" id="lastName" placeholder="enter last name" required />
+                <Label for="lastName">Employee Last Name</Label>
+                <Input onChange={this.handleChange} value={this.state.lastName} type="text" name="lastName" id="lastName" placeholder="enter employee's last name" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="email">Email</Label>
-                <Input onChange={this.handleChange} value={this.state.email} type="email" name="email" id="email" placeholder="enter email" required />
+                <Label for="email">Employee Email</Label>
+                <Input onChange={this.handleChange} value={this.state.email} type="email" name="email" id="email" placeholder="enter employee's email" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="phoneNumber">Phone Number</Label>
-                <Input onChange={this.handleChange} value={this.state.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="enter phone number" required />
+                <Label for="phoneNumber">Employee Phone Number</Label>
+                <Input onChange={this.handleChange} value={this.state.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="enter employee's phone number" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="availability">Availability</Label>
+                <Label for="availability">Employee Availability</Label>
                 <Input onChange={this.handleChange} value={this.state.availability} type="text" name="availability" id="availability" placeholder="enter day of availablity for employee (e.g, Monday)" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="availableHours">Available Hours</Label>
+                <Label for="availableHours">Employee Available Hours</Label>
                 <Input onChange={this.handleChange} value={this.state.availableHours} type="text" name="availableHours" id="availableHours" placeholder="enter hours (e.g 9-5)" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="username">Username</Label>
+                <Label for="username">Employee Username</Label>
                 <Input onChange={this.handleChange} value={this.state.username} type="text" name="username" id="username" placeholder="choose a username for your employee" required />
                 </FormGroup>
                 <FormGroup>
-                <Label for="password">Password</Label>
-                <Input onChange={this.handleChange} value={this.state.password} type="password" name="password" id="password" placeholder="choose a password" required />
+                <Label for="password">Employee Password</Label>
+                <Input onChange={this.handleChange} value={this.state.password} type="password" name="password" id="password" placeholder="choose a password for your employee" required />
                 </FormGroup>
                 <FormGroup>
                     <div className = 'col col-12'>            
@@ -115,7 +115,7 @@ class AddEmployee extends Component {
                         <Button type="submit" className="backButton mr-5 ml-1 col col-5">Add Employee</Button>
                                         
                         <Link to="/admin-dashboard/Employees">
-                            <Button className="backButton col col-5 ml-4">Go Back</Button>
+                            <Button className="backButton col col-5 ml-4">Cancel</Button>
                         </Link>
                         
                     </div>

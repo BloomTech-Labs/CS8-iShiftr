@@ -67,21 +67,21 @@ class CreateSchedule extends Component {
                 <div className = 'col col-6 justify-content-center border rounded p-4'>
                    <h5 className = 'font-weight-bold centered'>Fill out the form below to create your schedule:</h5>
                    <p className ='mb-5 centered'>Notice that the schedule can only be created for one day at a time.</p>
-                    <form className = 'mb-2' onChange = {this.handleFormChange}>
+                    <form className = 'mb-2' onChange = {this.handleFormChange} onSubmit={this.onSubmit} required>
                         <span className = 'mr-3'>Date: </span>
-                        <input className = 'px-3' type="date" name="date"/>
-                    </form>
-                    <form className = 'mb-3' onChange = {this.handleFormChange}>
+                        <input className = 'px-3' type="date" name="date" required/><br />
+{/*                     
+                    <form className = 'mb-3' onChange = {this.handleFormChange}> */}
                             <span className = 'mr-2'>Time: </span>  
-                        <input type="time" name="startTime" value = {this.state.startTime}/>
+                        <input type="time" name="startTime" value = {this.state.startTime} required/>
                             <span>To </span> 
-                        <input type="time" name="endTime" value = {this.state.endTime}/>
-                    </form>
-                        <form className = 'mb-3' onChange = {this.handleFormChange} onSubmit = {this.onSubmit}>
+                        <input type="time" name="endTime" value = {this.state.endTime} required/>
+                    {/* </form> */}
+                        {/* <form className = 'mb-3' onChange = {this.handleFormChange} onSubmit = {this.onSubmit}> */}
                            <div className = 'mb-4 flexBox'>
                                 <span className ='mr-2'>Day: </span>
                                 <div>
-                                    <input type="radio" name="day" value="Monday"/>Mon
+                                    <input type="radio" name="day" value="Monday" required/>Mon
                                     <input type="radio" name="day" value="Tuesday"/>Tues
                                     <input type="radio" name="day" value="Wednesday"/>Wed 
                                     <input type="radio" name="day" value="Thursday"/>Thu<br/>
