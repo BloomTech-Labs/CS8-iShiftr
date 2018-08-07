@@ -1,7 +1,3 @@
-body {
-    
-}
-
 .nav {    
     display: flex;    
     justify-content: flex-end;
@@ -30,13 +26,13 @@ body {
     font-size: 20px !important;
     background: white !important;
     border: none !important;
-    color:rgba(5, 180, 249, .89) !important; 
+    color:#039CD8 !important; 
 }
 
 .scheduleButton:hover {
     background-color: white !important;
-    color:  rgba(5, 180, 249, .89) !important;
-    font-size: 22px !important;
+    color:  #039CD8 !important;
+    font-size: 21px !important;
 }
 
 .landing-text {
@@ -50,10 +46,11 @@ body {
 
 .blurb {
     color: #fff;    
-    font-size: 2rem;
+    font-size: 20px;
     text-align:  center;
     font-family: 'Roboto', sans-serif;
     padding: 0 60px;
+    line-height: 1.6;
 }
 
 .button-registration {
@@ -70,14 +67,14 @@ body {
 
 .button-registration:hover {
     background-color: white !important;
-    color:  rgba(5, 180, 249, .89) !important;
+    color:  rgba(3, 156, 216, .89) !important;
     font-size: 14px !important;
     padding: 2px !important;
 }
 
 .ctaBtn {
     background-color: white !important;
-    color:  rgba(5, 180, 249, .89) !important;
+    color:  #039CD8 !important;
 }
 
 .background {
@@ -88,7 +85,7 @@ body {
 }
 
 .background2x {
-    background-color: rgba(5, 180, 249, .89);
+    background-color: rgba(3, 156, 216, .89);
     height: 100vh;
 }
 
@@ -96,6 +93,7 @@ body {
     font-size: 35px;
     color: #fff;
     letter-spacing: 10px;
+    text-align: center;
 }
 
 .CTA {
@@ -108,14 +106,14 @@ body {
 }
 
 .halfIntro {
-    color:  rgba(5, 180, 249, .89);
+    color:  #039CD8;
     padding-top: 80px;
     font-size: 25px;
     text-align: center;
 }
 
 .halfblurb {
-    color:rgba(5, 180, 249, .89);   
+    color:#039CD8;   
     font-size: 16px;
     text-align:  center;
     font-family: 'Roboto', sans-serif;
@@ -126,16 +124,17 @@ body {
 .services {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     font-size: 20px;
-    margin-top: 20px;
+    margin-bottom: 60px;
+    text-align: left;
     
 }
 
 .serviceOne {
     display: flex;
     justify-content: left;
-    color:rgba(5, 180, 249, .89);
+    color:#039CD8;
     margin-top: 35px;
     padding: 0 60px;  
 }
@@ -144,5 +143,9 @@ body {
     width: 200px;
     height: 140px;
     margin-top: -20px;
-    margin-left: -80px;
+}
+
+div.col.justify-content-left.topHeader {
+    padding-left: 0px;
+    padding-right: 0px;
 }

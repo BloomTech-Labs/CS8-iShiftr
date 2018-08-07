@@ -45,8 +45,8 @@ class Landing extends React.Component {
             <div className="background">
                 <div className="background2x">
                 <div className="nav p-2">
-                <div className="col justify-content-left">
-                <img src={require('../assets/iShiftr3_50.png')} />
+                <div className="col justify-content-left topHeader">
+                <img src={require('../assets/iShiftr_50-2.png')} />
                 </div>                
                     <ul className="buttons-header">
                         <Link to="/SignUp"><Button className="button-registration ctaBtn">Sign Up</Button></Link>
@@ -75,23 +75,22 @@ class Landing extends React.Component {
                     </div>
                 </div>
                 <div className="halfBackground">
-                    <h1 className="mb-5 col halfIntro">Services We Offer:</h1>
-                        <p className="halfblurb">Check out the following services below</p>                        
+                    <h1 className="mb-5 col halfIntro">WE DO THE WORK FOR YOU</h1>
+                        <p className="halfblurb">Key Features Below</p>                        
                 <div className="services">
-                    <p className="serviceOne">Lorem Ipsum is simply dummy text of the <br/> printing and typesetting industry.</p>
-                    <img className="serviceOneImg" src={require('../assets/schedule.png')} />
+                    <p className="serviceOne">Easily generate employee schedules even<br /> while you are on the go</p>
+                    <img className="serviceOneImg" src={require('../assets/sync.png')} />
                 </div>
                 <div className="services">
-                    <p className="serviceOne">Lorem Ipsum is simply dummy text of the <br /> printing and typesetting industry.</p>
-                    <img className="serviceOneImg" src={require('../assets/employeeAccess.png')} />
+                    <p className="serviceOne">Schedule management that properly aligns<br /> with your company needs</p>
+                    <img className="serviceOneImg" src={require('../assets/companyNeeds.png')} />
                 </div>
                 <div className="services">
-                    <p className="serviceOne">Lorem Ipsum is simply dummy text of the <br /> printing and typesetting industry.</p>
-                    <img className="serviceOneImg" src={require('../assets/dashboard.png')} />
+                    <p className="serviceOne">iShiftr simplifies your scheduling tasks by<br />  managing employees time off and availability</p>
+                    <img className="serviceOneImg" src={require('../assets/events.png')} />
                 </div>
                 </div>                
-                </div>     
-                
+                </div>                
             </div>
         );
     }

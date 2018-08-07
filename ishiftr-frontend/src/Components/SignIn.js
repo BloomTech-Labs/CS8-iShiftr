@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import classnames from 'classnames';
 import axios from 'axios';
 import EmployeeSignin from './employeeSignin';
+import Notifications, {notify} from 'react-notify-toast';
 import '../css/signin.css'
 
 class Signin extends Component {
@@ -18,7 +19,6 @@ class Signin extends Component {
         this.loginHandler = this.loginHandler.bind(this);
 
     }
-    // Todo: ternary operator for signout
 
     inputHandler = (event) => {
         event.preventDefault();
@@ -45,6 +45,10 @@ class Signin extends Component {
         })
         .catch(err => {
             console.log('sign in error', err);
+            this.setState({
+                isLoading: false
+            })
+            notify.show("Oops! Please Check Your Username and Password Credentials");            
         });
     };
 
@@ -59,6 +63,7 @@ class Signin extends Component {
     render() {
         return (
             <div className='centerContent py-5'>
+            <Notifications />
                 <Nav tabs className = 'justify-content-center col col-4 mx-0 px-0 nav-border' >
                     <NavItem className ='mx-0 tab-navs tabHeight '>
                         <NavLink

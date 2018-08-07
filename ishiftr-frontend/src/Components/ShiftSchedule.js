@@ -57,7 +57,9 @@ class ShiftSchedule extends React.Component {
         return (                        
                 <div className = 'row justify-content-center'>
                     <h3><strong>Weekly Schedule</strong></h3>
-                    
+                    {/* {this.state.exampleItems.length < 0 ? (
+                    <React.Fragment> */}
+                     
                     <div className = 'col col-12 mt-3 editShift'>
                         <div>
                         <div className="text-center">
@@ -75,8 +77,12 @@ class ShiftSchedule extends React.Component {
                             {this.state.pageOfItems.map(item =>
                                 <Schedule schedule = {item} />
                             )}
-                    </div> 
-
+                    </div>
+                    {/* </React.Fragment>
+                    ) : (
+                    <div className="col col-12 mt-5">
+                        <h4 className="text-align-center">Your Calendar Schedule is Empty. Please Go to the Create Schedule Section</h4>
+                    </div>)}                      */}
                 </div>                                    
         );
     }
