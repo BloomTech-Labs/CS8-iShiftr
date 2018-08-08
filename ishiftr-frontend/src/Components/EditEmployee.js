@@ -61,7 +61,7 @@ class EditEmployee extends Component {
                 'Authorization': "Bearer " + authToken            
             },
         };
-        axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
+        axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
            email: this.state.email,
            firstName: this.state.firstName,
            lastName: this.state.lastName,
@@ -86,7 +86,7 @@ class EditEmployee extends Component {
 
     componentDidMount(){
         const {id} = this.props.match.params;
-        axios.get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
+        axios.get(`http://localhost:5001/api/employee/${id}`, config)
         .then(res => {
             console.log(res.data)
             const employee = res.data

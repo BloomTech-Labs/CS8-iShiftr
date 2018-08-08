@@ -7,6 +7,8 @@
   import "../css/Dashboard.css";
   import SignOut from './Signout';
   import employeeSettings from './employeeSettings';
+  
+
   const id = localStorage.getItem('id');
   const authToken = localStorage.getItem('authToken');
   const config = {
@@ -26,7 +28,7 @@
     }
 
     componentDidMount(){
-      axios.get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
+      axios.get(`http://localhost:5001/api/employee/${id}`, config)
           .then((res) => {
               console.log(res.data);
               this.setState({
@@ -47,7 +49,7 @@
 
     handleClick = (e) => {
       e.preventDefault();
-      axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
+      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
         timeOffDate: this.state.timeOffDate,
         timeOffReason: this.state.timeOffReason
       }, config)
@@ -71,77 +73,86 @@
         // A wrapper for all the contains of the dashboard 
         <div className = 'mx-5'>
 
+
+
         {/* A row for the breadcrumb and signout button*/}
-        <div className='row mt-4'>
-            <div className='col col-11'>
-                <div className = 'breadcrumb bg-white px-0'>
-                    <Link to ='/Dashboard' className = 'breadcrumb-item'>Dashboard</Link>
-                    <li className = 'breadcrumb-item active'>{path[2]}</li>
+          <div className='row mt-4'>
+              <div className='col col-11'>
+                  <div className = 'breadcrumb bg-white px-0'>
+                      <Link to ='/Dashboard' className = 'breadcrumb-item'>Dashboard</Link>
+                      <li className = 'breadcrumb-item active'>{path[2]}</li>
+                  </div>
+              </div>
+              <div className="col col-1">
+                  <SignOut />
+              </div>
+          </div>
+      
+          {/*a row for the menu and main content*/}
+          <div className="row mt-4">
+
+            <div className="col col-2 border-right"> {/*************a col for menu*/}         
+                <EmployeeMenu />          
+            </div>
+
+
+          <div className='col col-10'>    {/*************a col for main content*/}
+              <Route exact path = '/dashboard' 
+                  render={() => {
+                    return ( 
+                      <div className = 'row justify-content-center py-5 col-11 empWelcome '>
+                        <h1>Welcome to your dashboard, <span className = 'capitalText'>{firstName} {lastName}</span>!</h1><br />                                        
+                                                  
+                        <div className="assignedShift">
+
+                          <div className="shiftBox">
+                              <fieldset className="p-5 fieldset">
+                                  <legend className="border p-2 legend ">Assigned Shifts</legend>
+                                  <p>Assigned dates will go here</p>
+                                </fieldset>
+                          </div>
+
+                          <div className="timeOff">
+                            <fieldset className="p-5 fieldset">                        
+                              <legend className="border p-2 legend">Time Off Approved</legend>
+                              <p>approved dates</p>
+                            </fieldset>
+                          </div>
+
+
+                        <div className="submitTime">
+                            <fieldset className="p-5 fieldset">
+                              <legend className="border p-2 legend">Submit Time Off Request</legend>
+
+                              <Form onChange = {this.handleChange} onSubmit={this.handleClick}>
+                              <FormGroup>
+                                <label htmlFor="timeOffDate">Date</label>
+                                <input type="date" name="timeOffDate" id="date" placeholder="date" value = {this.state.timeOffDate} />
+                              </FormGroup>
+                              <FormGroup>
+                                <label htmlFor="timeOffReason">List Your Reason:</label>
+                                <input
+                                  type="text"
+                                  name="timeOffReason"
+                                  id="reason"
+                                  placeholder="reason"
+                                  value ={this.state.timeOffReason}
+                                />
+                              </FormGroup>
+                              <button className="py-3 submitBtn" type="submit">Submit</button>
+                            </Form>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </div>
+                        
+                        )}}/>
+                      <Route path = "/Dashboard/Settings" component = {employeeSettings} /> 
                 </div>
             </div>
-            <div className="col col-1">
-                <SignOut />
-            </div>
-        </div>
-      
-        <div className="row mt-4">
-          <div className="col col-2 border-right">          
-              <EmployeeMenu />          
-          </div>
-          <div className='col col-10'>
-                      <Route exact path = '/dashboard' 
-                          render={() => {
-                            return ( 
-                          <div className = 'py-5 col col-11 empWelcome '>
-                          <h1>Welcome to your dashboard, <span className = 'capitalText'>{firstName} {lastName}</span>!</h1><br />                                        
-                                                 
-                              <div className="assignedShift">
-                      <div className="shiftBox">
-                          <fieldset className="fieldset">
-                              <legend className="legend ">Assigned Shifts</legend>
-                              <p>Assigned dates will go here</p>
-                            </fieldset>
-                            </div>
-                            <div className="timeOff">
-                          <fieldset className="fieldset">                        
-                            <legend className="legend">Time Off Approved</legend>
-                            <p>approved dates</p>
-                          </fieldset>
-                          </div>
-                          <div className="submitTime">
-                          <fieldset className="fieldset">
-                          <legend className="legend">Submit Time Off Request</legend>
-
-                          <Form onChange = {this.handleChange} onSubmit={this.handleClick}>
-                            <FormGroup>
-                              <label htmlFor="timeOffDate">Date</label>
-                              <input type="date" name="timeOffDate" id="date" placeholder="date" value = {this.state.timeOffDate} />
-                            </FormGroup>
-                            <FormGroup>
-                              <label htmlFor="timeOffReason">Reason</label>
-                              <input
-                                type="text"
-                                name="timeOffReason"
-                                id="reason"
-                                placeholder="reason"
-                                value ={this.state.timeOffReason}
-                              />
-                            </FormGroup>
-                            <Button type="submit">Submit</Button>
-                          </Form>
-
-                        </fieldset>
-                        </div>
-                          </div>
-                          </div>
-                        
-                             )} }/>
-                      <Route path = "/Dashboard/Settings" component = {employeeSettings} /> 
-                      </div>
-                      </div>
                       
-            </div>
-      );
-    }  
+          </div>
+          );
+      }  
   }
   export default withRouter(Dashboard);

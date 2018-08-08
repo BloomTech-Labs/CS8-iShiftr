@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Container, Button} from 'reactstrap';
+import { Button} from 'reactstrap';
 import Notifications, {notify} from 'react-notify-toast';
 import '../css/CreateSchedule.css';
 import axios from 'axios';
@@ -43,7 +43,7 @@ class CreateSchedule extends Component {
         let year = newDate.getFullYear()
         formData.date = `${month}-${day}-${year}`;
         console.log(formData.day, formData.date);
-        axios.post(`https://ishiftr-db.herokuapp.com/api/createSchedule/${id}`, {
+        axios.post(`http://localhost:5001/api/createSchedule/${id}`, {
                 day: formData.day,
                 date: formData.date,
                 startTime: formData.startTime,
@@ -53,6 +53,14 @@ class CreateSchedule extends Component {
             }, config)
             .then(response => {
                 notify.show("Success! You made a schedule for one day.");
+                this.setState({
+                    date: '',
+                    startTime: '',
+                    endTime: '',
+                    duplicate: '',
+                    autoAsign: '',
+                    day: '',          
+                  });
             })
             .catch(error => { console.log('Error: could not save data to db') });         
     }

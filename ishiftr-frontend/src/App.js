@@ -5,7 +5,7 @@ import SignUp from './Components/Signup';
 import Signin from './Components/SignIn';
 import EmployerDashboard from './Components/EmployerDashboard';
 import Dashboard from './Components/Dashboard';
-const id = localStorage.getItem('id')
+
 
 class App extends Component {
   render() {
