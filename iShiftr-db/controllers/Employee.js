@@ -137,7 +137,7 @@ const editEmployee = (req, res) => {
     Employee
         .findByIdAndUpdate(id, req.body, {new :true})
         .then(updatedEmployee => {
-            res.status(200).json({Message: "Employee updated"});
+            res.status(200).json(updatedEmployee);
         })
         .catch(error => {
             res.status(500).json({Error: "There was an error updating the employee"});
