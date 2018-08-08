@@ -2,32 +2,21 @@ const Employee = require('../models/EmployeeModel');
 const Employer = require('../models/EmployerModel');
 
 const createEmployee = (req, res) => {
-    console.log("body and params:", req.body, req.params);
     const { username, password, email, firstName, lastName, phoneNumber, availability, availableHours } = req.body;
     const employee = new Employee({ username, password, email, firstName, lastName, phoneNumber, availability, availableHours });
     employee
         .save((error, employee) => {
-            console.log("employee:", employee);
-            // employeeId = employee._id;
             if (error) {
-                console.log("There was an error creating the user. Please try again:", error);
             }
-            // console.log("emplid",employee._id);
             Employer.findByIdAndUpdate(req.params.id, {
                 $push: { employees: employee._id }
             })
                 .then(employer => {
-                    // employerId = employer._id;s
-                    console.log("response: ", employer);
                     res.status(200).json({ Message: "Employee saved in the Employers collection" });
                 })
                 .catch(error => {
                     res.status(500).json({ error: "There was an error saving the employee" });
                 });
-            // employee.employer.push(employer);
-            // employee.save();
-            // res.json(employee);
-            console.log("Employee saved");
         });
 }
 
@@ -78,21 +67,10 @@ const deleteEmployee = (req, res) => {
 };
 
 const editEmployeePassword = (req, res) => {
-    // const { _id, username } = req.employee;
     const { currentPassword, newPassword } = req.body;
     if (!currentPassword || !newPassword) {
         re.status(422).json({ Message: 'Please enter both current and new passwords' })
     }
-    // const payload = {
-    //     username: employee.username
-    // };
-    // const options = {
-    //     expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
-    // };
-    // const token = jwt.sign(payload, process.env.MY_SECRET, options);
-    // let opts = {
-    //     new: true
-    // }
 
     const id = req.body._id || req.params.id;
 
@@ -127,12 +105,6 @@ const editEmployeePassword = (req, res) => {
 
 const editEmployee = (req, res) => {
     const { id } = req.params;
-    console.log(id);
-    // if (user == null) {
-    //     return res
-    //         .status(404)
-    //         .json({ error: "User not found." });
-    // }
 
     Employee
         .findByIdAndUpdate(id, req.body, {new :true})
