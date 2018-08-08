@@ -7,8 +7,8 @@ class EmployeeMenu extends Component {
         return (
             <div className="menu">
                 <ul>
-                    <Link to="/Dashboard"><li className="empSettings"><i className="far fa-list-alt mr-2 fa-2x"></i>Dashboard</li></Link>
-                    <Link to="/Dashboard/Settings"><li className="empSettings"><i className="fas fa-sliders-h mr-2 fa-2x"></i> Settings</li></Link>
+                    <Link to="/Dashboard"><span className='text-dark'><li className="empSettings"><i className="far fa-list-alt mr-2 fa-2x"></i>Dashboard</li></span></Link>
+                    <Link to="/Dashboard/Settings"><span className='text-dark'><li className="empSettings"><i className="fas fa-sliders-h mr-2 fa-2x"></i> Settings</li></span></Link>
                 </ul>
             </div>
         );

@@ -19,14 +19,14 @@ option {
     width: 50%;
     align-items: center;
     margin-top: 15px;
-    background-color: #4ACCF6 !important;
+    background-color: #039cd8 !important;
     border: none !important;
 }
 
 .addButtons {
     display: flex;
     flex-direction: column;
-    background-color: #00B9F4 !important;
+    background-color: #039cd8 !important;
     border: none !important;
 }
 
