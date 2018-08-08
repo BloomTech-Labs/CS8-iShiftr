@@ -22,7 +22,6 @@ class CreateSchedule extends Component {
           duplicate: '',
           autoAsign: '',
           day: '',
-
         };
       }
     

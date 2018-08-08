@@ -1,6 +1,6 @@
   import React, { Component } from "react";
-  import { Button } from "reactstrap";
   import { Route, withRouter, Link} from 'react-router-dom';
+  import moment from 'moment'
   import axios from 'axios';
   import EmployeeMenu from "../Components/employeeMenu";
   import { Form, FormGroup } from "reactstrap";
@@ -48,7 +48,6 @@
     }
 
     handleClick = (e) => {
-      e.preventDefault();
       axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
         timeOffDate: this.state.timeOffDate,
         timeOffReason: this.state.timeOffReason
@@ -66,6 +65,8 @@
 
     }
     render() {
+      console.log(this.state.employee.schedules)
+      console.log(this.state.employee.timeOffApproved)
       let path = this.props.location.pathname.split('/');
       let firstName = this.state.employee.firstName;
       let lastName = this.state.employee.lastName;
@@ -115,7 +116,7 @@
                           <div className="timeOff">
                             <fieldset className="p-5 fieldset">                        
                               <legend className="border p-2 legend">Time Off Approved</legend>
-                              <p>approved dates</p>
+                              <p>{this.state.employee.timeOffApproved? <span>{moment(this.state.employee.timeOffDate).format('LL')}</span>: ""} </p>
                             </fieldset>
                           </div>
 

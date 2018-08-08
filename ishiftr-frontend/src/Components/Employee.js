@@ -1,18 +1,55 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
+import axios from 'axios';
 import '../css/employee.css';
+
+
+const authToken = localStorage.getItem('authToken');
+const config = {
+        headers: {
+            'Authorization': "Bearer " + authToken            
+        },
+};
 
 class Employee extends Component {
   constructor(props){
     super(props)
     this.state= {
       employee: '',
-      isDisabled: false
+      isDisabled: false,
+      isChecked: false,
+
     }
   }
 
   onDelete = () => {
     this.props.onDelete(this.props.employee._id)
+  }
+
+  handleInputChange=(event)=> {
+    event.preventDefault();
+    const id = this.props.employee._id
+    if(this.state.employee.timeOffApproved){
+      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`,
+    {timeOffApproved: false}, config)
+    .then(res =>{
+      this.setState({
+        isChecked: false,
+        employee:res.data
+      })
+    })
+      
+    } else {
+
+      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`,
+      {timeOffApproved: true}, config)
+      .then(res =>{
+        this.setState({
+          isChecked: true,
+          employee:res.data
+        })
+      })
+    }
   }
 
 
@@ -23,13 +60,13 @@ class Employee extends Component {
   }
 
   render() {
+       
 
         let newDate = new Date(this.state.employee.timeOffDate);
         let day = newDate.getDate() + 1;
         let month= newDate.getMonth() + 1;
         let year = newDate.getFullYear()
         let timeOffDate = `${month}-${day}-${year}`;
-        console.log(timeOffDate)
     
     const id =  this.props.employee._id;
     return (
@@ -63,7 +100,8 @@ class Employee extends Component {
                         <div>
 
 
-                          {timeOffDate}  <input className = 'ml-2' type="checkbox" name="vehicle" value={this.state.employee.timeOffDate} /><span className = 'ml-2'>Approved</span><br/>
+                          {timeOffDate}  <input className = 'ml-2' type="checkbox" name="isChecked" checked={this.state.employee.timeOffApproved}
+                          onChange={this.handleInputChange} /><span className = 'ml-2'>Approved</span><br/>
                         
                         </div>                                               
                     </fieldset>
