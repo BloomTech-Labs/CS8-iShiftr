@@ -35,7 +35,7 @@ class employeeSettings extends Component {
             },
         };
         axios
-            .get(`http://localhost:5001/api/employee/${id}`, config)
+            .get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
             .then(response => {
                 this.setState({ employee: response.data });
             })
@@ -55,7 +55,7 @@ class employeeSettings extends Component {
             },
         };
         axios
-            .put(`http://localhost:5001/api/employee/${id}/editPassword`, this.state, config)
+            .put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editPassword`, this.state, config)
             .then( response => {
                 notify.show("Success! Your password has been changed!");
             })
@@ -84,13 +84,13 @@ class employeeSettings extends Component {
                                 <p><strong>Change your password:</strong></p>
                                 <FormGroup>
                                     <Label for="currentPassword">Current Password</Label>
-                                    <Input required type="text" name="currentPassword" value={this.state.currentPassword} placeholder="Enter your current password" />
+                                    <Input required type="password" name="currentPassword" value={this.state.currentPassword} placeholder="Enter your current password" />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="newPassword">New Password</Label>
                                     <Input required type="password" name="newPassword" value={this.state.newPassword} placeholder="Enter your new password" />
                                 </FormGroup>
-                                <Button className = 'mb-4 submitBtn py-3'type='submit' disabled={!this.validateForm()}>Save</Button>
+                                <button className = 'mb-4 submitBtn py-3'type='submit' disabled={!this.validateForm()}>Save</button>
                             </Form>
                         </div>
                     </div>

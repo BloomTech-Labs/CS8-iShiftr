@@ -23,7 +23,7 @@ class EmployeeSignin extends Component {
 
     loginHandler(e) {
         e.preventDefault();
-        axios.post('http://localhost:5001/api/employeeLogin', this.state)
+        axios.post('https://ishiftr-db.herokuapp.com/api/employeeLogin', this.state)
         .then(response => {
             console.log('response, response.data', response);
             localStorage.setItem('authToken', response.data.token);
