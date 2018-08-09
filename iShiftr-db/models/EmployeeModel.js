@@ -37,8 +37,8 @@ const EmployeeSchema = new Schema({
         required: true,
     },
     availableHours: {
-        type:String,
-        required:true
+        startTime:String,
+        endTime:String,
     },
     workHours: {
         type: String,
