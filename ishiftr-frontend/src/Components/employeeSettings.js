@@ -35,7 +35,7 @@ class employeeSettings extends Component {
             },
         };
         axios
-            .get(`http://localhost:5001/api/employee/${id}`, config)
+            .get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
             .then(response => {
                 this.setState({ employee: response.data });
             })
@@ -55,7 +55,7 @@ class employeeSettings extends Component {
             },
         };
         axios
-            .put(`http://localhost:5001/api/employee/${id}/editPassword`, this.state, config)
+            .put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editPassword`, this.state, config)
             .then( response => {
                 notify.show("Success! Your password has been changed!");
             })
