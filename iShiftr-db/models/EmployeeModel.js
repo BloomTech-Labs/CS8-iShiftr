@@ -55,6 +55,7 @@ const EmployeeSchema = new Schema({
     timeOffApproved: {
         type: Boolean,
         required: false,
+        default: false,
     },
     admin:{
         type:Boolean,
