@@ -28,7 +28,7 @@
     }
 
     componentDidMount(){
-      axios.get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
+      axios.get(`http://localhost:5001/api/employee/${id}`, config)
           .then((res) => {
               console.log(res.data);
               this.setState({
@@ -48,7 +48,7 @@
     }
 
     handleClick = (e) => {
-      axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
+      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
         timeOffDate: this.state.timeOffDate,
         timeOffReason: this.state.timeOffReason
       }, config)
@@ -109,7 +109,7 @@
                           <div className="shiftBox">
                               <fieldset className="p-5 fieldset">
                                   <legend className="border p-2 legend ">Assigned Shifts</legend>
-                                  <p>Assigned dates will go here</p>
+                                  <p>{this.state.employee.schedules}</p>
                                 </fieldset>
                           </div>
 

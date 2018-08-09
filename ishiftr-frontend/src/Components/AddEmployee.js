@@ -15,8 +15,10 @@ class AddEmployee extends Component {
             lastName: '',
             phoneNumber: '',
             availability: '',
-            availableHours: '',
-            workHours: '',
+            availableHours: {
+                startTime: '',
+                endTime: ''
+            },
             username: '',
             password: ''
         };
@@ -28,9 +30,18 @@ class AddEmployee extends Component {
 
 
     handleChange(e) {
+    //    let availableHours = {...this.state.availableHours}
+    //    availableHours.startTime = e.target.value;
+       //availableHours.endTime =  e.target.value
         this.setState({
-          [e.target.name]: e.target.value
+          [e.target.name]: e.target.value,         
         });
+    }
+
+    timeHandlChange=(e)=>{
+        this.setState({
+            availableHours: { ...this.state.availableHours, [e.target.name]: e.target.value, [e.target.name]: e.target.value}
+        })
     }
 
     handleAddEmployee(e) {
@@ -53,14 +64,13 @@ class AddEmployee extends Component {
                 'Authorization': "Bearer " + authToken            
             },
         };
-        axios.post(`https://ishiftr-db.herokuapp.com/api/${id}/createEmployee`, {
+        axios.post(`http://localhost:5001/api/${id}/createEmployee`, {
            email: this.state.email,
            firstName: this.state.firstName,
            lastName: this.state.lastName,
            phoneNumber: this.state.phoneNumber,
            availability: this.state.availability,
            availableHours: this.state.availableHours,
-           workHours: this.state.workHours,
            username: this.state.username,
            password: this.state.password
         }, config)
@@ -74,6 +84,7 @@ class AddEmployee extends Component {
     }
 
     render() {
+        console.log(this.state.availableHours)
         return (            
             <div className = 'row justify-content-center'>
                 <Form className ='col col-6 py-4 border rounded' onChange={this.handleChange} onSubmit={this.createEmployee}>
@@ -93,14 +104,34 @@ class AddEmployee extends Component {
                 <Label for="phoneNumber">Employee Phone Number</Label>
                 <Input onChange={this.handleChange} value={this.state.phoneNumber} type="text" name="phoneNumber" id="phoneNumber" placeholder="enter employee's phone number" required />
                 </FormGroup>
-                <FormGroup>
+                {/*<FormGroup>
                 <Label for="availability">Employee Availability</Label>
                 <Input onChange={this.handleChange} value={this.state.availability} type="text" name="availability" id="availability" placeholder="enter day of availablity for employee (e.g, Monday)" required />
-                </FormGroup>
-                <FormGroup>
+                </FormGroup>*/}
+                <div className = 'mb-4 flexBox'>
+                    <span className ='mr-2'>Day: </span>
+                        <div>
+                                    <input type="radio" name="availability" value="Monday" required/>Mon
+                                    <input type="radio" name="availability" value="Tuesday"/>Tues
+                                    <input type="radio" name="availability" value="Wednesday"/>Wed 
+                                    <input type="radio" name="availability" value="Thursday"/>Thu<br/>
+                                    <input type="radio" name="availability" value="Friday"/>Fri
+                                    <input type="radio" name="availability" value="Saturday"/>Sat
+                                    <input type="radio" name="availability" value="Sunday"/>Sun<br/>
+                        </div>
+                </div>
+
+
+                {/*<FormGroup>
                 <Label for="availableHours">Employee Available Hours</Label>
                 <Input onChange={this.handleChange} value={this.state.availableHours} type="text" name="availableHours" id="availableHours" placeholder="enter hours (e.g 9-5)" required />
-                </FormGroup>
+                </FormGroup>*/}
+
+                <span className = 'mr-2'>Available Hours: </span>  
+                <input onChange={this.timeHandlChange} type="time" name="startTime" value = {this.state.availableHours.startTime} required/>
+                            <span>To </span> 
+                <input onChange={this.timeHandlChange} type="time" name="endTime" value = {this.state.availableHours.endTime} required/>
+
                 <FormGroup>
                 <Label for="username">Employee Username</Label>
                 <Input onChange={this.handleChange} value={this.state.username} type="text" name="username" id="username" placeholder="choose a username for your employee" required />

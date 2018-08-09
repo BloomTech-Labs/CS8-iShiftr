@@ -38,7 +38,7 @@ class SignUp extends Component {
         })       
         
        
-        axios.post('https://ishiftr-db.herokuapp.com/api/register',this.state)
+        axios.post('http://localhost:5001/api/register',this.state)
         .then((res) =>{
             console.log(res);
             this.props.history.push('/Signin')
