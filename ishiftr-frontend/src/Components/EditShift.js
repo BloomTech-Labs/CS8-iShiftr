@@ -21,7 +21,7 @@ class EditShift extends Component {
     }
 
     handleDelete = (id) => {
-        axios.delete(`https://ishiftr-db.herokuapp.com/api/schedule/${id}`, config)
+        axios.delete(`http://localhost:5001/api/schedule/${id}`, config)
         .then((res) => {          
             this.setState({
                 deletMsg: res.data.Message
@@ -35,7 +35,7 @@ class EditShift extends Component {
     }
 
     componentDidMount(){
-        axios.get(`https://ishiftr-db.herokuapp.com/api/schedule/${id}`, config)
+        axios.get(`http://localhost:5001/api/schedule/${id}`, config)
                 .then((res) => {
                     this.setState({
                         schedules : res.data

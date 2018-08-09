@@ -30,7 +30,7 @@ class Employee extends Component {
     event.preventDefault();
     const id = this.props.employee._id
     if (this.state.employee.timeOffApproved) {
-      axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
+      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
         timeOffApproved: false
       }, config).then(res => {
         this.setState({isChecked: false, employee: res.data})
@@ -38,7 +38,7 @@ class Employee extends Component {
 
     } else {
 
-      axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
+      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
         timeOffApproved: true
       }, config).then(res => {
         this.setState({isChecked: true, employee: res.data})
@@ -51,12 +51,19 @@ class Employee extends Component {
   }
 
   render() {
+    let startTimeFormat = this.props.employee.availableHours.startTime.split(":")[0] < 12 ? 'AM' : 'PM';
+    let endTimeFormat = this.props.employee.availableHours.endTime.split(":")[0] > 12 ? 'PM' : 'AM';
 
-    let newDate = new Date(this.state.employee.timeOffDate);
-    let day = newDate.getDate() + 1;
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear()
-    let timeOffDate = `${month}-${day}-${year}`;
+    let timeOffDate
+
+
+    if(this.state.employee.timeOffDate){
+      let newDate = new Date(this.state.employee.timeOffDate);
+      let day = newDate.getDate() + 1;
+      let month = newDate.getMonth() + 1;
+      let year = newDate.getFullYear()
+      timeOffDate = `${month}-${day}-${year}`;
+    }
 
     const id = this.props.employee._id;
     return (
@@ -83,13 +90,13 @@ class Employee extends Component {
             <fieldset className='fieldset px-2'>
               <legend className='legend legend-1'>Availability:</legend>
               <p>{this.props.employee.availability}</p>
-              <p>{this.props.employee.availableHours}</p>
+              <p>{this.props.employee.availableHours.startTime} {startTimeFormat} - {this.props.employee.availableHours.endTime} {endTimeFormat}</p>
             </fieldset>
             <fieldset className='fieldset px-2'>
               <legend className='legend'>Requested Time Off:</legend>
               <div>
 
-                {!isNaN(timeOffDate)
+                {(timeOffDate)
                   ? <span>
                       {timeOffDate}
                       <input
@@ -100,7 +107,7 @@ class Employee extends Component {
                         onChange={this.handleInputChange}/>
                       <span className='ml-2'>Approved</span><br/>
                     </span>
-                  : ''
+                  : ('')
                 }
               </div>
             </fieldset>

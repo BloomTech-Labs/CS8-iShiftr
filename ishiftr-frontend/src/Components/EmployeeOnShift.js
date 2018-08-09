@@ -18,7 +18,7 @@ class EmployeeOnShift extends Component {
                     <div key = {index} className = 'employee border rounded'>
                         <div className = 'employee-name'>{employee.firstName}</div>
                         <div>{employee.availability}</div>
-                        <div>{employee.availableHours}</div>
+                        <div>{employee.availableHours.startTime} - {employee.availableHours.endTime}</div>
                     </div>
                 ) 
             })} 
