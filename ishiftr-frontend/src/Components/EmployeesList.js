@@ -43,8 +43,8 @@ class EmployeesList extends React.Component {
         
     }
 
-    componentDidMount() {  
-        axios.get(`http://localhost:5001/api/${id}/employees`, config)
+    componentWillMount() {  
+        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
         .then((res) => {
             this.setState({
                 employees : res.data
