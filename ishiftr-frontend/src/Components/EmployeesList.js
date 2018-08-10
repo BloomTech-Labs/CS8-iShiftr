@@ -56,6 +56,7 @@ class EmployeesList extends React.Component {
     }
 
     render() {
+        console.log(this.state.employees)
         return (
             <div className = 'pl-5'>
 

@@ -7,7 +7,8 @@
   import "../css/Dashboard.css";
   import SignOut from './Signout';
   import employeeSettings from './employeeSettings';
-  
+
+
 
   const id = localStorage.getItem('id');
   const authToken = localStorage.getItem('authToken');
@@ -21,19 +22,22 @@
     constructor(props) {
       super(props)
       this.state = {
-        employee: '',
+        employee: [],
         timeOffDate: null,
-        timeOffReason: ''
+        timeOffReason: '',
       }
+
+      this.handleClick = this.handleClick.bind(this)
     }
 
     componentWillMount(){
       axios.get(`https://ishiftr-db.herokuapp.com/api/employee/${id}`, config)
           .then((res) => {
-              console.log(res.data);
+              console.log("schedule from res: ", res.data.schedules);
               this.setState({
-                  employee : res.data
+                  employee : res.data,
               })
+              
           })
           .catch(function (error) {
               console.log('there is an error', error);
@@ -53,7 +57,7 @@
         timeOffReason: this.state.timeOffReason
       }, config)
           .then((res) => {
-              console.log(res.data);
+              //console.log(res.data);
               this.setState({
                   employee : res.data
               })
@@ -65,13 +69,14 @@
 
     }
     render() {
-      console.log(this.state.employee.schedules)
-      console.log(this.state.employee.timeOffApproved)
+      //console.log(this.state.employee.timeOffApproved
+    
       let path = this.props.location.pathname.split('/');
       let firstName = this.state.employee.firstName;
       let lastName = this.state.employee.lastName;
       return (
         // A wrapper for all the contains of the dashboard 
+        
         <div className = 'mx-5'>
 
 
@@ -109,7 +114,25 @@
                           <div className="shiftBox">
                               <fieldset className="p-5 fieldset">
                                   <legend className="border p-2 legend ">Assigned Shifts</legend>
-                                  <p>{this.state.employee.schedules}</p>
+                                  
+                                    
+                                  <div>
+                                  {/*{this.state.employee.forEach(emp => {
+                                              Object.keys(emp).forEach(key => {
+                                                  if(key === 'schedules'){
+                                                      emp.schedules.map(empl=>{
+                                                          <p>{empl.day}</p>
+                                                      })
+                                                  }
+                                              }
+                                              )}
+                                  )}
+                                */}
+                                schedule here
+                                    
+                                  </div>
+
+
                                 </fieldset>
                           </div>
 
