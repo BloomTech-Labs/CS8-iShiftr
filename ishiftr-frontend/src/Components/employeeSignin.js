@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Label, Input} from 'reactstrap';
 import {withRouter } from 'react-router-dom'
 import axios from 'axios';
+import Notifications, {notify} from 'react-notify-toast';
 
 class EmployeeSignin extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class EmployeeSignin extends Component {
         this.state = {
             username: '',
             password: '',
+            isLoading: false
         }
         this.loginHandler = this.loginHandler.bind(this);
 
@@ -23,6 +25,10 @@ class EmployeeSignin extends Component {
 
     loginHandler(e) {
         e.preventDefault();
+        this.setState({
+            isLoading: true
+        })
+
         axios.post('https://ishiftr-db.herokuapp.com/api/employeeLogin', this.state)
         .then(response => {
             console.log('response, response.data', response);
@@ -32,6 +38,10 @@ class EmployeeSignin extends Component {
         })
         .catch(err => {
             console.log('sign in error', err);
+            this.setState({
+                isLoading: false
+            })
+            notify.show("Oops! Please Check Your Username and Password Credentials");
         });
     };
     
@@ -43,8 +53,8 @@ class EmployeeSignin extends Component {
                 <Input type="text" name="username" id="employeeUsername" placeholder="enter username" required />
                 <Label for="password">Employee Password:</Label>
                 <Input type="password" name="password" id="employeePassword" placeholder="enter password" required />
-                <Button className = 'mb-3 py-2 signBtn'type="submit">Sign In</Button> <br />
-                
+                {this.state.isLoading ?
+                <Button className = 'mb-3 py-2 signBtn' isLoading={this.state.isLoading} type="submit">Please Wait, Signing in <i className="fa fa-spinner fa-spin"></i></Button> : <Button className ='mb-3 py-2 signBtn' type="submit">Sign In</Button>} <br />                
             </Form>
         </div>
         );
