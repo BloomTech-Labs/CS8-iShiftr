@@ -30,7 +30,7 @@ class Employee extends Component {
     event.preventDefault();
     const id = this.props.employee._id
     if (this.state.employee.timeOffApproved) {
-      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
+      axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
         timeOffApproved: false
       }, config).then(res => {
         this.setState({isChecked: false, employee: res.data})
@@ -38,7 +38,7 @@ class Employee extends Component {
 
     } else {
 
-      axios.put(`http://localhost:5001/api/employee/${id}/editEmployee`, {
+      axios.put(`https://ishiftr-db.herokuapp.com/api/employee/${id}/editEmployee`, {
         timeOffApproved: true
       }, config).then(res => {
         this.setState({isChecked: true, employee: res.data})

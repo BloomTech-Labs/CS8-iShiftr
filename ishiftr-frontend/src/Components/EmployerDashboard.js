@@ -77,7 +77,7 @@ class EmployerDashboard extends Component {
                             <div className = 'traspBackground'>
                                 <h1>Welcome to your dashboard, <span className = 'capitalText'>{firstName} {lastName}</span>!</h1>
                                 <p className="selection">Make a selection from the menu items on the left.</p>
-                                <p className="selection"> To start, <u>click</u> the <span className="empText">Employees</span> section to begin adding your employees.</p>
+                                <p className="selection"> To start, click the <span className="empText">Employees</span> section to begin adding your employees.</p>
                             </div>
                         </div>
 

@@ -22,7 +22,7 @@ class Schedule extends React.Component {
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:5001/api/${id}/employees`, config)
+        axios.get(`https://ishiftr-db.herokuapp.com/api/${id}/employees`, config)
             .then((res) => {
                 console.log("response in testCal", res.data);
                 this.setState({

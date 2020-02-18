@@ -5,8 +5,16 @@
 
 }
 .editSchedule button{
-    width: 50px;
+    /* width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 50%; */
+    background: #161617;
+    font-size: 9px;
+    width: auto;
+    padding: 1px 5px;
+    margin: 8px 0;
+}
+
+.editSchedule button:hover {
     background: #039cd8;
 }
